@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedi-Ai Design Direction: Soft Clinical</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Soft Clinical Palette */
+            --sc-primary: #0891B2;        /* Teal - trust, calm */
+            --sc-primary-light: #22D3EE;
+            --sc-primary-dark: #0E7490;
+            --sc-secondary: #F0FDFA;       /* Teal tint */
+            --sc-accent: #F97316;          /* Warm coral - attention without alarm */
+            --sc-success: #10B981;         /* Soft green */
+            --sc-warning: #FBBF24;         /* Gentle amber */
+            --sc-danger: #EF4444;          /* Clear red */
+            --sc-bg: #FAFCFC;
+            --sc-surface: #FFFFFF;
+            --sc-text: #134E4A;
+            --sc-text-muted: #5F7780;
+            --sc-border: #CCFBF1;
+            --sc-shadow: rgba(8, 145, 178, 0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--sc-bg);
+            color: var(--sc-text);
+            line-height: 1.6;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+
+        h1 {
+            font-family: 'Nunito', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 2rem 0 1rem;
+        }
+
+        h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.75rem; }
+
+        .tagline {
+            font-size: 1.125rem;
+            color: var(--sc-text-muted);
+            margin-bottom: 2rem;
+        }
+
+        /* Color Swatches */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .color-swatch {
+            border-radius: 12px;
+            padding: 1.25rem;
+            text-align: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            box-shadow: 0 2px 8px var(--sc-shadow);
+        }
+
+        .color-swatch .name { font-weight: 700; margin-bottom: 0.25rem; }
+        .color-swatch .hex { opacity: 0.8; }
+
+        /* Typography */
+        .type-sample {
+            margin: 1rem 0;
+            padding: 1.5rem;
+            background: var(--sc-surface);
+            border-radius: 16px;
+            box-shadow: 0 2px 12px var(--sc-shadow);
+        }
+
+        .type-sample h4 {
+            font-family: 'Nunito', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .type-sample .details {
+            font-size: 0.875rem;
+            color: var(--sc-text-muted);
+        }
+
+        /* Components */
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .card {
+            background: var(--sc-surface);
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px var(--sc-shadow);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background: var(--sc-primary);
+            color: white;
+        }
+        .btn-primary:hover {
+            background: var(--sc-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(8, 145, 178, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--sc-secondary);
+            color: var(--sc-primary-dark);
+            border: 2px solid var(--sc-border);
+        }
+        .btn-secondary:hover {
+            border-color: var(--sc-primary);
+            background: white;
+        }
+
+        .btn-danger {
+            background: var(--sc-danger);
+            color: white;
+        }
+
+        /* Alert States */
+        .alert {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.25rem;
+            border-radius: 12px;
+            margin: 0.5rem 0;
+        }
+        .alert-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+        .alert-content { flex: 1; }
+        .alert-title { font-weight: 600; margin-bottom: 0.25rem; }
+        .alert-text { font-size: 0.875rem; opacity: 0.9; }
+
+        .alert-danger { background: #FEF2F2; color: #991B1B; }
+        .alert-warning { background: #FFFBEB; color: #92400E; }
+        .alert-success { background: #ECFDF5; color: #065F46; }
+        .alert-info { background: var(--sc-secondary); color: var(--sc-primary-dark); }
+
+        /* Progress/Status */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            padding: 0.375rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+        .status-active { background: #D1FAE5; color: #065F46; }
+        .status-active .status-dot { background: #10B981; }
+        .status-pending { background: #FEF3C7; color: #92400E; }
+        .status-pending .status-dot { background: #FBBF24; }
+
+        /* Input */
+        .input-field {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 2px solid var(--sc-border);
+            border-radius: 12px;
+            font-size: 1rem;
+            background: white;
+            transition: all 0.2s;
+        }
+        .input-field:focus {
+            outline: none;
+            border-color: var(--sc-primary);
+            box-shadow: 0 0 0 4px rgba(8, 145, 178, 0.1);
+        }
+
+        /* Mobile Preview */
+        .mobile-preview {
+            background: linear-gradient(135deg, var(--sc-primary) 0%, var(--sc-primary-dark) 100%);
+            border-radius: 24px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .phone-frame {
+            background: white;
+            border-radius: 32px;
+            padding: 1rem;
+            max-width: 320px;
+            margin: 0 auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+        .phone-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 1rem;
+        }
+        .phone-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--sc-primary-light), var(--sc-primary));
+        }
+        .phone-title { font-weight: 700; font-size: 0.875rem; }
+        .phone-subtitle { font-size: 0.75rem; color: #888; }
+        .phone-content { padding: 0.5rem; }
+        .phone-card {
+            background: var(--sc-secondary);
+            border-radius: 16px;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+        }
+        .phone-card h4 { font-size: 0.875rem; margin-bottom: 0.5rem; }
+        .phone-card p { font-size: 0.75rem; color: var(--sc-text-muted); }
+
+        /* Footer */
+        .section-divider {
+            border-top: 1px solid var(--sc-border);
+            margin: 3rem 0;
+        }
+
+        .pros-cons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .pros, .cons {
+            padding: 1rem;
+            border-radius: 12px;
+        }
+        .pros { background: #ECFDF5; }
+        .cons { background: #FEF2F2; }
+        .pros h4, .cons h4 { margin-bottom: 0.5rem; }
+        .pros li, .cons li { font-size: 0.875rem; margin-left: 1rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Direction 1: Soft Clinical</h1>
+        <p class="tagline">"Calm confidence meets modern healthcare" — Trustworthy teals with warm coral accents</p>
+
+        <div class="card">
+            <h2>Color Palette</h2>
+            <div class="color-grid">
+                <div class="color-swatch" style="background: #0891B2; color: white;">
+                    <div class="name">Primary Teal</div>
+                    <div class="hex">#0891B2</div>
+                </div>
+                <div class="color-swatch" style="background: #22D3EE; color: #0E4545;">
+                    <div class="name">Light Teal</div>
+                    <div class="hex">#22D3EE</div>
+                </div>
+                <div class="color-swatch" style="background: #F97316; color: white;">
+                    <div class="name">Coral Accent</div>
+                    <div class="hex">#F97316</div>
+                </div>
+                <div class="color-swatch" style="background: #10B981; color: white;">
+                    <div class="name">Success Green</div>
+                    <div class="hex">#10B981</div>
+                </div>
+                <div class="color-swatch" style="background: #EF4444; color: white;">
+                    <div class="name">Alert Red</div>
+                    <div class="hex">#EF4444</div>
+                </div>
+                <div class="color-swatch" style="background: #FAFCFC; color: #134E4A; border: 1px solid #CCFBF1;">
+                    <div class="name">Background</div>
+                    <div class="hex">#FAFCFC</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top: 1.5rem;">
+            <h2>Typography</h2>
+            <div class="type-sample">
+                <h4>Nunito Sans</h4>
+                <div class="details">Headlines & Display — Friendly, rounded, approachable</div>
+                <div style="font-family: 'Nunito', sans-serif; font-size: 1.5rem; font-weight: 800;">
+                    The quick brown fox jumps over the lazy dog
+                </div>
+            </div>
+            <div class="type-sample">
+                <h4>DM Sans</h4>
+                <div class="details">Body & UI — Clean, readable, professional</div>
+                <div style="font-family: 'DM Sans', sans-serif; font-size: 1rem; line-height: 1.6;">
+                    Body text uses DM Sans for excellent readability at all sizes. Perfect for medical information that parents need to understand quickly.
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top: 1.5rem;">
+            <h2>Component Library</h2>
+
+            <h3>Buttons</h3>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin: 1rem 0;">
+                <button class="btn btn-primary">Primary Action</button>
+                <button class="btn btn-secondary">Secondary</button>
+                <button class="btn btn-danger">Urgent</button>
+            </div>
+
+            <h3>Alert States</h3>
+            <div class="alert alert-danger">
+                <div class="alert-icon">🚨</div>
+                <div class="alert-content">
+                    <div class="alert-title">Emergency Alert</div>
+                    <div class="alert-text">Call 911 immediately</div>
+                </div>
+            </div>
+            <div class="alert alert-warning">
+                <div class="alert-icon">⚠️</div>
+                <div class="alert-content">
+                    <div class="alert-title">Warning</div>
+                    <div class="alert-text">Monitor closely</div>
+                </div>
+            </div>
+            <div class="alert alert-success">
+                <div class="alert-icon">✓</div>
+                <div class="alert-content">
+                    <div class="alert-title">All Clear</div>
+                    <div class="alert-text">Continue normal activities</div>
+                </div>
+            </div>
+            <div class="alert alert-info">
+                <div class="alert-icon">💡</div>
+                <div class="alert-content">
+                    <div class="alert-title">Tip</div>
+                    <div class="alert-text">Helpful information</div>
+                </div>
+            </div>
+
+            <h3>Status Badges</h3>
+            <div style="display: flex; gap: 0.75rem; margin: 1rem 0;">
+                <span class="status-badge status-active"><span class="status-dot"></span>Active</span>
+                <span class="status-badge status-pending"><span class="status-dot"></span>Pending</span>
+            </div>
+
+            <h3>Form Input</h3>
+            <input type="text" class="input-field" placeholder="Enter your child's name...">
+        </div>
+
+        <div class="mobile-preview">
+            <h3 style="text-align: center; color: white; margin-bottom: 1.5rem;">Mobile Preview</h3>
+            <div class="phone-frame">
+                <div class="phone-header">
+                    <div class="phone-avatar"></div>
+                    <div>
+                        <div class="phone-title">Emma's Dashboard</div>
+                        <div class="phone-subtitle">Age 2 years, 4 months</div>
+                    </div>
+                </div>
+                <div class="phone-content">
+                    <div class="phone-card" style="background: linear-gradient(135deg, #0891B2, #22D3EE); color: white;">
+                        <h4 style="color: white;">Next Vaccination</h4>
+                        <p style="color: rgba(255,255,255,0.9);">MMR - Due in 5 days</p>
+                    </div>
+                    <div class="phone-card">
+                        <h4>Milestone Check</h4>
+                        <p>Emma is meeting all milestones for her age group</p>
+                    </div>
+                    <div class="phone-card">
+                        <h4>Today's Tip</h4>
+                        <p>Try counting steps together during walks!</p>
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 0.5rem;">
+                        Symptom Checker
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider">
+            <h2>Summary</h2>
+            <div class="pros-cons">
+                <div class="pros">
+                    <h4>✓ Strengths</h4>
+                    <ul>
+                        <li>Medical credibility through teal</li>
+                        <li>Warm coral softens urgency</li>
+                        <li>Highly readable typography</li>
+                        <li>Excellent contrast for accessibility</li>
+                        <li>Scales beautifully to mobile</li>
+                    </ul>
+                </div>
+                <div class="cons">
+                    <h4>− Considerations</h4>
+                    <ul>
+                        <li>Teal is common in healthcare apps</li>
+                        <li>May feel slightly corporate</li>
+                        <li>Needs distinctiveness in details</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

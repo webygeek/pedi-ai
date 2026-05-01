@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedi-Ai Design System - Choose Your Direction</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container { max-width: 1400px; margin: 0 auto; }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.2);
+        }
+
+        .subtitle {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .option-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .option-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.2);
+        }
+
+        .preview-header {
+            padding: 2rem;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .preview-frame {
+            width: 280px;
+            height: 180px;
+            border-radius: 16px;
+            background: white;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            overflow: hidden;
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: transform 0.3s ease;
+        }
+
+        .option-card:hover .preview-frame {
+            transform: perspective(1000px) rotateY(0deg) scale(1.02);
+        }
+
+        .preview-screen {
+            width: 100%;
+            height: 100%;
+            padding: 1rem;
+        }
+
+        .option-content {
+            padding: 1.5rem 2rem 2rem;
+        }
+
+        .option-number {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.6;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            color: #64748b;
+            margin-bottom: 1.5rem;
+        }
+
+        .mood-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .mood-tag {
+            padding: 0.375rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .colors-preview {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .color-dot {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .font-preview {
+            font-size: 0.8125rem;
+            color: #64748b;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .font-preview strong {
+            color: #334155;
+        }
+
+        .select-btn {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .select-btn:hover {
+            transform: scale(1.02);
+        }
+
+        /* Direction 1: Soft Clinical */
+        .dir1-header { background: linear-gradient(135deg, #0891B2 0%, #22D3EE 100%); }
+        .dir1 .mood-tag { background: #CCFBF1; color: #0E7490; }
+        .dir1 .select-btn { background: #0891B2; color: white; }
+        .dir1 .select-btn:hover { background: #0E7490; }
+        .dir1 .color-dot:nth-child(1) { background: #0891B2; }
+        .dir1 .color-dot:nth-child(2) { background: #22D3EE; }
+        .dir1 .color-dot:nth-child(3) { background: #F97316; }
+        .dir1 .color-dot:nth-child(4) { background: #10B981; }
+        .dir1 .color-dot:nth-child(5) { background: #EF4444; }
+        .dir1-screen { background: #FAFCFC; }
+        .dir1-screen .screen-header { background: #0891B2; color: white; padding: 0.5rem 1rem; border-radius: 8px 8px 0 0; font-weight: 600; font-size: 0.75rem; }
+        .dir1-screen .screen-card { background: white; border-radius: 12px; padding: 0.75rem; margin-top: 0.5rem; box-shadow: 0 2px 8px rgba(8,145,178,0.1); }
+        .dir1-screen .screen-card h4 { font-size: 0.6875rem; color: #134E4A; }
+        .dir1-screen .screen-card p { font-size: 0.5625rem; color: #5F7780; }
+        .dir1-screen .screen-btn { background: #0891B2; color: white; border: none; border-radius: 20px; padding: 0.375rem 0.75rem; font-size: 0.5625rem; font-weight: 600; margin-top: 0.5rem; }
+
+        /* Direction 2: Warm Sanctuary */
+        .dir2-header { background: linear-gradient(160deg, #5B7B6A 0%, #7FA08E 100%); }
+        .dir2 .mood-tag { background: #EDF5F1; color: #3D5247; }
+        .dir2 .select-btn { background: #5B7B6A; color: white; }
+        .dir2 .select-btn:hover { background: #3D5247; }
+        .dir2 .color-dot:nth-child(1) { background: #5B7B6A; }
+        .dir2 .color-dot:nth-child(2) { background: #7FA08E; }
+        .dir2 .color-dot:nth-child(3) { background: #D4785C; }
+        .dir2 .color-dot:nth-child(4) { background: #6B9080; }
+        .dir2 .color-dot:nth-child(5) { background: #C85A54; }
+        .dir2-screen { background: #F5EDE4; }
+        .dir2-screen .screen-header { background: #5B7B6A; color: white; padding: 0.5rem 1rem; border-radius: 8px 8px 0 0; font-weight: 600; font-size: 0.75rem; }
+        .dir2-screen .screen-card { background: white; border-radius: 12px; padding: 0.75rem; margin-top: 0.5rem; border: 1px solid #E8DFD6; }
+        .dir2-screen .screen-card h4 { font-size: 0.6875rem; color: #2D3B35; }
+        .dir2-screen .screen-card p { font-size: 0.5625rem; color: #7A8A82; }
+        .dir2-screen .screen-btn { background: #5B7B6A; color: white; border: none; border-radius: 50px; padding: 0.375rem 0.75rem; font-size: 0.5625rem; font-weight: 600; margin-top: 0.5rem; }
+
+        /* Direction 3: Confident Minimal */
+        .dir3-header { background: linear-gradient(135deg, #1E3A5F 0%, #2D4A6F 100%); }
+        .dir3 .mood-tag { background: #F1F5F9; color: #475569; }
+        .dir3 .select-btn { background: #1E3A5F; color: white; }
+        .dir3 .select-btn:hover { background: #0F172A; }
+        .dir3 .color-dot:nth-child(1) { background: #1E3A5F; }
+        .dir3 .color-dot:nth-child(2) { background: #0EA5E9; }
+        .dir3 .color-dot:nth-child(3) { background: #059669; }
+        .dir3 .color-dot:nth-child(4) { background: #D97706; }
+        .dir3 .color-dot:nth-child(5) { background: #DC2626; }
+        .dir3-screen { background: #FFFFFF; }
+        .dir3-screen .screen-header { background: #1E3A5F; color: white; padding: 0.5rem 1rem; border-radius: 8px 8px 0 0; font-weight: 700; font-size: 0.6875rem; letter-spacing: 0.02em; }
+        .dir3-screen .screen-card { background: #F8FAFC; border-radius: 8px; padding: 0.625rem; margin-top: 0.375rem; border: 1px solid #E2E8F0; }
+        .dir3-screen .screen-card h4 { font-size: 0.625rem; font-weight: 600; color: #0F172A; }
+        .dir3-screen .screen-card p { font-size: 0.5rem; color: #64748B; }
+        .dir3-screen .screen-btn { background: #0EA5E9; color: white; border: none; border-radius: 6px; padding: 0.375rem 0.75rem; font-size: 0.5625rem; font-weight: 600; margin-top: 0.375rem; }
+
+        .comparison {
+            background: white;
+            border-radius: 24px;
+            padding: 2rem;
+            margin-top: 3rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .comparison h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #64748b;
+        }
+
+        td {
+            font-size: 0.9375rem;
+        }
+
+        .check { color: #10b981; font-weight: 600; }
+        .partial { color: #f59e0b; }
+
+        footer {
+            text-align: center;
+            color: rgba(255,255,255,0.7);
+            margin-top: 3rem;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Pedi-Ai Design System</h1>
+            <p class="subtitle">Three visual directions for your AI-powered pediatric care platform. Click any option to explore the full design details.</p>
+        </header>
+
+        <div class="options">
+            <!-- Option 1: Soft Clinical -->
+            <div class="option-card dir1">
+                <div class="preview-header dir1-header">
+                    <div class="preview-frame">
+                        <div class="preview-screen dir1-screen">
+                            <div class="screen-header">Emma's Dashboard</div>
+                            <div class="screen-card">
+                                <h4>Next Vaccination</h4>
+                                <p>MMR - Due in 5 days</p>
+                            </div>
+                            <div class="screen-card">
+                                <h4>Milestone Check</h4>
+                                <p>Meeting all milestones</p>
+                            </div>
+                            <button class="screen-btn">Symptom Checker</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="option-content">
+                    <div class="option-number">Direction 1</div>
+                    <h2>Soft Clinical</h2>
+                    <p class="tagline">Calm confidence meets modern healthcare</p>
+
+                    <div class="mood-tags">
+                        <span class="mood-tag">Trustworthy</span>
+                        <span class="mood-tag">Medical</span>
+                        <span class="mood-tag">Approachable</span>
+                    </div>
+
+                    <div class="colors-preview">
+                        <div class="color-dot"></div>
+                        <div class="color-dot"></div>
+                        <div class="color-dot"></div>
+                        <div class="color-dot"></div>
+                        <div class="color-dot"></div>
+                    </div>
+
+                    <div class="font-preview">
+                        <strong>Fonts:</strong> Nunito (headlines) + DM Sans (body)
+                    </div>
+
+                    <button class="select-btn" onclick="window.open('01-soft-clinical.html', '_blank')">
+                        View Full Design →
+                    </button>
+                </div>
+            </div>
+
+            <!-- Option 2: Warm Sanctuary -->
+            <div class="option-card dir2">
+                <div class="preview-header dir2-header">
+                    <div class="preview-frame">
+                        <div class="preview-screen dir2-screen">
+                            <div class="screen-header">Olivia's Garden</div>
+                            <div class="screen-card">
+                                <h4>Good Morning!</h4>
+                                <p>14 months to next checkup</p>
+                            </div>
+                            <div class="screen-card">
+                                <h4>Today's Activity</h4>
+                                <p>Practice stacking blocks</p>
+                            </div>
+                            <button class="screen-btn">Ask Consultant</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="option-content">
+                    <div class="option-number">Direction 2</div>
+                    <h2>Warm Sanctuary</h2>
+                    <p class="tagline">A safe haven for families</p>
+
+                    <div class="mood-tags">
+                        <span class="mood-tag">Nurturing</span>
+                        <span class="mood-tag">Organic</span>
+                        <span class="mood-tag">Cozy</span>
+                    </div>
+
+                    <div class="colors-preview">
+                        <div class="color-dot"></div>
+                        <div class="color-dot"></div>
+                        <div class="color-dot"></div>
+                        <div class="color-dot"></div>
+                        <div class="color-dot"></div>
+                    </div>
+
+                    <div class="font-preview">
+                        <strong>Fonts:</strong> Source Serif 4 (headlines) + Plus Jakarta Sans (body)
+                    </div>
+
+                    <button class="select-btn" onclick="window.open('02-warm-sanctuary.html', '_blank')">
+                        View Full Design →
+                    </button>
+                </div>
+            </div>
+
+            <!-- Option 3: Confident Minimal -->
+            <div class="option-card dir3">
+                <div class="preview-header dir3-header">
+                    <div class="preview-frame">
+                        <div class="preview-screen dir3-screen">
+                            <div class="screen-header">LIAM CHEN</div>
+                            <div class="screen-card">
+                                <h4>Next Checkup: Apr 15</h4>
+                                <p>Dr. Martinez • Pediatric</p>
+                            </div>
+                            <div class="screen-card">
+                                <h4>Vaccination Due</h4>
+                                <p>MMR + Varicella</p>
+                            </div>
+                            <button class="screen-btn">Symptom Check</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="option-content">
+                    <div class="option-number">Direction 3</div>
+                    <h2>Confident Minimal</h2>
+                    <p class="tagline">Premium healthcare clarity</p>
+
+                    <div class="mood-tags">
+                        <span class="mood-tag">Professional</span>
+                        <span class="mood-tag">Clear</span>
+                        <span class="mood-tag">Bold</span>
+                    </div>
+
+                    <div class="colors-preview">
+                        <div class="color-dot"></div>
+                        <div class="color-dot"></div>
+                        <div class="color-dot"></div>
+                        <div class="color-dot"></div>
+                        <div class="color-dot"></div>
+                    </div>
+
+                    <div class="font-preview">
+                        <strong>Fonts:</strong> Geist (headlines) + Inter (body)
+                    </div>
+
+                    <button class="select-btn" onclick="window.open('03-confident-minimal.html', '_blank')">
+                        View Full Design →
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="comparison">
+            <h2>Quick Comparison</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Factor</th>
+                        <th>Soft Clinical</th>
+                        <th>Warm Sanctuary</th>
+                        <th>Confident Minimal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Medical Credibility</td>
+                        <td class="check">High</td>
+                        <td class="partial">Moderate</td>
+                        <td class="check">High</td>
+                    </tr>
+                    <tr>
+                        <td>Warmth / Approachability</td>
+                        <td class="check">High</td>
+                        <td class="check">Very High</td>
+                        <td class="partial">Moderate</td>
+                    </tr>
+                    <tr>
+                        <td>Anxiety Reduction</td>
+                        <td class="check">High</td>
+                        <td class="check">Very High</td>
+                        <td class="partial">Moderate</td>
+                    </tr>
+                    <tr>
+                        <td>Mobile-First Ready</td>
+                        <td class="check">Excellent</td>
+                        <td class="check">Excellent</td>
+                        <td class="check">Excellent</td>
+                    </tr>
+                    <tr>
+                        <td>Differentiation</td>
+                        <td class="partial">Moderate</td>
+                        <td class="check">High</td>
+                        <td class="partial">Moderate</td>
+                    </tr>
+                    <tr>
+                        <td>Emergency State Clarity</td>
+                        <td class="check">High</td>
+                        <td class="check">High</td>
+                        <td class="check">Very High</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <footer>
+            <p>Click any "View Full Design" button to explore detailed colors, typography, components, and mobile previews.</p>
+        </footer>
+    </div>
+</body>
+</html>

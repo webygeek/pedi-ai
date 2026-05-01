@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedi-Ai Design Direction: Confident Minimal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Confident Minimal Palette */
+            --cm-primary: #1E3A5F;        /* Deep navy - trust, authority */
+            --cm-primary-light: #2D4A6F;
+            --cm-accent: #0EA5E9;           /* Sky blue - clarity, modern */
+            --cm-accent-hover: #0284C7;
+            --cm-success: #059669;
+            --cm-warning: #D97706;
+            --cm-danger: #DC2626;
+            --cm-bg: #FFFFFF;
+            --cm-surface: #F8FAFC;
+            --cm-text: #0F172A;
+            --cm-text-secondary: #475569;
+            --cm-text-muted: #94A3B8;
+            --cm-border: #E2E8F0;
+            --cm-border-strong: #CBD5E1;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--cm-bg);
+            color: var(--cm-text);
+            line-height: 1.5;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+
+        h1 {
+            font-family: 'Geist', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-family: 'Geist', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin: 2rem 0 1rem;
+        }
+
+        h3 { font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem; color: var(--cm-text-muted); }
+
+        .tagline {
+            font-size: 1.125rem;
+            color: var(--cm-text-secondary);
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        /* Color Swatches */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 0.75rem;
+            margin: 1rem 0;
+        }
+
+        .color-swatch {
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            border: 1px solid var(--cm-border);
+        }
+
+        .color-swatch .name { font-weight: 700; margin-bottom: 0.25rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        .color-swatch .hex { opacity: 0.7; font-family: monospace; }
+
+        /* Typography */
+        .type-sample {
+            margin: 1rem 0;
+            padding: 1.5rem;
+            background: var(--cm-surface);
+            border-radius: 12px;
+            border: 1px solid var(--cm-border);
+        }
+
+        .type-sample h4 {
+            font-family: 'Geist', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        .type-sample .details {
+            font-size: 0.75rem;
+            color: var(--cm-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .type-display {
+            font-family: 'Geist', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-top: 0.5rem;
+        }
+
+        /* Components */
+        .card {
+            background: var(--cm-surface);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid var(--cm-border);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .btn-primary {
+            background: var(--cm-primary);
+            color: white;
+        }
+        .btn-primary:hover {
+            background: var(--cm-primary-light);
+        }
+
+        .btn-accent {
+            background: var(--cm-accent);
+            color: white;
+        }
+        .btn-accent:hover {
+            background: var(--cm-accent-hover);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--cm-primary);
+            border: 1.5px solid var(--cm-border-strong);
+        }
+        .btn-secondary:hover {
+            border-color: var(--cm-primary);
+            background: var(--cm-surface);
+        }
+
+        .btn-danger {
+            background: var(--cm-danger);
+            color: white;
+        }
+
+        .btn-lg {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            border-radius: 10px;
+        }
+
+        /* Alert States */
+        .alert {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 0.75rem 0;
+            border: 1px solid;
+        }
+        .alert-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        .alert-content { flex: 1; padding-top: 0.25rem; }
+        .alert-title { font-weight: 700; font-size: 0.9375rem; margin-bottom: 0.125rem; }
+        .alert-text { font-size: 0.8125rem; }
+
+        .alert-danger { background: #FEF2F2; border-color: #FECACA; }
+        .alert-danger .alert-icon { background: #FEE2E2; }
+        .alert-warning { background: #FFFBEB; border-color: #FDE68A; }
+        .alert-warning .alert-icon { background: #FEF3C7; }
+        .alert-success { background: #F0FDF4; border-color: #BBF7D0; }
+        .alert-success .alert-icon { background: #DCFCE7; }
+        .alert-info { background: #F0F9FF; border-color: #BAE6FD; }
+        .alert-info .alert-icon { background: #E0F2FE; }
+
+        /* Stats/Data */
+        .stat-card {
+            background: var(--cm-surface);
+            border: 1px solid var(--cm-border);
+            border-radius: 12px;
+            padding: 1.25rem;
+        }
+        .stat-value {
+            font-family: 'Geist', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: var(--cm-primary);
+        }
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--cm-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 0.25rem;
+        }
+        .stat-change {
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+        .stat-change.positive { color: var(--cm-success); }
+        .stat-change.negative { color: var(--cm-danger); }
+
+        /* Progress */
+        .progress-bar {
+            height: 6px;
+            background: var(--cm-border);
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 0.5rem 0;
+        }
+        .progress-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+        .progress-fill.primary { background: var(--cm-primary); }
+        .progress-fill.accent { background: var(--cm-accent); }
+        .progress-fill.success { background: var(--cm-success); }
+
+        /* Input */
+        .input-field {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 1.5px solid var(--cm-border);
+            border-radius: 8px;
+            font-size: 0.9375rem;
+            background: white;
+            transition: all 0.15s;
+        }
+        .input-field:focus {
+            outline: none;
+            border-color: var(--cm-accent);
+            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 0;
+            border-bottom: 1px solid var(--cm-border);
+            margin-bottom: 1.5rem;
+        }
+        .tab {
+            padding: 0.75rem 1.25rem;
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: var(--cm-text-muted);
+            border-bottom: 2px solid transparent;
+            margin-bottom: -1px;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+        .tab:hover { color: var(--cm-text); }
+        .tab.active {
+            color: var(--cm-primary);
+            border-bottom-color: var(--cm-primary);
+        }
+
+        /* Mobile Preview */
+        .mobile-preview {
+            background: var(--cm-primary);
+            border-radius: 24px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .phone-frame {
+            background: white;
+            border-radius: 32px;
+            padding: 0.75rem;
+            max-width: 320px;
+            margin: 0 auto;
+            box-shadow: 0 24px 80px rgba(0,0,0,0.25);
+        }
+        .phone-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--cm-border);
+            margin-bottom: 0.75rem;
+        }
+        .phone-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: var(--cm-primary);
+        }
+        .phone-menu {
+            display: flex;
+            gap: 4px;
+        }
+        .phone-menu span {
+            width: 4px;
+            height: 4px;
+            background: var(--cm-text-muted);
+            border-radius: 50%;
+        }
+        .phone-title { font-weight: 700; font-size: 0.875rem; text-align: center; margin-bottom: 0.25rem; }
+        .phone-subtitle { font-size: 0.75rem; color: var(--cm-text-muted); text-align: center; margin-bottom: 1rem; }
+        .phone-content { padding: 0 0.5rem 0.5rem; }
+        .phone-stat-row {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+        .phone-stat {
+            flex: 1;
+            background: var(--cm-surface);
+            border: 1px solid var(--cm-border);
+            border-radius: 10px;
+            padding: 0.75rem;
+            text-align: center;
+        }
+        .phone-stat .value {
+            font-family: 'Geist', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            letter-spacing: -0.02em;
+        }
+        .phone-stat .label {
+            font-size: 0.625rem;
+            color: var(--cm-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .phone-card {
+            background: var(--cm-surface);
+            border: 1px solid var(--cm-border);
+            border-radius: 12px;
+            padding: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+        .phone-card h4 { font-size: 0.8125rem; margin-bottom: 0.25rem; }
+        .phone-card p { font-size: 0.6875rem; color: var(--cm-text-muted); }
+        .phone-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--cm-accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.8125rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Footer */
+        .section-divider {
+            border-top: 1px solid var(--cm-border);
+            margin: 3rem 0;
+        }
+
+        .pros-cons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .pros, .cons {
+            padding: 1.25rem;
+            border-radius: 12px;
+            border: 1px solid;
+        }
+        .pros { background: #F0FDF4; border-color: #BBF7D0; }
+        .cons { background: #FEF2F2; border-color: #FECACA; }
+        .pros h4, .cons h4 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem; }
+        .pros li, .cons li { font-size: 0.875rem; margin-left: 1rem; margin-bottom: 0.5rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Direction 3: Confident Minimal</h1>
+        <p class="tagline">"Premium healthcare clarity" — High contrast, bold typography, zero ambiguity</p>
+
+        <div class="card">
+            <h3>Color Palette</h3>
+            <div class="color-grid">
+                <div class="color-swatch" style="background: #1E3A5F; color: white;">
+                    <div class="name">Navy</div>
+                    <div class="hex">#1E3A5F</div>
+                </div>
+                <div class="color-swatch" style="background: #0EA5E9; color: white;">
+                    <div class="name">Sky</div>
+                    <div class="hex">#0EA5E9</div>
+                </div>
+                <div class="color-swatch" style="background: #059669; color: white;">
+                    <div class="name">Success</div>
+                    <div class="hex">#059669</div>
+                </div>
+                <div class="color-swatch" style="background: #D97706; color: white;">
+                    <div class="name">Warning</div>
+                    <div class="hex">#D97706</div>
+                </div>
+                <div class="color-swatch" style="background: #DC2626; color: white;">
+                    <div class="name">Danger</div>
+                    <div class="hex">#DC2626</div>
+                </div>
+                <div class="color-swatch" style="background: #F8FAFC; color: #475569; border: 1px solid #E2E8F0;">
+                    <div class="name">Surface</div>
+                    <div class="hex">#F8FAFC</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top: 1.5rem;">
+            <h3>Typography</h3>
+            <div class="type-sample">
+                <h4>Geist Sans</h4>
+                <div class="details">Display & Headlines — Bold, modern, confident</div>
+                <div class="type-display">The quick brown fox</div>
+            </div>
+            <div class="type-sample">
+                <h4>Inter</h4>
+                <div class="details">Body & UI — Clean, highly legible</div>
+                <div style="font-family: 'Inter', sans-serif; font-size: 1rem; line-height: 1.6;">
+                    Body text uses Inter for maximum readability. Medical information is presented with clear hierarchy and immediate comprehension.
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top: 1.5rem;">
+            <h3>Components</h3>
+
+            <h3>Buttons</h3>
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin: 1rem 0;">
+                <button class="btn btn-primary">Primary Action</button>
+                <button class="btn btn-accent">Accent</button>
+                <button class="btn btn-secondary">Secondary</button>
+                <button class="btn btn-danger">Danger</button>
+            </div>
+
+            <h3>Alert States</h3>
+            <div class="alert alert-danger">
+                <div class="alert-icon">🚨</div>
+                <div class="alert-content">
+                    <div class="alert-title">Emergency Alert</div>
+                    <div class="alert-text">Call 911 immediately</div>
+                </div>
+            </div>
+            <div class="alert alert-warning">
+                <div class="alert-icon">⚠️</div>
+                <div class="alert-content">
+                    <div class="alert-title">Warning</div>
+                    <div class="alert-text">Monitor closely</div>
+                </div>
+            </div>
+            <div class="alert alert-success">
+                <div class="alert-icon">✓</div>
+                <div class="alert-content">
+                    <div class="alert-title">All Clear</div>
+                    <div class="alert-text">Continue normal activities</div>
+                </div>
+            </div>
+            <div class="alert alert-info">
+                <div class="alert-icon">ℹ</div>
+                <div class="alert-content">
+                    <div class="alert-title">Information</div>
+                    <div class="alert-text">Helpful tip</div>
+                </div>
+            </div>
+
+            <h3>Stats & Progress</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1rem 0;">
+                <div class="stat-card">
+                    <div class="stat-value">95%</div>
+                    <div class="stat-label">Vaccination</div>
+                    <div class="stat-change positive">▲ On track</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill success" style="width: 95%;"></div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">24mo</div>
+                    <div class="stat-label">Age</div>
+                    <div class="stat-change">12 months to next visit</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">18</div>
+                    <div class="stat-label">Words</div>
+                    <div class="stat-change positive">▲ Above average</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill accent" style="width: 72%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Input</h3>
+            <input type="text" class="input-field" placeholder="Search symptoms, conditions...">
+
+            <h3 style="margin-top: 1.5rem;">Tabs</h3>
+            <div class="tabs">
+                <div class="tab active">Overview</div>
+                <div class="tab">Milestones</div>
+                <div class="tab">Health</div>
+                <div class="tab">Settings</div>
+            </div>
+        </div>
+
+        <div class="mobile-preview">
+            <h3 style="text-align: center; color: white; margin-bottom: 1.5rem; font-family: 'Geist', sans-serif;">Mobile Preview</h3>
+            <div class="phone-frame">
+                <div class="phone-header">
+                    <div class="phone-avatar"></div>
+                    <div style="flex: 1; padding-left: 1rem;">
+                        <div style="font-weight: 700; font-size: 0.8125rem;">Pedi-Ai</div>
+                    </div>
+                    <div class="phone-menu">
+                        <span></span><span></span><span></span>
+                    </div>
+                </div>
+                <div class="phone-content">
+                    <div class="phone-title">Liam Chen</div>
+                    <div class="phone-subtitle">Age 2 years</div>
+                    <div class="phone-stat-row">
+                        <div class="phone-stat">
+                            <div class="value" style="color: var(--cm-primary);">34"</div>
+                            <div class="label">Height</div>
+                        </div>
+                        <div class="phone-stat">
+                            <div class="value" style="color: var(--cm-primary);">28</div>
+                            <div class="label">lbs</div>
+                        </div>
+                        <div class="phone-stat">
+                            <div class="value" style="color: var(--cm-success);">✓</div>
+                            <div class="label">On Track</div>
+                        </div>
+                    </div>
+                    <div class="phone-card">
+                        <h4>Next Checkup</h4>
+                        <p>April 15, 2026 • Dr. Martinez</p>
+                    </div>
+                    <div class="phone-card">
+                        <h4>Due: Vaccination</h4>
+                        <p>MMR + Varicella • Schedule appointment</p>
+                    </div>
+                    <button class="phone-btn">Symptom Check</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider">
+            <h2>Summary</h2>
+            <div class="pros-cons">
+                <div class="pros">
+                    <h4>Strengths</h4>
+                    <ul>
+                        <li>Premium, trustworthy feel</li>
+                        <li>Maximum clarity for emergencies</li>
+                        <li>Scales perfectly to mobile</li>
+                        <li>Industry-standard usability</li>
+                        <li>High contrast = accessibility</li>
+                    </ul>
+                </div>
+                <div class="cons">
+                    <h4>Considerations</h4>
+                    <ul>
+                        <li>Less differentiation from competitors</li>
+                        <li>Can feel cold or sterile</li>
+                        <li>May not reduce parent anxiety</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

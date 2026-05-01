@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* ============================================
+   * Pedi-Ai Design Tokens
+   * ============================================ */
+
+  /* Colors - Primary Palette */
+  --color-forest: #2c4a45;
+  --color-forest-light: #3d5f58;
+  --color-forest-dark: #1c3a35;
+  --color-sage: #7bada6;
+  --color-sage-light: #a8d5c8;
+  --color-coral: #c04f7a;
+  --color-coral-light: #d06a91;
+  --color-cream: #faf8f5;
+  --color-cream-dark: #f0ebe4;
+  --color-mist: #e8efee;
+
+  /* Colors - Semantic */
+  --color-success: #7bada6;
+  --color-warning: #b07850;
+  --color-danger: #9e3535;
+
+  /* Typography */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-cream);
+    color: var(--color-forest);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 500;
+  }
+}
+
+@layer components {
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-semibold transition-all duration-200;
+  }
+
+  .btn-primary {
+    @apply bg-coral text-white hover:bg-coral-light hover:-translate-y-0.5 hover:shadow-lg;
+  }
+
+  .btn-secondary {
+    @apply bg-forest text-white hover:bg-forest-light hover:-translate-y-0.5;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent text-forest hover:bg-mist;
+  }
+
+  .btn-lg {
+    @apply px-8 py-4 text-base;
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-white rounded-2xl border border-mist/50 shadow-sm;
+  }
+
+  .card-hover {
+    @apply hover:shadow-md hover:border-sage/30 transition-all duration-300;
+  }
+
+  /* Section styles */
+  .section-label {
+    @apply inline-block text-xs font-semibold uppercase tracking-widest text-sage mb-4;
+  }
+
+  .section-title {
+    @apply font-display text-3xl md:text-4xl lg:text-5xl text-forest leading-tight;
+  }
+
+  .section-subtitle {
+    @apply text-lg text-forest/70 max-w-xl;
+  }
+
+  /* Badge */
+  .badge {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold;
+  }
+
+  .badge-success {
+    @apply bg-mist text-forest;
+  }
+
+  .badge-warning {
+    @apply bg-amber-100 text-amber-800;
+  }
+
+  .badge-coral {
+    @apply bg-coral/10 text-coral;
+  }
+
+  /* Animations */
+  .animate-fade-in {
+    animation: fadeUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+  }
+
+  .animation-delay-100 { animation-delay: 100ms; }
+  .animation-delay-200 { animation-delay: 200ms; }
+  .animation-delay-300 { animation-delay: 300ms; }
+  .animation-delay-400 { animation-delay: 400ms; }
+  .animation-delay-500 { animation-delay: 500ms; }
+
+  /* Scroll animations */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer utilities {
+  /* Text gradient */
+  .text-gradient {
+    @apply bg-gradient-to-r from-forest to-sage bg-clip-text text-transparent;
+  }
+
+  /* Glass effect */
+  .glass {
+    @apply bg-cream/90 backdrop-blur-xl;
+  }
+
+  /* Safe area padding for mobile devices */
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top, 0);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-sage);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-forest);
+}
