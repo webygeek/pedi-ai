@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
+import Link from 'next/link'
 import { Navigation } from './components/Navigation'
 import { Button } from './components/Button'
 import { PhoneMockup } from './components/PhoneMockup'
@@ -347,8 +348,12 @@ export default function HomePage() {
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
-            <Button variant="primary" size="lg">Get Started Free</Button>
-            <Button variant="secondary" size="lg">Schedule a Demo</Button>
+            <Link href="/login">
+              <Button variant="primary" size="lg">Get Started Free</Button>
+            </Link>
+            <Link href="/login">
+              <Button variant="secondary" size="lg">Schedule a Demo</Button>
+            </Link>
           </div>
 
           <p className="flex items-center justify-center gap-2 text-sm text-forest/60">

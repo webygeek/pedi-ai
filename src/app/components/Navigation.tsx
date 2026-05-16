@@ -53,8 +53,10 @@ export function Navigation() {
 
             {/* Desktop CTA */}
             <div className="hidden md:flex items-center gap-3">
-              <Button variant="ghost" size="sm">Sign In</Button>
-              <Link href="#get-started">
+              <Link href="/login">
+                <Button variant="ghost" size="sm">Sign In</Button>
+              </Link>
+              <Link href="/login">
                 <Button variant="primary" size="sm">Get Started Free</Button>
               </Link>
             </div>
@@ -91,8 +93,10 @@ export function Navigation() {
             </Link>
           ))}
           <div className="pt-4 border-t border-forest/10 space-y-3">
-            <Button variant="secondary" className="w-full">Sign In</Button>
-            <Link href="#get-started" className="block" onClick={() => setIsMobileMenuOpen(false)}>
+            <Link href="/login" className="block" onClick={() => setIsMobileMenuOpen(false)}>
+              <Button variant="secondary" className="w-full">Sign In</Button>
+            </Link>
+            <Link href="/login" className="block" onClick={() => setIsMobileMenuOpen(false)}>
               <Button variant="primary" className="w-full">Get Started Free</Button>
             </Link>
           </div>

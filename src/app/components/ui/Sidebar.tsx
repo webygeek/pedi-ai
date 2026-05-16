@@ -1,21 +1,12 @@
 'use client'
 
-import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useAuth } from '@/app/context/AuthContext'
+import { Stethoscope, User, AlertCircle, Shield, Activity } from 'lucide-react'
+import { memo, useMemo } from 'react'
 
-interface NavItem {
-  label: string
-  href: string
-  icon: React.ReactNode
-}
-
-interface NavSection {
-  title: string
-  items: NavItem[]
-}
-
-// Icon components
+// SVG Icons - defined outside component to prevent recreation
 const HomeIcon = () => (
   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
     <path strokeLinecap="round" strokeLinejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
@@ -83,32 +74,102 @@ const AddChildIcon = () => (
   </svg>
 )
 
-const ChevronIcon = ({ isOpen }: { isOpen: boolean }) => (
-  <svg className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-  </svg>
-)
-
-const AvatarIcon = () => (
-  <svg className="w-full h-full" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="50" cy="50" r="50" fill="#e8efee"/>
-    <circle cx="50" cy="38" r="18" fill="#7bada6"/>
-    <ellipse cx="50" cy="78" rx="28" ry="20" fill="#7bada6"/>
-  </svg>
-)
-
 const StreakIcon = () => (
   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M12 2C8 8 6 12 8 16C10 20 14 22 18 22C18 18 16 14 14 10C20 12 22 16 22 20C22 10 18 4 12 2Z" fill="#c04f7a"/>
   </svg>
 )
 
-// Sample child data
-const sampleChild = {
-  name: 'Aarav Sharma',
-  age: '2 years 4 months',
-  weight: '12.5 kg',
-  avatar: null
+const AdminIcon = () => (
+  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.699a11.959 11.959 0 01-8.762 2.763z" />
+  </svg>
+)
+
+const UsersIcon = () => (
+  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 7.348 7.348 0 00-7.217 7.217 9.337 9.337 0 00.372 2.625M9 6v2m0 0V4m0 2v2m0-2h12m0 0v2m0-2h-6" />
+  </svg>
+)
+
+const ChartBarIcon = () => (
+  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+  </svg>
+)
+
+const BellIcon = () => (
+  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+  </svg>
+)
+
+const FileTextIcon = () => (
+  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+  </svg>
+)
+
+// Pre-built navigation configs for each role
+const NAVIGATION_CONFIG = {
+  parent: [
+    { title: 'Main', items: [
+      { label: 'Dashboard', href: '/dashboard', icon: HomeIcon },
+      { label: 'Symptom Check', href: '/symptom-check', icon: SymptomIcon },
+      { label: 'Growth Charts', href: '/growth-charts', icon: ChartIcon },
+      { label: 'Dosage Calculator', href: '/dosage-calculator', icon: DosageIcon },
+      { label: 'Emergency Guide', href: '/emergency', icon: EmergencyIcon },
+    ]},
+    { title: 'Child Health', items: [
+      { label: 'Milestones', href: '/milestones', icon: MilestoneIcon },
+      { label: 'Vaccinations', href: '/vaccinations', icon: VaccineIcon },
+      { label: 'Medical History', href: '/medical-history', icon: HistoryIcon },
+      { label: 'Medicine Cabinet', href: '/medicine-cabinet', icon: LogIcon },
+    ]},
+    { title: 'Account', items: [
+      { label: 'AI Consultant', href: '/consultant', icon: SettingsIcon },
+      { label: 'Add Child', href: '/add-child', icon: AddChildIcon },
+    ]},
+  ],
+  doctor: [
+    { title: 'Main', items: [
+      { label: 'Dashboard', href: '/dashboard', icon: HomeIcon },
+      { label: 'Triage Review', href: '/triage-review', icon: AdminIcon },
+    ]},
+    { title: 'Patients', items: [
+      { label: 'Patient Records', href: '/patients', icon: UsersIcon },
+      { label: 'Growth Reference', href: '/growth-reference', icon: ChartBarIcon },
+    ]},
+    { title: 'Clinical Tools', items: [
+      { label: 'Drug Interactions', href: '/drug-interactions', icon: DosageIcon },
+      { label: 'Vaccinations', href: '/vaccinations', icon: VaccineIcon },
+      { label: 'Growth Charts', href: '/growth-charts', icon: ChartIcon },
+    ]},
+    { title: 'Reference', items: [
+      { label: 'AI Consultant', href: '/consultant', icon: SettingsIcon },
+    ]},
+  ],
+  admin: [
+    { title: 'Overview', items: [
+      { label: 'Dashboard', href: '/admin', icon: HomeIcon },
+      { label: 'Analytics', href: '/admin/analytics', icon: ChartBarIcon },
+    ]},
+    { title: 'User Management', items: [
+      { label: 'All Users', href: '/admin/users', icon: UsersIcon },
+      { label: 'Doctors', href: '/admin/doctors', icon: Stethoscope },
+      { label: 'Parents', href: '/admin/parents', icon: User },
+    ]},
+    { title: 'Clinical Oversight', items: [
+      { label: 'AI Triage Review', href: '/admin/triage-review', icon: AdminIcon },
+      { label: 'Flagged Cases', href: '/admin/flagged', icon: AlertCircle },
+      { label: 'Drug Interactions', href: '/drug-interactions', icon: DosageIcon },
+    ]},
+    { title: 'Content & Support', items: [
+      { label: 'Health Tips', href: '/admin/health-tips', icon: FileTextIcon },
+      { label: 'Notifications', href: '/admin/notifications', icon: BellIcon },
+      { label: 'Audit Logs', href: '/admin/audit-logs', icon: HistoryIcon },
+    ]},
+  ],
 }
 
 interface SidebarProps {
@@ -116,165 +177,228 @@ interface SidebarProps {
   onClose?: () => void
 }
 
-export default function Sidebar({ isOpen = false, onClose }: SidebarProps) {
-  const [role, setRole] = useState<'parent' | 'clinician'>('parent')
+function SidebarComponent({ isOpen = false, onClose }: SidebarProps) {
+  const { user, selectedChild } = useAuth()
   const pathname = usePathname()
 
-  const navigationSections: NavSection[] = [
-    {
-      title: 'Main',
-      items: [
-        { label: 'Dashboard', href: '/dashboard', icon: <HomeIcon /> },
-        { label: 'Symptom Check', href: '/symptom-check', icon: <SymptomIcon /> },
-        { label: 'Growth Charts', href: '/growth-charts', icon: <ChartIcon /> },
-        { label: 'Dosage Calculator', href: '/dosage-calculator', icon: <DosageIcon /> },
-        { label: 'Emergency Guide', href: '/emergency', icon: <EmergencyIcon /> },
-      ],
-    },
-    {
-      title: 'Child Health',
-      items: [
-        { label: 'Milestones', href: '/milestones', icon: <MilestoneIcon /> },
-        { label: 'Vaccinations', href: '/vaccinations', icon: <VaccineIcon /> },
-        { label: 'Medical History', href: '/medical-history', icon: <HistoryIcon /> },
-        { label: 'Medicine Cabinet', href: '/medicine-cabinet', icon: <LogIcon /> },
-      ],
-    },
-    {
-      title: 'Account',
-      items: [
-        { label: 'AI Consultant', href: '/consultant', icon: <SettingsIcon /> },
-        { label: 'Add Child', href: '/add-child', icon: <AddChildIcon /> },
-      ],
-    },
-  ]
+  // Memoize navigation based on role
+  const navigation = useMemo(() => {
+    const role = user?.role || 'parent'
+    return NAVIGATION_CONFIG[role as keyof typeof NAVIGATION_CONFIG] || NAVIGATION_CONFIG.parent
+  }, [user?.role])
 
   const isActive = (href: string) => pathname === href
 
-  const sidebarContent = (
-    <div className="flex flex-col h-full w-72 bg-white border-r border-mist/50">
-      {/* Logo */}
-      <div className="p-5 border-b border-mist/50">
-        <Link href="/dashboard" className="flex items-center gap-2">
-          <span className="font-display text-2xl font-semibold text-forest">
-            Pedi<span className="text-coral">·</span>Ai
-          </span>
-        </Link>
-      </div>
+  const calculateAge = (dob: string) => {
+    const years = new Date().getFullYear() - new Date(dob).getFullYear()
+    const months = new Date().getMonth() - new Date(dob).getMonth()
+    const totalMonths = years * 12 + months
+    if (totalMonths < 12) return `${totalMonths} months`
+    return `${Math.floor(totalMonths / 12)}y ${totalMonths % 12}m`
+  }
 
-      {/* Role Switcher */}
-      <div className="p-4">
-        <div className="flex gap-2 p-1 bg-mist/50 rounded-full">
-          <button
-            onClick={() => setRole('parent')}
-            className={`flex-1 py-2 px-4 rounded-full text-sm font-medium transition-all ${
-              role === 'parent'
-                ? 'bg-forest text-white shadow-sm'
-                : 'text-forest/70 hover:text-forest'
-            }`}
-          >
-            Parent
-          </button>
-          <button
-            onClick={() => setRole('clinician')}
-            className={`flex-1 py-2 px-4 rounded-full text-sm font-medium transition-all ${
-              role === 'clinician'
-                ? 'bg-forest text-white shadow-sm'
-                : 'text-forest/70 hover:text-forest'
-            }`}
-          >
-            Clinician
-          </button>
-        </div>
-      </div>
-
-      {/* Child Profile Card */}
-      <div className="mx-4 mb-4 p-4 bg-gradient-to-br from-mist/30 to-cream rounded-2xl border border-mist/50">
-        <div className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
-            <AvatarIcon />
+  const renderProfileCard = () => {
+    if (user?.role === 'admin') {
+      return (
+        <div className="mx-4 mt-4 p-4 bg-gradient-to-br from-[#2c4a45]/10 to-[#2c4a45]/5 rounded-2xl border border-[#2c4a45]/20">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#2c4a45] to-[#3d5a52] flex items-center justify-center">
+              <Shield className="w-6 h-6 text-white" />
+            </div>
+            <div>
+              <p className="font-semibold text-forest">{user.name}</p>
+              <p className="text-sm text-forest/60">Administrator</p>
+            </div>
           </div>
-          <div className="flex-1 min-w-0">
-            <p className="font-semibold text-forest truncate">{sampleChild.name}</p>
-            <p className="text-sm text-forest/60">{sampleChild.age}</p>
+          <div className="mt-3 flex items-center justify-between text-sm">
+            <span className="text-forest/60">Status</span>
+            <span className="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-medium rounded-full">Active</span>
           </div>
         </div>
-        <div className="mt-3 flex items-center justify-between text-sm">
-          <span className="text-forest/60">Weight</span>
-          <span className="font-medium text-forest">{sampleChild.weight}</span>
-        </div>
-      </div>
+      )
+    }
 
-      {/* Navigation */}
-      <nav className="flex-1 overflow-y-auto px-3 pb-4">
-        {navigationSections.map((section) => (
-          <div key={section.title} className="mb-4">
-            <h3 className="section-label px-3 mb-2">{section.title}</h3>
-            <ul className="space-y-1">
-              {section.items.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    onClick={onClose}
-                    className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all ${
-                      isActive(item.href)
-                        ? 'bg-sage/15 text-forest font-medium'
-                        : 'text-forest/70 hover:bg-mist/50 hover:text-forest'
-                    }`}
-                  >
-                    <span className={isActive(item.href) ? 'text-coral' : 'text-forest/50'}>
-                      {item.icon}
-                    </span>
-                    <span>{item.label}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </nav>
-
-      {/* Streak Counter */}
-      <div className="mx-4 mb-4 p-3 bg-gradient-to-r from-coral/10 to-coral/5 rounded-xl border border-coral/20">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-coral/10 rounded-full flex items-center justify-center">
-            <StreakIcon />
-          </div>
-          <div>
-            <p className="font-semibold text-forest">7 Day Streak</p>
-            <p className="text-xs text-forest/60">Keep tracking daily!</p>
+    if (user?.role === 'doctor') {
+      return (
+        <div className="mx-4 mt-4 p-4 bg-gradient-to-br from-mist/30 to-cream rounded-2xl border border-mist/50">
+          <div className="flex items-center gap-3">
+            {user.avatar ? (
+              <img src={user.avatar} alt={user.name} className="w-12 h-12 rounded-full object-cover" />
+            ) : (
+              <div className="w-12 h-12 rounded-full bg-[#2c4a45]/10 flex items-center justify-center">
+                <Stethoscope className="w-6 h-6 text-[#2c4a45]" />
+              </div>
+            )}
+            <div>
+              <p className="font-semibold text-forest">{user.name}</p>
+              <p className="text-sm text-forest/60">{user.specialty || 'Pediatrician'}</p>
+            </div>
           </div>
         </div>
-      </div>
+      )
+    }
 
-      {/* Emergency Button */}
-      <div className="p-4 border-t border-mist/50">
-        <Link href="/emergency" className="block w-full py-3 px-4 bg-red-50 text-red-600 rounded-xl font-semibold flex items-center justify-center gap-2 hover:bg-red-100 transition-colors">
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-          </svg>
-          Emergency Guide
-        </Link>
-      </div>
-    </div>
-  )
+    if (selectedChild) {
+      return (
+        <div className="mx-4 mt-4 p-4 bg-gradient-to-br from-mist/30 to-cream rounded-2xl border border-mist/50">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 rounded-full bg-[#2c4a45]/10 flex items-center justify-center">
+              <span className="text-xl font-bold text-[#2c4a45]">{selectedChild.name.charAt(0)}</span>
+            </div>
+            <div>
+              <p className="font-semibold text-forest">{selectedChild.name}</p>
+              <p className="text-sm text-forest/60">{calculateAge(selectedChild.dateOfBirth)}</p>
+            </div>
+          </div>
+          {selectedChild.weight && (
+            <div className="mt-3 flex items-center justify-between text-sm">
+              <span className="text-forest/60">Weight</span>
+              <span className="font-medium text-forest">{selectedChild.weight} kg</span>
+            </div>
+          )}
+        </div>
+      )
+    }
+
+    return null
+  }
 
   return (
     <>
       {/* Desktop Sidebar */}
-      <aside className="hidden lg:block fixed left-0 top-0 h-screen w-72 z-30">
-        {sidebarContent}
+      <aside className="hidden lg:block fixed left-0 top-0 h-screen w-72 z-30 bg-white border-r border-mist/50">
+        <div className="flex flex-col h-full">
+          {/* Logo */}
+          <div className="p-5 border-b border-mist/50">
+            <Link href="/dashboard" className="flex items-center gap-2">
+              <span className="font-display text-2xl font-semibold text-forest">
+                Pedi<span className="text-coral">·</span>Ai
+              </span>
+            </Link>
+          </div>
+
+          {/* Profile Card */}
+          {renderProfileCard()}
+
+          {/* Navigation */}
+          <nav className="flex-1 overflow-y-auto px-3 py-4">
+            {navigation.map((section) => (
+              <div key={section.title} className="mb-4">
+                <h3 className="section-label px-3 mb-2">{section.title}</h3>
+                <ul className="space-y-1">
+                  {section.items.map((item) => {
+                    const IconComponent = item.icon
+                    return (
+                      <li key={item.href}>
+                        <Link
+                          href={item.href}
+                          onClick={onClose}
+                          className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all ${
+                            isActive(item.href)
+                              ? 'bg-sage/15 text-forest font-medium'
+                              : 'text-forest/70 hover:bg-mist/50 hover:text-forest'
+                          }`}
+                        >
+                          <span className={isActive(item.href) ? 'text-coral' : 'text-forest/50'}>
+                            <IconComponent />
+                          </span>
+                          <span>{item.label}</span>
+                        </Link>
+                      </li>
+                    )
+                  })}
+                </ul>
+              </div>
+            ))}
+          </nav>
+
+          {/* Streak Counter (parents only) */}
+          {user?.role === 'parent' && (
+            <div className="mx-4 mb-4 p-3 bg-gradient-to-r from-coral/10 to-coral/5 rounded-xl border border-coral/20">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-coral/10 rounded-full flex items-center justify-center">
+                  <StreakIcon />
+                </div>
+                <div>
+                  <p className="font-semibold text-forest">7 Day Streak</p>
+                  <p className="text-xs text-forest/60">Keep tracking daily!</p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Emergency Button */}
+          <div className="p-4 border-t border-mist/50">
+            <Link href="/emergency" className="block w-full py-3 px-4 bg-red-50 text-red-600 rounded-xl font-semibold flex items-center justify-center gap-2 hover:bg-red-100 transition-colors">
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              Emergency Guide
+            </Link>
+          </div>
+        </div>
       </aside>
 
       {/* Mobile Sidebar Overlay */}
       {isOpen && (
         <div className="lg:hidden fixed inset-0 z-50">
-          <div
-            className="absolute inset-0 bg-forest/50 backdrop-blur-sm"
-            onClick={onClose}
-          />
-          <div className="absolute left-0 top-0 bottom-0 w-80 overflow-y-auto">
-            {sidebarContent}
+          <div className="absolute inset-0 bg-forest/50 backdrop-blur-sm" onClick={onClose} />
+          <div className="absolute left-0 top-0 bottom-0 w-80 overflow-y-auto bg-white">
+            <div className="flex flex-col h-full">
+              {/* Logo */}
+              <div className="p-5 border-b border-mist/50">
+                <Link href="/dashboard" className="flex items-center gap-2">
+                  <span className="font-display text-2xl font-semibold text-forest">
+                    Pedi<span className="text-coral">·</span>Ai
+                  </span>
+                </Link>
+              </div>
+
+              {/* Profile Card */}
+              {renderProfileCard()}
+
+              {/* Navigation */}
+              <nav className="flex-1 overflow-y-auto px-3 py-4">
+                {navigation.map((section) => (
+                  <div key={section.title} className="mb-4">
+                    <h3 className="section-label px-3 mb-2">{section.title}</h3>
+                    <ul className="space-y-1">
+                      {section.items.map((item) => {
+                        const IconComponent = item.icon
+                        return (
+                          <li key={item.href}>
+                            <Link
+                              href={item.href}
+                              onClick={onClose}
+                              className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all ${
+                                isActive(item.href)
+                                  ? 'bg-sage/15 text-forest font-medium'
+                                  : 'text-forest/70 hover:bg-mist/50 hover:text-forest'
+                              }`}
+                            >
+                              <span className={isActive(item.href) ? 'text-coral' : 'text-forest/50'}>
+                                <IconComponent />
+                              </span>
+                              <span>{item.label}</span>
+                            </Link>
+                          </li>
+                        )
+                      })}
+                    </ul>
+                  </div>
+                ))}
+              </nav>
+
+              {/* Emergency Button */}
+              <div className="p-4 border-t border-mist/50">
+                <Link href="/emergency" className="block w-full py-3 px-4 bg-red-50 text-red-600 rounded-xl font-semibold flex items-center justify-center gap-2 hover:bg-red-100 transition-colors">
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                  Emergency Guide
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       )}
@@ -291,3 +415,7 @@ export default function Sidebar({ isOpen = false, onClose }: SidebarProps) {
     </>
   )
 }
+
+// Memoize to prevent unnecessary re-renders
+const Sidebar = memo(SidebarComponent)
+export default Sidebar

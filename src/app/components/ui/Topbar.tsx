@@ -1,6 +1,9 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { useAuth } from '@/app/context/AuthContext'
+import { LogOut, ChevronDown, User, Stethoscope } from 'lucide-react'
 
 const SearchIcon = () => (
   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -23,6 +26,9 @@ const ShieldIcon = () => (
 export default function Topbar() {
   const [searchQuery, setSearchQuery] = useState('')
   const [hasNotifications] = useState(true)
+  const [showUserMenu, setShowUserMenu] = useState(false)
+  const { user, logout } = useAuth()
+  const router = useRouter()
 
   const currentDate = new Date().toLocaleDateString('en-IN', {
     weekday: 'long',
@@ -30,6 +36,11 @@ export default function Topbar() {
     month: 'long',
     day: 'numeric'
   })
+
+  const handleLogout = () => {
+    logout()
+    router.push('/login')
+  }
 
   return (
     <header className="sticky top-0 z-30 bg-cream/95 backdrop-blur-xl border-b border-mist/50">
@@ -68,6 +79,63 @@ export default function Topbar() {
             <span className="absolute top-1 right-1 w-2.5 h-2.5 bg-coral rounded-full animate-pulse-dot" />
           )}
         </button>
+
+        {/* User Menu */}
+        <div className="relative">
+          <button
+            onClick={() => setShowUserMenu(!showUserMenu)}
+            className="flex items-center gap-2 pl-3 pr-2 py-1.5 rounded-full hover:bg-mist transition-colors"
+          >
+            <div className="hidden sm:block text-right">
+              <p className="text-sm font-medium text-forest">{user?.name}</p>
+              <p className="text-xs text-forest/60 capitalize">{user?.role}</p>
+            </div>
+            {user?.avatar ? (
+              <img
+                src={user.avatar}
+                alt={user.name}
+                className="w-9 h-9 rounded-full object-cover border-2 border-white"
+              />
+            ) : (
+              <div className="w-9 h-9 rounded-full bg-[#2c4a45] flex items-center justify-center">
+                {user?.role === 'doctor' ? (
+                  <Stethoscope className="w-5 h-5 text-white" />
+                ) : (
+                  <User className="w-5 h-5 text-white" />
+                )}
+              </div>
+            )}
+            <ChevronDown className="w-4 h-4 text-forest/60" />
+          </button>
+
+          {/* Dropdown Menu */}
+          {showUserMenu && (
+            <div className="absolute right-0 top-full mt-2 w-56 bg-white rounded-xl shadow-lg border border-gray-100 py-2 z-50">
+              <div className="px-4 py-2 border-b border-gray-100">
+                <p className="text-sm font-medium text-forest">{user?.name}</p>
+                <p className="text-xs text-forest/60">{user?.email}</p>
+                {user?.specialty && (
+                  <p className="text-xs text-[#2c4a45] mt-1">{user.specialty}</p>
+                )}
+              </div>
+              {user?.role === 'parent' && user.children && user.children.length > 0 && (
+                <div className="px-4 py-2 border-b border-gray-100">
+                  <p className="text-xs text-forest/60 mb-1">Your Children</p>
+                  {user.children.map((child) => (
+                    <p key={child.id} className="text-sm text-forest">{child.name}</p>
+                  ))}
+                </div>
+              )}
+              <button
+                onClick={handleLogout}
+                className="w-full flex items-center gap-2 px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors"
+              >
+                <LogOut className="w-4 h-4" />
+                <span>Sign Out</span>
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </header>
   )
