@@ -31,202 +31,255 @@ export default function DoctorDashboard() {
 
   return (
     <IsDoctor fallback={
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-cream flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">Access Denied</h1>
-          <p className="text-gray-600">You need doctor privileges to access this page.</p>
+          <div className="w-16 h-16 rounded-full bg-danger/10 flex items-center justify-center mx-auto mb-4">
+            <svg className="w-8 h-8 text-danger" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+          </div>
+          <h1 className="font-display text-2xl text-forest mb-2">Access Denied</h1>
+          <p className="text-forest/60">You need doctor privileges to access this page.</p>
+          <Link href="/dashboard" className="inline-block mt-4 px-6 py-2 bg-sage text-white rounded-xl hover:bg-sage/90 transition-colors">
+            Go to Parent Dashboard
+          </Link>
         </div>
       </div>
     }>
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-cream">
         {/* Header */}
-        <header className="bg-white border-b border-gray-200">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-            <div className="flex items-center justify-between">
+        <div className="mb-8">
+          <div className="flex items-center gap-2 text-sm text-forest/60 mb-4">
+            <span>Doctor Dashboard</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <div className="w-14 h-14 rounded-2xl bg-sage/10 flex items-center justify-center">
+                <span className="text-2xl">👨‍⚕️</span>
+              </div>
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">
+                <h1 className="font-display text-2xl md:text-3xl text-forest">
                   Welcome, Dr. {session?.user?.name?.split(' ')[1] || 'Doctor'}
                 </h1>
-                <p className="text-gray-500 mt-1">
+                <p className="text-forest/60">
                   Pediatrician at PediAi Clinic
                 </p>
               </div>
-              <div className="flex items-center gap-3">
-                <span className="px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-sm font-medium">
-                  Doctor
-                </span>
-                <div className="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center">
-                  <span className="text-lg">👨‍⚕️</span>
-                </div>
-              </div>
+            </div>
+            <div className="hidden md:flex items-center gap-3">
+              <span className="px-4 py-2 bg-sage/10 text-sage rounded-full text-sm font-medium border border-sage/20">
+                Doctor
+              </span>
             </div>
           </div>
-        </header>
+        </div>
 
-        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          {/* Loading State */}
-          {isLoading && (
-            <div className="flex items-center justify-center py-12">
-              <div className="animate-spin rounded-full h-8 w-8 border-4 border-primary-500 border-t-transparent"></div>
+        {/* Loading State */}
+        {isLoading && (
+          <div className="flex items-center justify-center py-16">
+            <div className="w-12 h-12 rounded-full border-4 border-sage/20 border-t-sage animate-spin"></div>
+          </div>
+        )}
+
+        {!isLoading && (
+          <>
+            {/* Stats Cards */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+              <StatCard
+                icon={
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+                  </svg>
+                }
+                label="Total Patients"
+                value={totalPatients}
+                color="sage"
+              />
+              <StatCard
+                icon={
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+                  </svg>
+                }
+                label="Today's Appointments"
+                value={todayAppointments}
+                color="forest"
+              />
+              <StatCard
+                icon={
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                }
+                label="Pending Reviews"
+                value={pendingReviews}
+                color="coral"
+              />
+              <StatCard
+                icon={
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.556 4.03-8 9-8s9 3.444 9 8z" />
+                  </svg>
+                }
+                label="Unread Messages"
+                value={unreadMessages}
+                color="coral"
+              />
             </div>
-          )}
 
-          {!isLoading && (
-            <>
-              {/* Stats Cards */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                <StatCard
-                  icon="👥"
-                  label="Total Patients"
-                  value={totalPatients.toString()}
-                  color="blue"
-                />
-                <StatCard
-                  icon="📅"
-                  label="Today's Appointments"
-                  value={todayAppointments.toString()}
-                  color="green"
-                />
-                <StatCard
-                  icon="📋"
-                  label="Pending Reviews"
-                  value={pendingReviews.toString()}
-                  color="amber"
-                />
-                <StatCard
-                  icon="💬"
-                  label="Unread Messages"
-                  value={unreadMessages.toString()}
-                  color="purple"
-                />
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              {/* Main Content */}
+              <div className="lg:col-span-2 space-y-6">
+                {/* Quick Actions */}
+                <section className="bg-white rounded-2xl p-6 shadow-sm border border-mist/50">
+                  <h2 className="font-display text-lg text-forest mb-4">Quick Actions</h2>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                    <QuickAction
+                      icon={
+                        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+                        </svg>
+                      }
+                      label="View Patients"
+                      href="/doctor/patients"
+                    />
+                    <QuickAction
+                      icon={
+                        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+                        </svg>
+                      }
+                      label="Appointments"
+                      href="/doctor/appointments"
+                    />
+                    <QuickAction
+                      icon={
+                        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
+                        </svg>
+                      }
+                      label="New Appointment"
+                      href="/doctor/appointments"
+                    />
+                    <QuickAction
+                      icon={
+                        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                        </svg>
+                      }
+                      label="Add Note"
+                      href="/doctor/patients"
+                    />
+                  </div>
+                </section>
+
+                {/* Recent Patients */}
+                <section className="bg-white rounded-2xl p-6 shadow-sm border border-mist/50">
+                  <div className="flex items-center justify-between mb-4">
+                    <h2 className="font-display text-lg text-forest">Recent Patients</h2>
+                    <Link
+                      href="/doctor/patients"
+                      className="text-sm text-sage hover:text-sage/80 font-medium transition-colors"
+                    >
+                      View all
+                    </Link>
+                  </div>
+                  <div className="space-y-3">
+                    {recentPatients.map(patient => (
+                      <PatientCard key={patient.id} patient={patient} compact />
+                    ))}
+                  </div>
+                </section>
               </div>
 
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                {/* Main Content */}
-                <div className="lg:col-span-2 space-y-8">
-                  {/* Quick Actions */}
-                  <section className="bg-white rounded-xl border border-gray-200 p-6">
-                    <h2 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h2>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                      <QuickAction
-                        icon="📋"
-                        label="View Patients"
-                        href="/doctor/patients"
-                      />
-                      <QuickAction
-                        icon="📅"
-                        label="Appointments"
-                        href="/doctor/appointments"
-                      />
-                      <QuickAction
-                        icon="➕"
-                        label="New Appointment"
-                        href="/doctor/appointments"
-                      />
-                      <QuickAction
-                        icon="📝"
-                        label="Add Note"
-                        href="/doctor/patients"
-                      />
-                    </div>
-                  </section>
-
-                  {/* Recent Patients */}
-                  <section className="bg-white rounded-xl border border-gray-200 p-6">
-                    <div className="flex items-center justify-between mb-4">
-                      <h2 className="text-lg font-semibold text-gray-900">Recent Patients</h2>
-                      <Link
-                        href="/doctor/patients"
-                        className="text-sm text-primary-600 hover:text-primary-700 font-medium"
-                      >
-                        View all
-                      </Link>
-                    </div>
+              {/* Sidebar */}
+              <div className="space-y-6">
+                {/* Upcoming Appointments */}
+                <section className="bg-white rounded-2xl p-6 shadow-sm border border-mist/50">
+                  <div className="flex items-center justify-between mb-4">
+                    <h2 className="font-display text-lg text-forest">Upcoming</h2>
+                    <Link
+                      href="/doctor/appointments"
+                      className="text-sm text-sage hover:text-sage/80 font-medium transition-colors"
+                    >
+                      View calendar
+                    </Link>
+                  </div>
+                  {upcomingAppointments.length > 0 ? (
                     <div className="space-y-3">
-                      {recentPatients.map(patient => (
-                        <PatientCard key={patient.id} patient={patient} compact />
+                      {upcomingAppointments.map(appointment => (
+                        <div
+                          key={appointment.id}
+                          className="flex items-start gap-3 p-4 bg-mist/30 rounded-xl hover:bg-mist/50 transition-colors"
+                        >
+                          <div className="w-10 h-10 bg-sage/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <span className="text-lg">
+                              {appointment.type === 'checkup' ? '🩺' :
+                               appointment.type === 'followup' ? '📞' :
+                               appointment.type === 'sick' ? '🤒' :
+                               appointment.type === 'vaccination' ? '💉' : '📋'}
+                            </span>
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className="font-medium text-forest text-sm truncate">
+                              {appointment.patientName}
+                            </p>
+                            <p className="text-xs text-forest/50">
+                              {formatDate(appointment.date)} at {appointment.time}
+                            </p>
+                            <span className={`inline-block mt-1 px-2 py-0.5 rounded text-xs font-medium ${
+                              appointment.status === 'confirmed' ? 'bg-sage/10 text-sage' :
+                              appointment.status === 'pending' ? 'bg-coral/10 text-coral' :
+                              'bg-mist text-forest/60'
+                            }`}>
+                              {appointment.status}
+                            </span>
+                          </div>
+                        </div>
                       ))}
                     </div>
-                  </section>
-                </div>
+                  ) : (
+                    <p className="text-forest/50 text-sm text-center py-4">No upcoming appointments</p>
+                  )}
+                </section>
 
-                {/* Sidebar */}
-                <div className="space-y-6">
-                  {/* Upcoming Appointments */}
-                  <section className="bg-white rounded-xl border border-gray-200 p-6">
-                    <div className="flex items-center justify-between mb-4">
-                      <h2 className="text-lg font-semibold text-gray-900">Upcoming</h2>
-                      <Link
-                        href="/doctor/appointments"
-                        className="text-sm text-primary-600 hover:text-primary-700 font-medium"
-                      >
-                        View calendar
-                      </Link>
-                    </div>
-                    {upcomingAppointments.length > 0 ? (
-                      <div className="space-y-3">
-                        {upcomingAppointments.map(appointment => (
-                          <div
-                            key={appointment.id}
-                            className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg"
-                          >
-                            <div className="flex-shrink-0 w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center">
-                              <span className="text-lg">
-                                {appointment.type === 'checkup' ? '🩺' :
-                                 appointment.type === 'followup' ? '📞' :
-                                 appointment.type === 'sick' ? '🤒' :
-                                 appointment.type === 'vaccination' ? '💉' : '📋'}
-                              </span>
-                            </div>
-                            <div className="flex-1 min-w-0">
-                              <p className="font-medium text-gray-900 text-sm truncate">
-                                {appointment.patientName}
-                              </p>
-                              <p className="text-xs text-gray-500">
-                                {formatDate(appointment.date)} at {appointment.time}
-                              </p>
-                              <span className={`inline-block mt-1 px-2 py-0.5 rounded text-xs font-medium ${
-                                appointment.status === 'confirmed' ? 'bg-green-100 text-green-700' :
-                                appointment.status === 'pending' ? 'bg-amber-100 text-amber-700' :
-                                'bg-gray-100 text-gray-600'
-                              }`}>
-                                {appointment.status}
-                              </span>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    ) : (
-                      <p className="text-gray-500 text-sm">No upcoming appointments</p>
-                    )}
-                  </section>
-
-                  {/* Patient Alerts */}
-                  <section className="bg-white rounded-xl border border-gray-200 p-6">
-                    <h2 className="text-lg font-semibold text-gray-900 mb-4">Alerts</h2>
-                    <div className="space-y-3">
-                      <AlertItem
-                        icon="⚠️"
-                        text="2 patients have overdue vaccinations"
-                        link="/doctor/patients"
-                      />
-                      <AlertItem
-                        icon="📅"
-                        text="3 appointments need confirmation"
-                        link="/doctor/appointments"
-                      />
-                      <AlertItem
-                        icon="📋"
-                        text="5 patient records need review"
-                        link="/doctor/patients"
-                      />
-                    </div>
-                  </section>
-                </div>
+                {/* Patient Alerts */}
+                <section className="bg-white rounded-2xl p-6 shadow-sm border border-mist/50">
+                  <h2 className="font-display text-lg text-forest mb-4">Alerts</h2>
+                  <div className="space-y-3">
+                    <AlertItem
+                      icon={
+                        <svg className="w-5 h-5 text-coral" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                        </svg>
+                      }
+                      text="2 patients have overdue vaccinations"
+                      link="/doctor/patients"
+                    />
+                    <AlertItem
+                      icon={
+                        <svg className="w-5 h-5 text-coral" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+                        </svg>
+                      }
+                      text="3 appointments need confirmation"
+                      link="/doctor/appointments"
+                    />
+                    <AlertItem
+                      icon={
+                        <svg className="w-5 h-5 text-coral" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                      }
+                      text="5 patient records need review"
+                      link="/doctor/patients"
+                    />
+                  </div>
+                </section>
               </div>
-            </>
-          )}
-        </main>
+            </div>
+          </>
+        )}
       </div>
     </IsDoctor>
   );
@@ -238,25 +291,24 @@ function StatCard({
   value,
   color
 }: {
-  icon: string;
+  icon: React.ReactNode;
   label: string;
-  value: string;
-  color: 'blue' | 'green' | 'amber' | 'purple';
+  value: number;
+  color: 'sage' | 'forest' | 'coral';
 }) {
   const colors = {
-    blue: 'bg-blue-50 text-blue-600',
-    green: 'bg-green-50 text-green-600',
-    amber: 'bg-amber-50 text-amber-600',
-    purple: 'bg-purple-50 text-purple-600'
+    sage: 'bg-sage/10 text-sage border-sage/20',
+    forest: 'bg-forest/10 text-forest border-forest/20',
+    coral: 'bg-coral/10 text-coral border-coral/20'
   };
 
   return (
-    <div className="bg-white rounded-xl border border-gray-200 p-6">
-      <div className={`inline-flex items-center justify-center w-10 h-10 rounded-lg ${colors[color]} mb-3`}>
-        <span className="text-xl">{icon}</span>
+    <div className="bg-white rounded-2xl p-5 shadow-sm border border-mist/50">
+      <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl mb-4 border ${colors[color]}`}>
+        {icon}
       </div>
-      <p className="text-2xl font-bold text-gray-900">{value}</p>
-      <p className="text-sm text-gray-500 mt-1">{label}</p>
+      <p className="font-display text-3xl font-semibold text-forest">{value}</p>
+      <p className="text-sm text-forest/60 mt-1">{label}</p>
     </div>
   );
 }
@@ -266,17 +318,19 @@ function QuickAction({
   label,
   href
 }: {
-  icon: string;
+  icon: React.ReactNode;
   label: string;
   href: string;
 }) {
   return (
     <Link
       href={href}
-      className="flex flex-col items-center gap-2 p-4 rounded-lg border border-gray-200 hover:border-primary-300 hover:bg-primary-50 transition-colors"
+      className="flex flex-col items-center gap-3 p-4 rounded-xl border border-mist/50 hover:border-sage/30 hover:bg-sage/5 transition-all text-center"
     >
-      <span className="text-2xl">{icon}</span>
-      <span className="text-sm font-medium text-gray-700">{label}</span>
+      <div className="w-12 h-12 rounded-xl bg-sage/10 flex items-center justify-center text-sage">
+        {icon}
+      </div>
+      <span className="text-sm font-medium text-forest">{label}</span>
     </Link>
   );
 }
@@ -286,17 +340,19 @@ function AlertItem({
   text,
   link
 }: {
-  icon: string;
+  icon: React.ReactNode;
   text: string;
   link: string;
 }) {
   return (
     <Link
       href={link}
-      className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors"
+      className="flex items-center gap-3 p-4 rounded-xl hover:bg-danger-bg/50 transition-colors border border-transparent hover:border-danger/20"
     >
-      <span className="text-lg">{icon}</span>
-      <span className="text-sm text-gray-700">{text}</span>
+      <div className="w-8 h-8 rounded-lg bg-danger/10 flex items-center justify-center flex-shrink-0">
+        {icon}
+      </div>
+      <span className="text-sm text-forest/80">{text}</span>
     </Link>
   );
 }
