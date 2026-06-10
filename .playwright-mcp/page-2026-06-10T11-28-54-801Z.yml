@@ -1,0 +1,188 @@
+- generic [active] [ref=e1]:
+  - alert [ref=e2]
+  - generic [ref=e91]:
+    - button [ref=e92] [cursor=pointer]:
+      - img [ref=e93]
+    - generic [ref=e95]:
+      - banner [ref=e96]:
+        - generic [ref=e97]:
+          - paragraph [ref=e99]: Wednesday, 10 June 2026
+          - generic [ref=e101]:
+            - generic:
+              - img
+            - textbox "Search symptoms, meds..." [ref=e102]
+          - generic [ref=e103]:
+            - img [ref=e104]
+            - generic [ref=e106]: IAP Reviewed
+          - link [ref=e107] [cursor=pointer]:
+            - /url: /notifications
+            - img [ref=e108]
+          - button "👧" [ref=e112] [cursor=pointer]:
+            - generic [ref=e114]: 👧
+            - img [ref=e115]
+      - main [ref=e117]:
+        - generic [ref=e119]:
+          - generic [ref=e121]:
+            - generic [ref=e122]: 👧
+            - generic [ref=e123]:
+              - heading "Good afternoon, James!" [level=1] [ref=e124]
+              - paragraph [ref=e125]: Here's Sofia's health summary for today.
+          - generic [ref=e126]:
+            - generic [ref=e128]:
+              - generic [ref=e129]:
+                - paragraph [ref=e130]: Weight
+                - paragraph [ref=e131]: 11.2 kg
+              - generic [ref=e132]:
+                - img [ref=e133]
+                - text: +1.4 kg
+            - generic [ref=e136]:
+              - generic [ref=e137]:
+                - paragraph [ref=e138]: Height
+                - paragraph [ref=e139]: 78 cm
+              - generic [ref=e140]:
+                - img [ref=e141]
+                - text: +3.0 cm
+            - generic [ref=e145]:
+              - paragraph [ref=e146]: Age
+              - paragraph [ref=e147]: 2 years
+            - generic [ref=e148]:
+              - generic [ref=e150]:
+                - paragraph [ref=e151]: Alerts
+                - paragraph [ref=e152]: "3"
+              - generic [ref=e155]: Action needed
+          - generic [ref=e156]:
+            - generic [ref=e158]:
+              - generic [ref=e159]:
+                - generic [ref=e160]:
+                  - img [ref=e162]
+                  - heading "Recent Health Log" [level=2] [ref=e164]
+                - link "View all" [ref=e165] [cursor=pointer]:
+                  - /url: /medical-history
+                  - text: View all
+                  - img [ref=e166]
+              - generic [ref=e168]:
+                - generic [ref=e169]:
+                  - img [ref=e171]
+                  - generic [ref=e173]:
+                    - generic [ref=e174]:
+                      - paragraph [ref=e175]: First tooth!
+                      - generic [ref=e176]: normal
+                    - paragraph [ref=e177]: Bottom right incisor erupted
+                    - paragraph [ref=e178]: Oct 15
+                - generic [ref=e179]:
+                  - img [ref=e181]
+                  - generic [ref=e183]:
+                    - generic [ref=e184]:
+                      - paragraph [ref=e185]: 9-month checkup
+                      - generic [ref=e186]: normal
+                    - paragraph [ref=e187]: Development on track. Growing well. Next visit at 12 months.
+                    - paragraph [ref=e188]: Mar 20
+                - generic [ref=e189]:
+                  - img [ref=e191]
+                  - generic [ref=e193]:
+                    - generic [ref=e194]:
+                      - paragraph [ref=e195]: Ear infection
+                      - generic [ref=e196]: resolved
+                    - paragraph [ref=e197]: Fever101°F, pulling at ear, fussy
+                    - paragraph [ref=e198]: Nov 10, 08:00 PM
+                - generic [ref=e199]:
+                  - img [ref=e201]
+                  - generic [ref=e204]:
+                    - generic [ref=e205]:
+                      - paragraph [ref=e206]: Amoxicillin
+                      - generic [ref=e207]: resolved
+                    - paragraph [ref=e208]: Antibiotic prescribed by Dr. Chen
+                    - paragraph [ref=e209]: Nov 10, 09:00 PM
+            - generic [ref=e211]:
+              - generic [ref=e212]:
+                - generic [ref=e213]:
+                  - img [ref=e215]
+                  - heading "Milestones Due" [level=2] [ref=e217]
+                - link "View all" [ref=e218] [cursor=pointer]:
+                  - /url: /milestones
+                  - text: View all
+                  - img [ref=e219]
+              - generic [ref=e221]:
+                - generic [ref=e225]:
+                  - paragraph [ref=e226]: Pulls to stand
+                  - paragraph [ref=e227]: motor · Due Oct 20
+                - generic [ref=e231]:
+                  - paragraph [ref=e232]: First steps
+                  - paragraph [ref=e233]: motor · Due Feb 20
+                - generic [ref=e237]:
+                  - paragraph [ref=e238]: First word
+                  - paragraph [ref=e239]: language · Due Feb 20
+          - generic [ref=e241]:
+            - generic [ref=e242]:
+              - generic [ref=e243]:
+                - img [ref=e245]
+                - heading "Growth Progress" [level=2] [ref=e248]
+              - link "View details" [ref=e249] [cursor=pointer]:
+                - /url: /growth-charts
+                - text: View details
+                - img [ref=e250]
+            - generic [ref=e252]:
+              - generic [ref=e253]:
+                - generic [ref=e256]: 51cm
+                - generic [ref=e257]: Jun
+              - generic [ref=e258]:
+                - generic [ref=e261]: 62cm
+                - generic [ref=e262]: Sep
+              - generic [ref=e263]:
+                - generic [ref=e266]: 70cm
+                - generic [ref=e267]: Jan
+              - generic [ref=e268]:
+                - generic [ref=e271]: 75cm
+                - generic [ref=e272]: Jun
+              - generic [ref=e273]:
+                - generic [ref=e276]: 78cm
+                - generic [ref=e277]: Jan
+            - generic [ref=e278]:
+              - generic [ref=e281]: Latest
+              - generic [ref=e284]: Previous
+          - generic [ref=e285]:
+            - heading "Quick Actions" [level=2] [ref=e286]
+            - generic [ref=e287]:
+              - link "Symptom Check AI-powered triage" [ref=e288] [cursor=pointer]:
+                - /url: /symptom-check
+                - img [ref=e290]
+                - heading "Symptom Check" [level=3] [ref=e293]
+                - paragraph [ref=e294]: AI-powered triage
+              - link "Growth Charts Track progress" [ref=e295] [cursor=pointer]:
+                - /url: /growth-charts
+                - img [ref=e297]
+                - heading "Growth Charts" [level=3] [ref=e300]
+                - paragraph [ref=e301]: Track progress
+              - link "Vaccinations Track immunizations" [ref=e302] [cursor=pointer]:
+                - /url: /vaccinations
+                - img [ref=e304]
+                - heading "Vaccinations" [level=3] [ref=e307]
+                - paragraph [ref=e308]: Track immunizations
+              - link "AI Consultant 24/7 support" [ref=e309] [cursor=pointer]:
+                - /url: /consultant
+                - img [ref=e311]
+                - heading "AI Consultant" [level=3] [ref=e314]
+                - paragraph [ref=e315]: 24/7 support
+          - generic [ref=e317]:
+            - img [ref=e319]
+            - generic [ref=e321]:
+              - strong [ref=e322]: IAP Clinically Reviewed
+              - text: · WHO Growth Standards
+    - navigation [ref=e323]:
+      - generic [ref=e324]:
+        - link "Home" [ref=e325] [cursor=pointer]:
+          - /url: /dashboard
+          - img [ref=e327]
+          - generic [ref=e330]: Home
+        - link "Symptom" [ref=e331] [cursor=pointer]:
+          - /url: /symptom-check
+          - img [ref=e333]
+          - generic [ref=e335]: Symptom
+        - link "Charts" [ref=e336] [cursor=pointer]:
+          - /url: /growth-charts
+          - img [ref=e338]
+          - generic [ref=e341]: Charts
+        - link "More" [ref=e342] [cursor=pointer]:
+          - /url: /consultant
+          - img [ref=e344]
+          - generic [ref=e346]: More

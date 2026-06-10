@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef, useEffect, useCallback } from 'react'
+import { useState, useRef, useEffect, useCallback, useMemo } from 'react'
 import Link from 'next/link'
 import { useAuth } from '@/app/lib/auth-context'
 import { useGrowthRecords } from '@/app/lib/api-hooks'
@@ -1056,26 +1056,27 @@ export default function GrowthChartsPage() {
   }
 
   // Convert demo data to sample children from session
-  const children: Child[] = session?.children.map(c => ({
+  const children: Child[] = useMemo(() => session?.children.map(c => ({
     id: c.id,
     name: c.name,
     dateOfBirth: c.dateOfBirth,
     gender: c.gender,
     currentAge: calculateAgeInMonths(c.dateOfBirth),
-  })) || []
+  })) || [], [session])
 
-  const [selectedChild, setSelectedChild] = useState<Child | null>(children[0] || null)
+  const [selectedChild, setSelectedChild] = useState<Child | null>(null)
   const [selectedMetric, setSelectedMetric] = useState<'weight' | 'height' | 'hc'>('weight')
   const [timeRange, setTimeRange] = useState<number>(12)
   const [isAddModalOpen, setIsAddModalOpen] = useState(false)
 
   // Update selected child when active child changes
   useEffect(() => {
-    if (activeChild) {
-      const childData = children.find(c => c.id === activeChild.id)
-      if (childData) {
-        setSelectedChild(childData)
-      }
+    if (children.length > 0) {
+      // Prefer active child, otherwise use first child
+      const childData = activeChild
+        ? children.find(c => c.id === activeChild.id)
+        : null
+      setSelectedChild(childData || children[0])
     }
   }, [activeChild, children])
 

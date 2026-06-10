@@ -1,0 +1,184 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - button [ref=e3] [cursor=pointer]:
+      - img [ref=e4]
+    - generic [ref=e6]:
+      - banner [ref=e7]:
+        - generic [ref=e8]:
+          - paragraph [ref=e10]: Wednesday, 10 June 2026
+          - generic [ref=e12]:
+            - generic:
+              - img
+            - textbox "Search symptoms, meds..." [ref=e13]
+          - generic [ref=e14]:
+            - img [ref=e15]
+            - generic [ref=e17]: IAP Reviewed
+          - link [ref=e18] [cursor=pointer]:
+            - /url: /notifications
+            - img [ref=e19]
+          - button "👧" [ref=e23] [cursor=pointer]:
+            - generic [ref=e25]: 👧
+            - img [ref=e26]
+      - main [ref=e28]:
+        - generic [ref=e30]:
+          - generic [ref=e32]:
+            - generic [ref=e33]:
+              - generic [ref=e34]:
+                - link "Dashboard" [ref=e35] [cursor=pointer]:
+                  - /url: /dashboard
+                - img [ref=e36]
+                - generic [ref=e38]: Growth Charts
+              - generic [ref=e39]:
+                - img [ref=e41]
+                - generic [ref=e44]:
+                  - heading "Growth Monitoring" [level=1] [ref=e45]
+                  - paragraph [ref=e46]: Track your child's growth progress
+            - button "S Sofia 2 years" [ref=e48] [cursor=pointer]:
+              - generic [ref=e50]: S
+              - generic [ref=e51]:
+                - paragraph [ref=e52]: Sofia
+                - paragraph [ref=e53]: 2 years
+              - img [ref=e54]
+          - generic [ref=e56]:
+            - generic [ref=e57]:
+              - button "Weight" [ref=e58] [cursor=pointer]
+              - button "Height" [ref=e59] [cursor=pointer]
+              - button "Head Circ." [ref=e60] [cursor=pointer]
+            - generic [ref=e61]:
+              - button "3 mo" [ref=e62] [cursor=pointer]
+              - button "6 mo" [ref=e63] [cursor=pointer]
+              - button "1 yr" [ref=e64] [cursor=pointer]
+              - button "All" [ref=e65] [cursor=pointer]
+            - button "Add Measurement" [active] [ref=e66] [cursor=pointer]:
+              - img [ref=e67]
+              - text: Add Measurement
+          - generic [ref=e69]:
+            - generic [ref=e70]:
+              - heading "Growth Chart" [level=2] [ref=e71]
+              - generic [ref=e72]:
+                - generic [ref=e75]: Latest
+                - generic [ref=e78]: WHO Percentiles
+            - img [ref=e80]:
+              - generic [ref=e82]: "15.8"
+              - generic [ref=e84]: "13.1"
+              - generic [ref=e86]: "10.3"
+              - generic [ref=e88]: "7.7"
+              - generic [ref=e90]: "4.9"
+              - generic [ref=e92]: "2.3"
+              - generic [ref=e166]: 7m
+              - generic [ref=e167]: 11m
+              - generic [ref=e168]: 19m
+              - generic [ref=e93]: Weight (kg)
+              - generic [ref=e94]: Age (months)
+              - generic [ref=e95]:
+                - generic [ref=e96]: Percentile Bands
+                - generic [ref=e98]: 3rd - 97th
+                - generic [ref=e100]: 50th (WHO)
+          - generic [ref=e101]:
+            - generic [ref=e102]:
+              - generic [ref=e103]:
+                - generic [ref=e104]:
+                  - img [ref=e106]
+                  - generic [ref=e108]:
+                    - paragraph [ref=e109]: Weight
+                    - paragraph [ref=e110]: 19 months old
+                - generic [ref=e186]:
+                  - img [ref=e187]
+                  - generic [ref=e189]: "-11"
+              - generic [ref=e190]:
+                - generic [ref=e191]: "52"
+                - generic [ref=e192]: th
+                - generic [ref=e193]: percentile
+              - paragraph [ref=e197]: Within normal range
+            - generic [ref=e112]:
+              - generic [ref=e113]:
+                - generic [ref=e114]:
+                  - img [ref=e116]
+                  - generic [ref=e118]:
+                    - paragraph [ref=e119]: Height
+                    - paragraph [ref=e120]: 19 months old
+                - generic [ref=e198]:
+                  - img [ref=e199]
+                  - generic [ref=e201]: "-74"
+              - generic [ref=e202]:
+                - generic [ref=e203]: "10"
+                - generic [ref=e204]: th
+                - generic [ref=e205]: percentile
+              - paragraph [ref=e209]: Below average - consult pediatrician
+            - generic [ref=e122]:
+              - generic [ref=e123]:
+                - generic [ref=e124]:
+                  - img [ref=e126]
+                  - generic [ref=e128]:
+                    - paragraph [ref=e129]: Head Circumference
+                    - paragraph [ref=e130]: 19 months old
+                - generic [ref=e210]:
+                  - img [ref=e211]
+                  - generic [ref=e212]: "0"
+              - generic [ref=e213]:
+                - generic [ref=e214]: "1"
+                - generic [ref=e215]: th
+                - generic [ref=e216]: percentile
+              - paragraph [ref=e220]: Below average - consult pediatrician
+          - generic [ref=e132]:
+            - generic [ref=e133]:
+              - img [ref=e135]
+              - generic [ref=e137]:
+                - heading "Growth Insights" [level=3] [ref=e138]
+                - paragraph [ref=e139]: Your child's growth pattern
+            - generic [ref=e221]:
+              - generic [ref=e222]:
+                - img [ref=e224]
+                - paragraph [ref=e226]: Sofia's weight has been tracking slightly lower along the 52th percentile.
+              - generic [ref=e227]:
+                - img [ref=e229]
+                - paragraph [ref=e231]: Height percentile (10th) shows slight decrease.
+            - generic [ref=e233]:
+              - img [ref=e234]
+              - generic [ref=e236]:
+                - paragraph [ref=e237]: Percentile Change Detected
+                - paragraph [ref=e238]: A significant change in percentile was observed. While this can be normal, we recommend discussing this with your pediatrician at your next visit.
+          - generic [ref=e241]:
+            - generic [ref=e242]:
+              - heading "Add Measurement" [level=2] [ref=e243]
+              - button [ref=e244] [cursor=pointer]:
+                - img [ref=e245]
+            - generic [ref=e247]:
+              - generic [ref=e248]:
+                - generic [ref=e249]: Date
+                - textbox [ref=e250]: 2026-06-10
+              - generic [ref=e251]:
+                - generic [ref=e252]: Weight (kg)
+                - generic [ref=e253]:
+                  - spinbutton [ref=e254]
+                  - generic [ref=e255]: kg
+              - generic [ref=e256]:
+                - generic [ref=e257]: Height (cm)
+                - generic [ref=e258]:
+                  - spinbutton [ref=e259]
+                  - generic [ref=e260]: cm
+              - generic [ref=e261]:
+                - generic [ref=e262]: Head Circumference (cm) optional
+                - generic [ref=e263]:
+                  - spinbutton [ref=e264]
+                  - generic [ref=e265]: cm
+              - button "Save Measurement" [ref=e267] [cursor=pointer]
+    - navigation [ref=e141]:
+      - generic [ref=e142]:
+        - link "Home" [ref=e143] [cursor=pointer]:
+          - /url: /dashboard
+          - img [ref=e145]
+          - generic [ref=e148]: Home
+        - link "Symptom" [ref=e149] [cursor=pointer]:
+          - /url: /symptom-check
+          - img [ref=e151]
+          - generic [ref=e153]: Symptom
+        - link "Charts" [ref=e154] [cursor=pointer]:
+          - /url: /growth-charts
+          - img [ref=e156]
+          - generic [ref=e159]: Charts
+        - link "More" [ref=e160] [cursor=pointer]:
+          - /url: /consultant
+          - img [ref=e162]
+          - generic [ref=e164]: More
+  - alert [ref=e165]

@@ -1,0 +1,284 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e5]:
+          - link "Pedi·Ai" [ref=e6] [cursor=pointer]:
+            - /url: /dashboard
+            - generic [ref=e7]: Pedi·Ai
+          - text: parent
+        - generic [ref=e8]:
+          - generic [ref=e9]:
+            - generic [ref=e10]: 👧
+            - generic [ref=e11]:
+              - paragraph [ref=e12]: Sofia
+              - paragraph [ref=e13]: 2 years
+          - generic [ref=e14]:
+            - generic [ref=e15]:
+              - paragraph [ref=e16]: Weight
+              - paragraph [ref=e17]: 11.2 kg
+            - generic [ref=e18]:
+              - paragraph [ref=e19]: Height
+              - paragraph [ref=e20]: 78 cm
+        - navigation [ref=e21]:
+          - generic [ref=e22]:
+            - heading "Main" [level=3] [ref=e23]
+            - list [ref=e24]:
+              - listitem [ref=e25]:
+                - link "Dashboard" [ref=e26] [cursor=pointer]:
+                  - /url: /dashboard
+                  - img [ref=e28]
+                  - generic [ref=e30]: Dashboard
+              - listitem [ref=e31]:
+                - link "Symptom Check" [ref=e32] [cursor=pointer]:
+                  - /url: /symptom-check
+                  - img [ref=e34]
+                  - generic [ref=e36]: Symptom Check
+              - listitem [ref=e37]:
+                - link "Growth Charts" [ref=e38] [cursor=pointer]:
+                  - /url: /growth-charts
+                  - img [ref=e40]
+                  - generic [ref=e42]: Growth Charts
+              - listitem [ref=e43]:
+                - link "Dosage Calculator" [ref=e44] [cursor=pointer]:
+                  - /url: /dosage-calculator
+                  - img [ref=e46]
+                  - generic [ref=e48]: Dosage Calculator
+              - listitem [ref=e49]:
+                - link "Emergency Guide" [ref=e50] [cursor=pointer]:
+                  - /url: /emergency
+                  - img [ref=e52]
+                  - generic [ref=e54]: Emergency Guide
+          - generic [ref=e55]:
+            - heading "Child Health" [level=3] [ref=e56]
+            - list [ref=e57]:
+              - listitem [ref=e58]:
+                - link "Milestones" [ref=e59] [cursor=pointer]:
+                  - /url: /milestones
+                  - img [ref=e61]
+                  - generic [ref=e63]: Milestones
+              - listitem [ref=e64]:
+                - link "Vaccinations" [ref=e65] [cursor=pointer]:
+                  - /url: /vaccinations
+                  - img [ref=e67]
+                  - generic [ref=e69]: Vaccinations
+              - listitem [ref=e70]:
+                - link "Medical History" [ref=e71] [cursor=pointer]:
+                  - /url: /medical-history
+                  - img [ref=e73]
+                  - generic [ref=e75]: Medical History
+              - listitem [ref=e76]:
+                - link "Medicine Cabinet" [ref=e77] [cursor=pointer]:
+                  - /url: /medicine-cabinet
+                  - img [ref=e79]
+                  - generic [ref=e81]: Medicine Cabinet
+          - generic [ref=e82]:
+            - heading "Family & Support" [level=3] [ref=e83]
+            - list [ref=e84]:
+              - listitem [ref=e85]:
+                - link "Caregiver Access" [ref=e86] [cursor=pointer]:
+                  - /url: /caregiver
+                  - img [ref=e88]
+                  - generic [ref=e90]: Caregiver Access
+              - listitem [ref=e91]:
+                - link "AI Consultant" [ref=e92] [cursor=pointer]:
+                  - /url: /ai-consultant
+                  - img [ref=e94]
+                  - generic [ref=e97]: AI Consultant
+              - listitem [ref=e98]:
+                - link "Add Child" [ref=e99] [cursor=pointer]:
+                  - /url: /add-child
+                  - img [ref=e101]
+                  - generic [ref=e103]: Add Child
+          - generic [ref=e104]:
+            - heading "Scheduling" [level=3] [ref=e105]
+            - list [ref=e106]:
+              - listitem [ref=e107]:
+                - link "Appointments" [ref=e108] [cursor=pointer]:
+                  - /url: /appointments
+                  - img [ref=e110]
+                  - generic [ref=e112]: Appointments
+              - listitem [ref=e113]:
+                - link "Reports" [ref=e114] [cursor=pointer]:
+                  - /url: /reports
+                  - img [ref=e116]
+                  - generic [ref=e118]: Reports
+              - listitem [ref=e119]:
+                - link "Notifications" [ref=e120] [cursor=pointer]:
+                  - /url: /notifications
+                  - img [ref=e122]
+                  - generic [ref=e124]: Notifications
+        - generic [ref=e126]:
+          - img [ref=e128]
+          - generic [ref=e130]:
+            - paragraph [ref=e131]: 7 Day Streak
+            - paragraph [ref=e132]: Keep tracking daily!
+        - link "Emergency Guide" [ref=e134] [cursor=pointer]:
+          - /url: /emergency
+          - img [ref=e135]
+          - text: Emergency Guide
+    - generic [ref=e137]:
+      - banner [ref=e138]:
+        - generic [ref=e139]:
+          - paragraph [ref=e141]: Wednesday, 10 June 2026
+          - generic [ref=e143]:
+            - generic:
+              - img
+            - textbox "Search symptoms, meds..." [ref=e144]
+          - generic [ref=e145]:
+            - img [ref=e146]
+            - generic [ref=e148]: IAP Reviewed
+          - link [ref=e149] [cursor=pointer]:
+            - /url: /notifications
+            - img [ref=e150]
+          - button "👧 James Rodriguez Sofia, 24mo" [ref=e154] [cursor=pointer]:
+            - generic [ref=e156]: 👧
+            - generic [ref=e157]:
+              - paragraph [ref=e158]: James Rodriguez
+              - paragraph [ref=e159]: Sofia, 24mo
+            - img [ref=e160]
+      - main [ref=e162]:
+        - generic [ref=e164]:
+          - generic [ref=e166]:
+            - generic [ref=e167]:
+              - generic [ref=e168]:
+                - link "Dashboard" [ref=e169] [cursor=pointer]:
+                  - /url: /dashboard
+                - img [ref=e170]
+                - generic [ref=e172]: Growth Charts
+              - generic [ref=e173]:
+                - img [ref=e175]
+                - generic [ref=e178]:
+                  - heading "Growth Monitoring" [level=1] [ref=e179]
+                  - paragraph [ref=e180]: Track your child's growth progress
+            - button "S Sofia 2 years" [ref=e182] [cursor=pointer]:
+              - generic [ref=e184]: S
+              - generic [ref=e185]:
+                - paragraph [ref=e186]: Sofia
+                - paragraph [ref=e187]: 2 years
+              - img [ref=e188]
+          - generic [ref=e190]:
+            - generic [ref=e191]:
+              - button "Weight" [ref=e192] [cursor=pointer]
+              - button "Height" [ref=e193] [cursor=pointer]
+              - button "Head Circ." [ref=e194] [cursor=pointer]
+            - generic [ref=e195]:
+              - button "3 mo" [ref=e196] [cursor=pointer]
+              - button "6 mo" [ref=e197] [cursor=pointer]
+              - button "1 yr" [ref=e198] [cursor=pointer]
+              - button "All" [ref=e199] [cursor=pointer]
+            - button "Add Measurement" [active] [ref=e200] [cursor=pointer]:
+              - img [ref=e201]
+              - text: Add Measurement
+          - generic [ref=e203]:
+            - generic [ref=e204]:
+              - heading "Growth Chart" [level=2] [ref=e205]
+              - generic [ref=e206]:
+                - generic [ref=e209]: Latest
+                - generic [ref=e212]: WHO Percentiles
+            - img [ref=e214]:
+              - generic [ref=e216]: "15.8"
+              - generic [ref=e218]: "13.1"
+              - generic [ref=e220]: "10.3"
+              - generic [ref=e222]: "7.7"
+              - generic [ref=e224]: "4.9"
+              - generic [ref=e226]: "2.3"
+              - generic [ref=e276]: 7m
+              - generic [ref=e277]: 11m
+              - generic [ref=e278]: 19m
+              - generic [ref=e227]: Weight (kg)
+              - generic [ref=e228]: Age (months)
+              - generic [ref=e229]:
+                - generic [ref=e230]: Percentile Bands
+                - generic [ref=e232]: 3rd - 97th
+                - generic [ref=e234]: 50th (WHO)
+          - generic [ref=e235]:
+            - generic [ref=e236]:
+              - generic [ref=e237]:
+                - generic [ref=e238]:
+                  - img [ref=e240]
+                  - generic [ref=e242]:
+                    - paragraph [ref=e243]: Weight
+                    - paragraph [ref=e244]: 19 months old
+                - generic [ref=e296]:
+                  - img [ref=e297]
+                  - generic [ref=e299]: "-11"
+              - generic [ref=e300]:
+                - generic [ref=e301]: "52"
+                - generic [ref=e302]: th
+                - generic [ref=e303]: percentile
+              - paragraph [ref=e307]: Within normal range
+            - generic [ref=e246]:
+              - generic [ref=e247]:
+                - generic [ref=e248]:
+                  - img [ref=e250]
+                  - generic [ref=e252]:
+                    - paragraph [ref=e253]: Height
+                    - paragraph [ref=e254]: 19 months old
+                - generic [ref=e308]:
+                  - img [ref=e309]
+                  - generic [ref=e311]: "-74"
+              - generic [ref=e312]:
+                - generic [ref=e313]: "10"
+                - generic [ref=e314]: th
+                - generic [ref=e315]: percentile
+              - paragraph [ref=e319]: Below average - consult pediatrician
+            - generic [ref=e256]:
+              - generic [ref=e257]:
+                - generic [ref=e258]:
+                  - img [ref=e260]
+                  - generic [ref=e262]:
+                    - paragraph [ref=e263]: Head Circumference
+                    - paragraph [ref=e264]: 19 months old
+                - generic [ref=e320]:
+                  - img [ref=e321]
+                  - generic [ref=e322]: "0"
+              - generic [ref=e323]:
+                - generic [ref=e324]: "1"
+                - generic [ref=e325]: th
+                - generic [ref=e326]: percentile
+              - paragraph [ref=e330]: Below average - consult pediatrician
+          - generic [ref=e266]:
+            - generic [ref=e267]:
+              - img [ref=e269]
+              - generic [ref=e271]:
+                - heading "Growth Insights" [level=3] [ref=e272]
+                - paragraph [ref=e273]: Your child's growth pattern
+            - generic [ref=e331]:
+              - generic [ref=e332]:
+                - img [ref=e334]
+                - paragraph [ref=e336]: Sofia's weight has been tracking slightly lower along the 52th percentile.
+              - generic [ref=e337]:
+                - img [ref=e339]
+                - paragraph [ref=e341]: Height percentile (10th) shows slight decrease.
+            - generic [ref=e343]:
+              - img [ref=e344]
+              - generic [ref=e346]:
+                - paragraph [ref=e347]: Percentile Change Detected
+                - paragraph [ref=e348]: A significant change in percentile was observed. While this can be normal, we recommend discussing this with your pediatrician at your next visit.
+          - generic [ref=e351]:
+            - generic [ref=e352]:
+              - heading "Add Measurement" [level=2] [ref=e353]
+              - button [ref=e354] [cursor=pointer]:
+                - img [ref=e355]
+            - generic [ref=e357]:
+              - generic [ref=e358]:
+                - generic [ref=e359]: Date
+                - textbox [ref=e360]: 2026-06-10
+              - generic [ref=e361]:
+                - generic [ref=e362]: Weight (kg)
+                - generic [ref=e363]:
+                  - spinbutton [ref=e364]
+                  - generic [ref=e365]: kg
+              - generic [ref=e366]:
+                - generic [ref=e367]: Height (cm)
+                - generic [ref=e368]:
+                  - spinbutton [ref=e369]
+                  - generic [ref=e370]: cm
+              - generic [ref=e371]:
+                - generic [ref=e372]: Head Circumference (cm) optional
+                - generic [ref=e373]:
+                  - spinbutton [ref=e374]
+                  - generic [ref=e375]: cm
+              - button "Save Measurement" [ref=e377] [cursor=pointer]
+  - alert [ref=e275]

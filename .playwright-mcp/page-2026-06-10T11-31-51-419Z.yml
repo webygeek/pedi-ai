@@ -1,0 +1,224 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e5]:
+          - link "Pedi·Ai" [ref=e6] [cursor=pointer]:
+            - /url: /dashboard
+            - generic [ref=e7]: Pedi·Ai
+          - text: parent
+        - generic [ref=e8]:
+          - generic [ref=e9]:
+            - generic [ref=e10]: 👧
+            - generic [ref=e11]:
+              - paragraph [ref=e12]: Sofia
+              - paragraph [ref=e13]: 2 years
+          - generic [ref=e14]:
+            - generic [ref=e15]:
+              - paragraph [ref=e16]: Weight
+              - paragraph [ref=e17]: 11.2 kg
+            - generic [ref=e18]:
+              - paragraph [ref=e19]: Height
+              - paragraph [ref=e20]: 78 cm
+        - navigation [ref=e21]:
+          - generic [ref=e22]:
+            - heading "Main" [level=3] [ref=e23]
+            - list [ref=e24]:
+              - listitem [ref=e25]:
+                - link "Dashboard" [ref=e26] [cursor=pointer]:
+                  - /url: /dashboard
+                  - img [ref=e28]
+                  - generic [ref=e30]: Dashboard
+              - listitem [ref=e31]:
+                - link "Symptom Check" [ref=e32] [cursor=pointer]:
+                  - /url: /symptom-check
+                  - img [ref=e34]
+                  - generic [ref=e36]: Symptom Check
+              - listitem [ref=e37]:
+                - link "Growth Charts" [ref=e38] [cursor=pointer]:
+                  - /url: /growth-charts
+                  - img [ref=e40]
+                  - generic [ref=e42]: Growth Charts
+              - listitem [ref=e43]:
+                - link "Dosage Calculator" [ref=e44] [cursor=pointer]:
+                  - /url: /dosage-calculator
+                  - img [ref=e46]
+                  - generic [ref=e48]: Dosage Calculator
+              - listitem [ref=e49]:
+                - link "Emergency Guide" [ref=e50] [cursor=pointer]:
+                  - /url: /emergency
+                  - img [ref=e52]
+                  - generic [ref=e54]: Emergency Guide
+          - generic [ref=e55]:
+            - heading "Child Health" [level=3] [ref=e56]
+            - list [ref=e57]:
+              - listitem [ref=e58]:
+                - link "Milestones" [ref=e59] [cursor=pointer]:
+                  - /url: /milestones
+                  - img [ref=e61]
+                  - generic [ref=e63]: Milestones
+              - listitem [ref=e64]:
+                - link "Vaccinations" [ref=e65] [cursor=pointer]:
+                  - /url: /vaccinations
+                  - img [ref=e67]
+                  - generic [ref=e69]: Vaccinations
+              - listitem [ref=e70]:
+                - link "Medical History" [ref=e71] [cursor=pointer]:
+                  - /url: /medical-history
+                  - img [ref=e73]
+                  - generic [ref=e75]: Medical History
+              - listitem [ref=e76]:
+                - link "Medicine Cabinet" [ref=e77] [cursor=pointer]:
+                  - /url: /medicine-cabinet
+                  - img [ref=e79]
+                  - generic [ref=e81]: Medicine Cabinet
+          - generic [ref=e82]:
+            - heading "Family & Support" [level=3] [ref=e83]
+            - list [ref=e84]:
+              - listitem [ref=e85]:
+                - link "Caregiver Access" [ref=e86] [cursor=pointer]:
+                  - /url: /caregiver
+                  - img [ref=e88]
+                  - generic [ref=e90]: Caregiver Access
+              - listitem [ref=e91]:
+                - link "AI Consultant" [ref=e92] [cursor=pointer]:
+                  - /url: /ai-consultant
+                  - img [ref=e94]
+                  - generic [ref=e97]: AI Consultant
+              - listitem [ref=e98]:
+                - link "Add Child" [ref=e99] [cursor=pointer]:
+                  - /url: /add-child
+                  - img [ref=e101]
+                  - generic [ref=e103]: Add Child
+          - generic [ref=e104]:
+            - heading "Scheduling" [level=3] [ref=e105]
+            - list [ref=e106]:
+              - listitem [ref=e107]:
+                - link "Appointments" [ref=e108] [cursor=pointer]:
+                  - /url: /appointments
+                  - img [ref=e110]
+                  - generic [ref=e112]: Appointments
+              - listitem [ref=e113]:
+                - link "Reports" [ref=e114] [cursor=pointer]:
+                  - /url: /reports
+                  - img [ref=e116]
+                  - generic [ref=e118]: Reports
+              - listitem [ref=e119]:
+                - link "Notifications" [ref=e120] [cursor=pointer]:
+                  - /url: /notifications
+                  - img [ref=e122]
+                  - generic [ref=e124]: Notifications
+        - generic [ref=e126]:
+          - img [ref=e128]
+          - generic [ref=e130]:
+            - paragraph [ref=e131]: 7 Day Streak
+            - paragraph [ref=e132]: Keep tracking daily!
+        - link "Emergency Guide" [ref=e134] [cursor=pointer]:
+          - /url: /emergency
+          - img [ref=e135]
+          - text: Emergency Guide
+    - generic [ref=e137]:
+      - banner [ref=e138]:
+        - generic [ref=e139]:
+          - paragraph [ref=e141]: Wednesday, 10 June 2026
+          - generic [ref=e143]:
+            - generic:
+              - img
+            - textbox "Search symptoms, meds..." [ref=e144]
+          - generic [ref=e145]:
+            - img [ref=e146]
+            - generic [ref=e148]: IAP Reviewed
+          - link [ref=e149] [cursor=pointer]:
+            - /url: /notifications
+            - img [ref=e150]
+          - button "👧 James Rodriguez Sofia, 24mo" [ref=e154] [cursor=pointer]:
+            - generic [ref=e156]: 👧
+            - generic [ref=e157]:
+              - paragraph [ref=e158]: James Rodriguez
+              - paragraph [ref=e159]: Sofia, 24mo
+            - img [ref=e160]
+      - main [ref=e162]:
+        - generic [ref=e164]:
+          - generic [ref=e166]:
+            - generic [ref=e167]:
+              - img [ref=e169]
+              - generic [ref=e172]:
+                - heading "AI Parenting Consultant" [level=1] [ref=e173]
+                - generic [ref=e176]: Online 24/7
+            - generic [ref=e177]:
+              - button "Conversation History" [ref=e178] [cursor=pointer]:
+                - img [ref=e179]
+              - button "Clear Conversation" [ref=e183] [cursor=pointer]:
+                - img [ref=e184]
+              - button "Share Conversation" [ref=e187] [cursor=pointer]:
+                - img [ref=e188]
+          - main [ref=e194]:
+            - generic [ref=e195]:
+              - generic [ref=e196]:
+                - generic [ref=e197]:
+                  - heading "Quick Topics" [level=2] [ref=e198]
+                  - generic [ref=e199]:
+                    - button "🌙 Sleep regression tips" [ref=e200] [cursor=pointer]:
+                      - generic [ref=e201]:
+                        - generic [ref=e202]: 🌙
+                        - generic [ref=e203]: Sleep regression tips
+                    - button "🥦 Picky eating solutions" [ref=e204] [cursor=pointer]:
+                      - generic [ref=e205]:
+                        - generic [ref=e206]: 🥦
+                        - generic [ref=e207]: Picky eating solutions
+                    - button "😤 Tantrum management" [ref=e208] [cursor=pointer]:
+                      - generic [ref=e209]:
+                        - generic [ref=e210]: 😤
+                        - generic [ref=e211]: Tantrum management
+                    - button "🚽 Potty training help" [ref=e212] [cursor=pointer]:
+                      - generic [ref=e213]:
+                        - generic [ref=e214]: 🚽
+                        - generic [ref=e215]: Potty training help
+                    - button "📱 Screen time guidelines" [ref=e216] [cursor=pointer]:
+                      - generic [ref=e217]:
+                        - generic [ref=e218]: 📱
+                        - generic [ref=e219]: Screen time guidelines
+                    - button "🧠 Developmental concerns" [ref=e220] [cursor=pointer]:
+                      - generic [ref=e221]:
+                        - generic [ref=e222]: 🧠
+                        - generic [ref=e223]: Developmental concerns
+                - generic [ref=e226]:
+                  - img [ref=e228]
+                  - generic [ref=e231]:
+                    - generic [ref=e232]:
+                      - generic [ref=e233]: Welcome! I'm your 24/7 AI Parenting Consultant. I'm here to help with questions about your child's health, development, and daily care.
+                      - generic [ref=e234]: "I can help with:"
+                      - generic [ref=e236]: • Sleep, feeding, and nutrition
+                      - generic [ref=e238]: • Behavioral concerns
+                      - generic [ref=e240]: • Developmental milestones
+                      - generic [ref=e242]: • Common childhood illnesses
+                      - generic [ref=e244]: • Safety and prevention
+                      - generic [ref=e245]: "Remember: I'm not a substitute for medical advice. For emergencies, please call 911 immediately."
+                      - generic [ref=e246]: How can I help you today?
+                    - generic [ref=e248]:
+                      - img [ref=e249]
+                      - generic [ref=e252]: "Sources: Pedi·Ai Guidelines"
+                    - generic [ref=e254]:
+                      - img [ref=e255]
+                      - generic [ref=e258]: 5:01 PM
+              - generic [ref=e260]:
+                - img [ref=e261]
+                - generic [ref=e263]: This AI assistant provides general parenting information only. Always consult your pediatrician for medical advice.
+              - generic [ref=e265]:
+                - generic [ref=e266]:
+                  - generic [ref=e267]:
+                    - textbox "Ask me anything about parenting..." [ref=e268]
+                    - generic [ref=e270]: 0/500
+                  - button [disabled] [ref=e271]:
+                    - img [ref=e272]
+                  - button "Voice input (coming soon)" [disabled] [ref=e275]:
+                    - img [ref=e276]
+                - generic [ref=e279]:
+                  - generic [ref=e280]:
+                    - img [ref=e281]
+                    - text: AI-powered responses
+                  - link "Emergency? Call 911" [ref=e284] [cursor=pointer]:
+                    - /url: tel:911
+                    - img [ref=e285]
+                    - text: Emergency? Call 911
+  - alert [ref=e287]
