@@ -429,9 +429,9 @@ function GrowthChart({
         })}
 
         {/* X-axis labels */}
-        {filteredData.map(m => (
+        {filteredData.map((m, idx) => (
           <text
-            key={m.ageInMonths}
+            key={`x-label-${m.date}-${idx}`}
             x={scaleX(m.ageInMonths)}
             y={chartHeight - padding.bottom + 25}
             textAnchor="middle"
@@ -469,7 +469,7 @@ function GrowthChart({
 
         {/* Measurement points */}
         {measurementPoints.map((point, i) => (
-          <g key={i}>
+          <g key={`point-${point.data.date}-${i}`}>
             <circle
               cx={point.x}
               cy={point.y}
@@ -799,8 +799,8 @@ function InsightsCard({
       </div>
 
       <div className="space-y-4">
-        {insights.map((insight, i) => (
-          <div key={i} className="flex gap-3 p-4 bg-mist/30 rounded-xl">
+        {insights.map((insight, idx) => (
+          <div key={`insight-${idx}`} className="flex gap-3 p-4 bg-mist/30 rounded-xl">
             <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-${insight.color}`}>
               {insight.icon}
             </div>

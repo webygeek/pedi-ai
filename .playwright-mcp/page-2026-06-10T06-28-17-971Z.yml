@@ -1,0 +1,126 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - button [ref=e3] [cursor=pointer]:
+      - img [ref=e4]
+    - generic [ref=e6]:
+      - banner [ref=e7]:
+        - generic [ref=e8]:
+          - paragraph [ref=e10]: Wednesday, 10 June 2026
+          - generic [ref=e12]:
+            - generic:
+              - img
+            - textbox "Search symptoms, meds..." [ref=e13]
+          - generic [ref=e14]:
+            - img [ref=e15]
+            - generic [ref=e17]: IAP Reviewed
+          - link [ref=e18] [cursor=pointer]:
+            - /url: /notifications
+            - img [ref=e19]
+          - button "👧" [ref=e23] [cursor=pointer]:
+            - generic [ref=e25]: 👧
+            - img [ref=e26]
+      - main [ref=e28]:
+        - generic [ref=e30]:
+          - generic [ref=e31]:
+            - generic [ref=e32]:
+              - img [ref=e34]
+              - generic [ref=e36]:
+                - heading "Vaccination Tracker" [level=1] [ref=e37]
+                - paragraph [ref=e38]: Based on IAP Schedule for India
+            - generic [ref=e39]:
+              - generic [ref=e40]:
+                - img [ref=e41]
+                - generic [ref=e43]: IAP Schedule
+              - button "Add Vaccination" [ref=e44] [cursor=pointer]:
+                - img [ref=e45]
+                - text: Add Vaccination
+          - generic [ref=e47]:
+            - button "Overview" [ref=e48] [cursor=pointer]
+            - button "Full Schedule" [ref=e49] [cursor=pointer]
+          - generic [ref=e50]:
+            - generic [ref=e51]:
+              - heading "Overall Progress" [level=2] [ref=e52]
+              - generic [ref=e54]:
+                - img [ref=e55]
+                - generic [ref=e58]:
+                  - generic [ref=e59]: 0%
+                  - generic [ref=e60]: Vaccinated
+              - paragraph [ref=e62]: 0 of 29 vaccines completed
+            - generic [ref=e63]:
+              - generic [ref=e65]:
+                - generic [ref=e66]:
+                  - heading "Next Due" [level=3] [ref=e67]
+                  - heading "BCG" [level=4] [ref=e68]
+                  - paragraph [ref=e69]: Bacillus Calmette-Guerin
+                  - paragraph [ref=e70]: "Due: 16 Jun 2025"
+                - generic [ref=e71]:
+                  - generic [ref=e72]:
+                    - img [ref=e73]
+                    - text: Overdue
+                  - button "Mark as Given" [ref=e75] [cursor=pointer]
+              - generic [ref=e76]:
+                - heading "Upcoming Vaccinations" [level=3] [ref=e77]
+                - generic [ref=e78]:
+                  - generic [ref=e79]:
+                    - generic [ref=e80]:
+                      - generic [ref=e82]: Hep A
+                      - generic [ref=e83]:
+                        - paragraph [ref=e84]: Hep A
+                        - paragraph [ref=e85]: 12 Months
+                    - generic [ref=e86]:
+                      - generic [ref=e87]:
+                        - img [ref=e88]
+                        - text: Due
+                      - button "View details" [ref=e90] [cursor=pointer]:
+                        - img [ref=e91]
+                  - generic [ref=e93]:
+                    - generic [ref=e94]:
+                      - generic [ref=e96]: Typhoid
+                      - generic [ref=e97]:
+                        - paragraph [ref=e98]: Typhoid
+                        - paragraph [ref=e99]: 12 Months
+                    - generic [ref=e100]:
+                      - generic [ref=e101]:
+                        - img [ref=e102]
+                        - text: Due
+                      - button "View details" [ref=e104] [cursor=pointer]:
+                        - img [ref=e105]
+                  - generic [ref=e107]:
+                    - generic [ref=e108]:
+                      - generic [ref=e110]: MMR
+                      - generic [ref=e111]:
+                        - paragraph [ref=e112]: MMR
+                        - paragraph [ref=e113]: 15 Months
+                    - generic [ref=e114]:
+                      - generic [ref=e115]:
+                        - img [ref=e116]
+                        - text: Upcoming
+                      - button "View details" [ref=e118] [cursor=pointer]:
+                        - img [ref=e119]
+              - button "Book Vaccination Appointment Schedule with your pediatrician" [ref=e121] [cursor=pointer]:
+                - generic [ref=e122]:
+                  - generic [ref=e123]:
+                    - img [ref=e125]
+                    - generic [ref=e127]:
+                      - heading "Book Vaccination Appointment" [level=4] [ref=e128]
+                      - paragraph [ref=e129]: Schedule with your pediatrician
+                  - img [ref=e130]
+    - navigation [ref=e132]:
+      - generic [ref=e133]:
+        - link "Home" [ref=e134] [cursor=pointer]:
+          - /url: /dashboard
+          - img [ref=e136]
+          - generic [ref=e139]: Home
+        - link "Symptom" [ref=e140] [cursor=pointer]:
+          - /url: /symptom-check
+          - img [ref=e142]
+          - generic [ref=e144]: Symptom
+        - link "Charts" [ref=e145] [cursor=pointer]:
+          - /url: /growth-charts
+          - img [ref=e147]
+          - generic [ref=e150]: Charts
+        - link "More" [ref=e151] [cursor=pointer]:
+          - /url: /consultant
+          - img [ref=e153]
+          - generic [ref=e155]: More
+  - alert [ref=e156]
