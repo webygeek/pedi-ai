@@ -1,7 +1,8 @@
 'use client';
 
 import React, { createContext, useContext, useState, useCallback, useEffect } from 'react';
-import { User, AuthState, LoginCredentials, UserRole, Child } from '@/app/types/auth';
+import { User, AuthState, LoginCredentials, Child } from '@/app/types/auth';
+import { UserRole } from '@/app/types/users';
 
 // Demo users
 const DEMO_USERS: Record<string, { user: User; password: string }> = {
@@ -85,7 +86,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           isAuthenticated: true,
           isLoading: false,
         });
-        if (user.role === 'parent' && user.children?.length > 0) {
+        if (user.role === 'parent' && user.children && user.children.length > 0) {
           setSelectedChild(user.children[0]);
         }
       } catch {
@@ -117,7 +118,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       isLoading: false,
     });
 
-    if (user.role === 'parent' && user.children?.length > 0) {
+    if (user.role === 'parent' && user.children && user.children.length > 0) {
       setSelectedChild(user.children[0]);
     }
 

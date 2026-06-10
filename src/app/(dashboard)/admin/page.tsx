@@ -102,7 +102,7 @@ export default function AdminDashboardPage() {
               Admin Dashboard
             </h1>
             <p className="text-forest/60">
-              Welcome back, {user?.name}. Here&apos;s your platform overview.
+              Welcome back, {user?.name || 'Admin'}. Here&apos;s your platform overview.
             </p>
           </div>
         </div>

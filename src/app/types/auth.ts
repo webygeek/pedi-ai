@@ -1,5 +1,38 @@
 // User and Authentication Types
 
+// AuthState type used by AuthContext
+export interface AuthState {
+  user: User | null;
+  isAuthenticated: boolean;
+  isLoading: boolean;
+}
+
+export interface User {
+  id: string;
+  email: string;
+  name: string;
+  role: 'parent' | 'doctor' | 'admin' | 'nurse' | 'clinic_admin' | 'platform_admin' | 'school_nurse' | 'caregiver' | 'insurance' | 'pharmacy';
+  avatar?: string;
+  children?: Child[];
+  specialty?: string;
+  licenseNumber?: string;
+}
+
+export interface Child {
+  id: string;
+  name: string;
+  dateOfBirth: string;
+  gender: 'male' | 'female';
+  weight: number;
+  height: number;
+  bloodType?: string;
+}
+
+export interface LoginCredentials {
+  email: string;
+  password: string;
+}
+
 export interface ParentProfile {
   id: string;
   name: string;
