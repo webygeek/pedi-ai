@@ -627,31 +627,31 @@ What would you like to know?`,
 
       {/* Emergency Alert Banner */}
       {showEmergencyAlert && (
-        <div className="bg-red-50 border-b border-red-200 px-4 py-3">
+        <div className="bg-danger-bg border-b border-danger/30 px-4 py-3">
           <div className="max-w-4xl mx-auto flex items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
-                <AlertTriangle className="w-5 h-5 text-red-600" />
+              <div className="w-10 h-10 rounded-full bg-danger-bg flex items-center justify-center flex-shrink-0">
+                <AlertTriangle className="w-5 h-5 text-danger" />
               </div>
               <div>
-                <p className="font-semibold text-red-800">Emergency detected</p>
-                <p className="text-sm text-red-600">
+                <p className="font-semibold text-danger">Emergency detected</p>
+                <p className="text-sm text-danger">
                   If you believe this is an emergency, please call 911 immediately.
                 </p>
               </div>
             </div>
             <a
               href="tel:911"
-              className="flex items-center gap-2 bg-red-600 text-white px-4 py-2 rounded-full font-semibold hover:bg-red-700 transition-colors flex-shrink-0"
+              className="flex items-center gap-2 bg-danger text-white px-4 py-2 rounded-full font-semibold hover:bg-danger/90 transition-colors flex-shrink-0"
             >
               <Phone className="w-4 h-4" />
               Call 911
             </a>
             <button
               onClick={() => setShowEmergencyAlert(false)}
-              className="p-1 rounded-full hover:bg-red-100 transition-colors"
+              className="p-1 rounded-full hover:bg-danger-bg transition-colors"
             >
-              <X className="w-5 h-5 text-red-600" />
+              <X className="w-5 h-5 text-danger" />
             </button>
           </div>
         </div>
@@ -853,7 +853,7 @@ What would you like to know?`,
                   AI-powered responses
                 </span>
                 <span className="w-px h-3 bg-forest/20"></span>
-                <a href="tel:911" className="flex items-center gap-1 text-red-600 hover:text-red-700 font-medium">
+                <a href="tel:911" className="flex items-center gap-1 text-danger hover:text-danger/80 font-medium">
                   <Phone className="w-3 h-3" />
                   Emergency? Call 911
                 </a>

@@ -1,0 +1,86 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e6]: Pedi·Ai
+      - paragraph [ref=e7]: AI-Powered Pediatric Care
+    - generic [ref=e8]:
+      - generic [ref=e9]:
+        - heading "Welcome Back" [level=1] [ref=e10]
+        - paragraph [ref=e11]: Sign in to continue to your dashboard
+      - generic [ref=e12]:
+        - generic [ref=e13]:
+          - generic [ref=e14]: Email Address
+          - textbox "Email Address" [ref=e15]:
+            - /placeholder: you@example.com
+        - generic [ref=e16]:
+          - generic [ref=e17]: Password
+          - generic [ref=e18]:
+            - textbox "Password" [ref=e19]:
+              - /placeholder: Enter your password
+            - button [ref=e20] [cursor=pointer]:
+              - img [ref=e21]
+        - generic [ref=e24]:
+          - generic [ref=e25] [cursor=pointer]:
+            - checkbox "Remember me" [ref=e26]
+            - generic [ref=e27]: Remember me
+          - link "Forgot password?" [ref=e28] [cursor=pointer]:
+            - /url: "#"
+        - button "Sign In" [ref=e29] [cursor=pointer]
+      - generic [ref=e30]:
+        - paragraph [ref=e31]:
+          - generic [ref=e32]: Demo Accounts — Click to auto-fill
+        - generic [ref=e34]:
+          - 'button "😰 anxious@demo.com High-Anxiety Parent (2 children: infant + toddler)" [ref=e35] [cursor=pointer]':
+            - generic [ref=e36]: 😰
+            - generic [ref=e37]:
+              - paragraph [ref=e38]: anxious@demo.com
+              - paragraph [ref=e39]: "High-Anxiety Parent (2 children: infant + toddler)"
+            - img [ref=e40]
+          - button "👩‍⚕️ dr.chen@demo.com Pediatrician/Clinician (child with asthma)" [ref=e42] [cursor=pointer]:
+            - generic [ref=e43]: 👩‍⚕️
+            - generic [ref=e44]:
+              - paragraph [ref=e45]: dr.chen@demo.com
+              - paragraph [ref=e46]: Pediatrician/Clinician (child with asthma)
+            - img [ref=e47]
+          - button "👨 james@demo.com First-Time Parent (newborn)" [ref=e49] [cursor=pointer]:
+            - generic [ref=e50]: 👨
+            - generic [ref=e51]:
+              - paragraph [ref=e52]: james@demo.com
+              - paragraph [ref=e53]: First-Time Parent (newborn)
+            - img [ref=e54]
+          - button "👩 maria@demo.com Parent of Child with ADHD" [ref=e56] [cursor=pointer]:
+            - generic [ref=e57]: 👩
+            - generic [ref=e58]:
+              - paragraph [ref=e59]: maria@demo.com
+              - paragraph [ref=e60]: Parent of Child with ADHD
+            - img [ref=e61]
+          - button "👨‍💼 admin@pediatric-clinic.com Healthcare System Admin (child with eczema)" [ref=e63] [cursor=pointer]:
+            - generic [ref=e64]: 👨‍💼
+            - generic [ref=e65]:
+              - paragraph [ref=e66]: admin@pediatric-clinic.com
+              - paragraph [ref=e67]: Healthcare System Admin (child with eczema)
+            - img [ref=e68]
+          - button "👩‍⚕️ nurse.jones@demo.com Pediatric Nurse (vitals & vaccinations)" [ref=e70] [cursor=pointer]:
+            - generic [ref=e71]: 👩‍⚕️
+            - generic [ref=e72]:
+              - paragraph [ref=e73]: nurse.jones@demo.com
+              - paragraph [ref=e74]: Pediatric Nurse (vitals & vaccinations)
+            - img [ref=e75]
+          - button "🔐 superadmin@demo.com Platform Administrator (full system access)" [ref=e77] [cursor=pointer]:
+            - generic [ref=e78]: 🔐
+            - generic [ref=e79]:
+              - paragraph [ref=e80]: superadmin@demo.com
+              - paragraph [ref=e81]: Platform Administrator (full system access)
+            - img [ref=e82]
+      - paragraph [ref=e84]:
+        - text: Don't have an account?
+        - link "Sign up for free" [ref=e85] [cursor=pointer]:
+          - /url: /signup
+    - paragraph [ref=e86]:
+      - text: By signing in, you agree to our
+      - link "Terms of Service" [ref=e87] [cursor=pointer]:
+        - /url: "#"
+      - text: and
+      - link "Privacy Policy" [ref=e88] [cursor=pointer]:
+        - /url: "#"
+  - alert [ref=e89]

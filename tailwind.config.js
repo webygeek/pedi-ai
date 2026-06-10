@@ -32,6 +32,17 @@ module.exports = {
           DEFAULT: '#9e3535',
           light: '#b84040',
         },
+        warning: {
+          DEFAULT: '#b07850',
+          light: '#c49060',
+        },
+        success: {
+          DEFAULT: '#7bada6',
+          light: '#a8d5c8',
+        },
+        info: {
+          DEFAULT: '#edf3fe',
+        },
       },
       fontFamily: {
         display: ['Playfair Display', 'Georgia', 'serif'],

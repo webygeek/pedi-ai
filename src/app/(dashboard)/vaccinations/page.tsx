@@ -1,7 +1,8 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import type { Metadata } from 'next'
+import { useAuth } from '@/app/lib/auth-context'
+import { useVaccinations } from '@/app/lib/api-hooks'
 
 // ============================================================================
 // TYPES
@@ -238,7 +239,7 @@ function StatusBadge({ status }: { status: 'completed' | 'due' | 'upcoming' | 'o
     completed: 'bg-sage/20 text-forest',
     due: 'bg-coral/15 text-coral',
     upcoming: 'bg-mist text-forest/60',
-    overdue: 'bg-red-100 text-red-700'
+    overdue: 'bg-danger-bg text-danger'
   }
 
   const icons = {
@@ -317,14 +318,111 @@ function Modal({ isOpen, onClose, title, children }: { isOpen: boolean; onClose:
 // ============================================================================
 
 export default function VaccinationsPage() {
+  const { session, getActiveChild } = useAuth()
+  const activeChild = getActiveChild()
+  const { vaccinations: apiVaccinations, markComplete } = useVaccinations()
+
+  // Show message if no child is selected
+  if (!activeChild) {
+    return (
+      <div className="space-y-8">
+        {/* Header */}
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div className="flex items-center gap-4">
+            <div className="w-14 h-14 rounded-2xl bg-sage/10 flex items-center justify-center">
+              <svg className="w-7 h-7 text-sage" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
+            </div>
+            <div>
+              <h1 className="font-display text-2xl md:text-3xl text-forest">Vaccination Tracker</h1>
+              <p className="text-forest/60 text-sm">Based on IAP Schedule for India</p>
+            </div>
+          </div>
+        </div>
+
+        {/* No child selected message */}
+        <div className="card p-12 text-center">
+          <div className="w-16 h-16 rounded-full bg-mist mx-auto mb-4 flex items-center justify-center">
+            <svg className="w-8 h-8 text-forest/40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+          </div>
+          <h3 className="font-display text-xl text-forest mb-2">No Child Selected</h3>
+          <p className="text-forest/60 mb-6">Please select a child from your profile to track vaccinations.</p>
+          <a href="/dashboard" className="btn btn-primary">
+            Go to Dashboard
+          </a>
+        </div>
+      </div>
+    )
+  }
+
+  // Calculate child age from active child's DOB
+  const getChildAge = () => {
+    if (!activeChild) return { years: 0, months: 0, days: 0 }
+    const birth = new Date(activeChild.dateOfBirth)
+    const now = new Date()
+    let years = now.getFullYear() - birth.getFullYear()
+    let months = now.getMonth() - birth.getMonth()
+    let days = now.getDate() - birth.getDate()
+
+    if (days < 0) {
+      months--
+      days += new Date(now.getFullYear(), now.getMonth(), 0).getDate()
+    }
+    if (months < 0) {
+      years--
+      months += 12
+    }
+    return { years, months, days }
+  }
+
+  const childAge = getChildAge()
+
   // State
-  const [childAge, setChildAge] = useState<{ years: number; months: number; days: number }>({ years: 0, months: 4, days: 12 })
   const [vaccinationRecords, setVaccinationRecords] = useState<Map<string, VaccinationRecord>>(new Map())
   const [selectedVaccine, setSelectedVaccine] = useState<Vaccine | null>(null)
   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false)
   const [isAddModalOpen, setIsAddModalOpen] = useState(false)
   const [reminders, setReminders] = useState<Map<string, boolean>>(new Map())
   const [activeTab, setActiveTab] = useState<'overview' | 'schedule'>('overview')
+
+  // Sync vaccination records with API data
+  useEffect(() => {
+    if (apiVaccinations.length > 0) {
+      const records = new Map<string, VaccinationRecord>()
+      apiVaccinations.forEach(vax => {
+        // Match by vaccine name with multiple possible name formats
+        const vaccineEntry = Object.entries(vaccines).find(([_, v]) => {
+          const vaxNameLower = vax.name.toLowerCase()
+          const localNameLower = v.name.toLowerCase()
+          const shortNameLower = v.shortName.toLowerCase()
+          // Direct match
+          if (localNameLower === vaxNameLower) return true
+          // Short name match
+          if (shortNameLower === vaxNameLower) return true
+          // Partial matches for common variations
+          if (vaxNameLower.includes('dtap') && localNameLower.includes('diphtheria')) return true
+          if (vaxNameLower.includes('pcv') && localNameLower.includes('pneumococcal')) return true
+          if (vaxNameLower.includes('hib') && localNameLower.includes('haemophilus')) return true
+          if (vaxNameLower.includes('ipv') && localNameLower.includes('polio') && localNameLower.includes('inactivated')) return true
+          if (vaxNameLower.includes('opv') && localNameLower.includes('polio') && localNameLower.includes('oral')) return true
+          if (vaxNameLower.includes('mmr') && (localNameLower.includes('measles') || localNameLower.includes('mumps') || localNameLower.includes('rubella'))) return true
+          return false
+        })
+        if (vaccineEntry) {
+          records.set(vaccineEntry[0], {
+            id: vax.id,
+            vaccineId: vaccineEntry[0],
+            dateGiven: vax.administeredDate ? new Date(vax.administeredDate) : null,
+            hasReaction: false,
+          })
+        }
+      })
+      setVaccinationRecords(records)
+    }
+  }, [apiVaccinations])
 
   // Add vaccination form state
   const [formData, setFormData] = useState({
@@ -380,8 +478,11 @@ export default function VaccinationsPage() {
 
   // Calculate vaccination progress
   const completedCount = scheduledVaccines.filter(sv => sv.status === 'completed').length
-  const totalVaccines = Object.keys(vaccines).length
-  const progressPercent = Math.min((completedCount / totalVaccines) * 100, 100)
+  // Calculate total vaccines for the child's age (based on IAP schedule up to current age)
+  const childAgeInWeeks = (childAge.years * 52) + (childAge.months * 4.33) + (childAge.days / 7)
+  const relevantSchedules = iapSchedule.filter(s => s.ageInWeeks <= childAgeInWeeks)
+  const totalVaccinesDue = relevantSchedules.reduce((acc, s) => acc + s.vaccineIds.length, 0)
+  const progressPercent = totalVaccinesDue > 0 ? Math.min((completedCount / totalVaccinesDue) * 100, 100) : 0
 
   // Get upcoming vaccines (next 3)
   const upcomingVaccines = scheduledVaccines
@@ -523,7 +624,7 @@ export default function VaccinationsPage() {
             </div>
             <div className="mt-4 text-center">
               <p className="text-forest/70">
-                <span className="font-semibold text-forest">{completedCount}</span> of {totalVaccines} vaccines completed
+                <span className="font-semibold text-forest">{completedCount}</span> of {totalVaccinesDue} vaccines completed
               </p>
             </div>
           </div>

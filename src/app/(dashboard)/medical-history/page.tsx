@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
 import {
   AlertTriangle,
   Pill,
@@ -28,6 +28,8 @@ import {
   Link2,
   Copy
 } from 'lucide-react'
+import { useAuth } from '@/app/lib/auth-context'
+import { useHealthLog } from '@/app/lib/api-hooks'
 
 // Types
 type EntryType = 'visit' | 'hospitalization' | 'surgery' | 'allergy' | 'diagnosis' | 'test' | 'vaccination' | 'other'
@@ -118,7 +120,7 @@ const entryTypeConfig: Record<EntryType, { icon: React.ReactNode; label: string;
   visit: { icon: <Stethoscope className="w-4 h-4" />, label: 'Doctor Visit', color: 'text-sage' },
   hospitalization: { icon: <Building2 className="w-4 h-4" />, label: 'Hospitalization', color: 'text-coral' },
   surgery: { icon: <Activity className="w-4 h-4" />, label: 'Surgery', color: 'text-forest' },
-  allergy: { icon: <AlertTriangle className="w-4 h-4" />, label: 'Allergy', color: 'text-red-500' },
+  allergy: { icon: <AlertTriangle className="w-4 h-4" />, label: 'Allergy', color: 'text-danger' },
   diagnosis: { icon: <FileText className="w-4 h-4" />, label: 'Diagnosis', color: 'text-blue-500' },
   test: { icon: <Beaker className="w-4 h-4" />, label: 'Test Result', color: 'text-purple-500' },
   vaccination: { icon: <Syringe className="w-4 h-4" />, label: 'Vaccination', color: 'text-green-500' },
@@ -128,17 +130,17 @@ const entryTypeConfig: Record<EntryType, { icon: React.ReactNode; label: string;
 const severityConfig: Record<Severity, { label: string; bg: string; text: string }> = {
   mild: { label: 'Mild', bg: 'bg-amber-100', text: 'text-amber-800' },
   moderate: { label: 'Moderate', bg: 'bg-orange-100', text: 'text-orange-800' },
-  severe: { label: 'Severe', bg: 'bg-red-100', text: 'text-red-800' },
+  severe: { label: 'Severe', bg: 'bg-danger-bg', text: 'text-danger' },
 }
 
 // Components
 function QuickInfoCard({ icon, title, value, variant = 'default' }: { icon: React.ReactNode; title: string; value: string | number; variant?: 'default' | 'alert' }) {
   const variantStyles = variant === 'alert'
-    ? 'bg-red-50 border-red-200'
+    ? 'bg-danger-bg border-danger/30'
     : 'bg-white border-mist/50'
 
   const iconStyles = variant === 'alert'
-    ? 'bg-red-100 text-red-600'
+    ? 'bg-danger-bg text-danger'
     : 'bg-mist text-forest'
 
   return (
@@ -149,7 +151,7 @@ function QuickInfoCard({ icon, title, value, variant = 'default' }: { icon: Reac
         </div>
         <div className="flex-1 min-w-0">
           <p className="text-xs font-semibold uppercase tracking-wider text-forest/60 mb-1">{title}</p>
-          <p className={`font-semibold text-lg truncate ${variant === 'alert' ? 'text-red-700' : 'text-forest'}`}>{value}</p>
+          <p className={`font-semibold text-lg truncate ${variant === 'alert' ? 'text-danger' : 'text-forest'}`}>{value}</p>
         </div>
       </div>
     </div>
@@ -228,10 +230,10 @@ function AllergyCard({ allergy, onEdit, onDelete }: { allergy: Allergy; onEdit: 
   const typeIcon = allergy.type === 'drug' ? <Pill className="w-4 h-4" /> : allergy.type === 'food' ? <AlertTriangle className="w-4 h-4" /> : <Activity className="w-4 h-4" />
 
   return (
-    <div className={`card p-4 border-l-4 ${allergy.severity === 'severe' ? 'border-l-red-500' : allergy.severity === 'moderate' ? 'border-l-orange-400' : 'border-l-amber-400'}`}>
+    <div className={`card p-4 border-l-4 ${allergy.severity === 'severe' ? 'border-l-danger' : allergy.severity === 'moderate' ? 'border-l-orange-400' : 'border-l-amber-400'}`}>
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-start gap-3">
-          <div className={`p-2 rounded-lg ${allergy.severity === 'severe' ? 'bg-red-100 text-red-600' : allergy.severity === 'moderate' ? 'bg-orange-100 text-orange-600' : 'bg-amber-100 text-amber-600'}`}>
+          <div className={`p-2 rounded-lg ${allergy.severity === 'severe' ? 'bg-danger-bg text-danger' : allergy.severity === 'moderate' ? 'bg-orange-100 text-orange-600' : 'bg-amber-100 text-amber-600'}`}>
             {typeIcon}
           </div>
           <div>
@@ -254,7 +256,7 @@ function AllergyCard({ allergy, onEdit, onDelete }: { allergy: Allergy; onEdit: 
           </button>
           <button
             onClick={() => onDelete(allergy.id)}
-            className="p-2 rounded-lg hover:bg-red-50 text-forest/60 hover:text-red-600 transition-colors"
+            className="p-2 rounded-lg hover:bg-danger-bg text-forest/60 hover:text-danger transition-colors"
           >
             <X className="w-4 h-4" />
           </button>
@@ -551,7 +553,7 @@ function AddAllergyModal({ isOpen, onClose, onSave }: { isOpen: boolean; onClose
                   className={`p-3 rounded-xl border text-sm font-medium capitalize transition-all ${
                     severity === s
                       ? s === 'severe'
-                        ? 'border-red-500 bg-red-50 text-red-700'
+                        ? 'border-danger bg-danger-bg text-danger'
                         : s === 'moderate'
                         ? 'border-orange-400 bg-orange-50 text-orange-700'
                         : 'border-amber-400 bg-amber-50 text-amber-700'
@@ -588,7 +590,7 @@ function AddAllergyModal({ isOpen, onClose, onSave }: { isOpen: boolean; onClose
 
           <button
             type="submit"
-            className="w-full py-4 rounded-xl bg-red-500 text-white font-semibold hover:bg-red-600 transition-colors"
+            className="w-full py-4 rounded-xl bg-danger text-white font-semibold hover:bg-danger/90 transition-colors"
           >
             Add Allergy
           </button>
@@ -639,8 +641,8 @@ function MedicalSummaryModal({ isOpen, onClose }: { isOpen: boolean; onClose: ()
 
           {/* Summary Sections */}
           <div className="space-y-4">
-            <div className="border-l-4 border-red-500 pl-4">
-              <h4 className="font-semibold text-red-700 flex items-center gap-2">
+            <div className="border-l-4 border-danger pl-4">
+              <h4 className="font-semibold text-danger flex items-center gap-2">
                 <AlertTriangle className="w-4 h-4" /> Allergies
               </h4>
               <p className="text-sm text-forest/80 mt-1">Penicillin (Severe), Peanuts (Severe)</p>
@@ -697,11 +699,53 @@ function MedicalSummaryModal({ isOpen, onClose }: { isOpen: boolean; onClose: ()
 
 // Main Component
 export default function MedicalHistoryPage() {
+  const { session, getActiveChild } = useAuth()
+  const activeChild = getActiveChild()
+  const { entries: apiEntries } = useHealthLog()
+
+  // Get allergies and conditions from active child
+  const childAllergies = activeChild?.allergies || []
+  const childConditions = activeChild?.conditions || []
+
+  // Convert API entries to local format
   const [entries, setEntries] = useState<MedicalEntry[]>(sampleEntries)
   const [allergies, setAllergies] = useState<Allergy[]>(sampleAllergies)
   const [medications] = useState<Medication[]>(sampleMedications)
   const [contacts] = useState<EmergencyContact[]>(sampleContacts)
   const [chronicConditions] = useState<ChronicCondition[]>(sampleChronicConditions)
+
+  // Sync API entries when available
+  useEffect(() => {
+    if (apiEntries.length > 0) {
+      const convertedEntries: MedicalEntry[] = apiEntries.map(entry => ({
+        id: entry.id,
+        type: entry.type === 'fever' ? 'diagnosis' :
+              entry.type === 'medicine' ? 'diagnosis' :
+              entry.type === 'checkup' ? 'visit' : 'other',
+        date: entry.date,
+        title: entry.title,
+        description: entry.description,
+        attachments: false,
+        shareWithDoctor: false,
+      }))
+      setEntries(convertedEntries)
+    }
+  }, [apiEntries])
+
+  // Update allergies from active child
+  useEffect(() => {
+    if (childAllergies.length > 0) {
+      const convertedAllergies: Allergy[] = childAllergies.map((name, index) => ({
+        id: `allergy-${index}`,
+        name,
+        type: 'food' as const,
+        severity: 'moderate' as const,
+        reaction: 'Varies',
+        dateIdentified: new Date().toISOString(),
+      }))
+      setAllergies(convertedAllergies)
+    }
+  }, [childAllergies])
 
   const [activeFilter, setActiveFilter] = useState<FilterType>('all')
   const [searchQuery, setSearchQuery] = useState('')
@@ -937,15 +981,15 @@ export default function MedicalHistoryPage() {
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Allergies Section */}
-            <div className="card p-6 border-l-4 border-l-red-500">
+            <div className="card p-6 border-l-4 border-l-danger">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="font-display text-xl text-forest flex items-center gap-2">
-                  <AlertTriangle className="w-5 h-5 text-red-500" />
+                  <AlertTriangle className="w-5 h-5 text-danger" />
                   Allergies
                 </h2>
                 <button
                   onClick={() => setIsAddAllergyOpen(true)}
-                  className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-red-50 text-red-600 text-xs font-semibold hover:bg-red-100 transition-colors"
+                  className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-danger-bg text-danger text-xs font-semibold hover:bg-danger-bg/70 transition-colors"
                 >
                   <Plus className="w-3 h-3" /> Add
                 </button>

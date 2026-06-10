@@ -1,0 +1,208 @@
+- generic [active] [ref=e1]:
+  - alert [ref=e120]
+  - generic [ref=e121]:
+    - complementary [ref=e122]:
+      - generic [ref=e123]:
+        - generic [ref=e124]:
+          - link "Pedi·Ai" [ref=e125] [cursor=pointer]:
+            - /url: /platform-admin
+            - generic [ref=e126]: Pedi·Ai
+          - text: platform admin
+        - navigation [ref=e127]:
+          - generic [ref=e128]:
+            - heading "Main" [level=3] [ref=e129]
+            - list [ref=e130]:
+              - listitem [ref=e131]:
+                - link "Dashboard" [ref=e132] [cursor=pointer]:
+                  - /url: /platform-admin
+                  - img [ref=e134]
+                  - generic [ref=e136]: Dashboard
+              - listitem [ref=e137]:
+                - link "Users" [ref=e138] [cursor=pointer]:
+                  - /url: /platform-admin/users
+                  - img [ref=e140]
+                  - generic [ref=e142]: Users
+              - listitem [ref=e143]:
+                - link "Audit Logs" [ref=e144] [cursor=pointer]:
+                  - /url: /platform-admin/audit
+                  - img [ref=e146]
+                  - generic [ref=e148]: Audit Logs
+          - generic [ref=e149]:
+            - heading "Management" [level=3] [ref=e150]
+            - list [ref=e151]:
+              - listitem [ref=e152]:
+                - link "AI Consultant" [ref=e153] [cursor=pointer]:
+                  - /url: /ai-consultant
+                  - img [ref=e155]
+                  - generic [ref=e158]: AI Consultant
+          - generic [ref=e159]:
+            - heading "Settings" [level=3] [ref=e160]
+            - list [ref=e161]:
+              - listitem [ref=e162]:
+                - link "Notifications" [ref=e163] [cursor=pointer]:
+                  - /url: /notifications
+                  - img [ref=e165]
+                  - generic [ref=e167]: Notifications
+              - listitem [ref=e168]:
+                - link "Emergency Guide" [ref=e169] [cursor=pointer]:
+                  - /url: /emergency
+                  - img [ref=e171]
+                  - generic [ref=e173]: Emergency Guide
+        - link "Emergency Guide" [ref=e175] [cursor=pointer]:
+          - /url: /emergency
+          - img [ref=e176]
+          - text: Emergency Guide
+    - generic [ref=e178]:
+      - banner [ref=e179]:
+        - generic [ref=e180]:
+          - paragraph [ref=e182]: Tuesday, 9 June 2026
+          - generic [ref=e184]:
+            - generic:
+              - img
+            - textbox "Search symptoms, meds..." [ref=e185]
+          - generic [ref=e186]:
+            - img [ref=e187]
+            - generic [ref=e189]: IAP Reviewed
+          - link [ref=e190] [cursor=pointer]:
+            - /url: /notifications
+            - img [ref=e191]
+          - button "👶 Alex Thompson No child profile" [ref=e195] [cursor=pointer]:
+            - generic [ref=e197]: 👶
+            - generic [ref=e198]:
+              - paragraph [ref=e199]: Alex Thompson
+              - paragraph [ref=e200]: No child profile
+            - img [ref=e201]
+      - main [ref=e203]:
+        - generic [ref=e205]:
+          - generic [ref=e208]:
+            - generic [ref=e209]:
+              - heading "Platform Admin Dashboard" [level=1] [ref=e210]
+              - paragraph [ref=e211]: Welcome, Alex Thompson
+            - generic [ref=e212]:
+              - generic [ref=e213]: Platform Admin
+              - generic [ref=e215]: 🔐
+          - main [ref=e216]:
+            - generic [ref=e217]:
+              - generic [ref=e218]:
+                - generic [ref=e220]: 👥
+                - paragraph [ref=e221]: "16"
+                - paragraph [ref=e222]: Total Users
+              - generic [ref=e223]:
+                - generic [ref=e225]: 🏥
+                - paragraph [ref=e226]: "3"
+                - paragraph [ref=e227]: Active Clinics
+              - generic [ref=e228]:
+                - generic [ref=e230]: 📅
+                - paragraph [ref=e231]: 4,850
+                - paragraph [ref=e232]: Total Appointments
+              - generic [ref=e233]:
+                - generic [ref=e235]: ⚠️
+                - paragraph [ref=e236]: "12"
+                - paragraph [ref=e237]: Issues Reported
+            - generic [ref=e238]:
+              - generic [ref=e239]:
+                - generic [ref=e240]:
+                  - heading "Quick Links" [level=2] [ref=e241]
+                  - generic [ref=e242]:
+                    - link "👥 User Management" [ref=e243] [cursor=pointer]:
+                      - /url: /platform-admin/users
+                      - generic [ref=e244]: 👥
+                      - generic [ref=e245]: User Management
+                    - link "📝 Audit Logs" [ref=e246] [cursor=pointer]:
+                      - /url: /platform-admin/audit
+                      - generic [ref=e247]: 📝
+                      - generic [ref=e248]: Audit Logs
+                    - link "🏥 Clinics" [ref=e249] [cursor=pointer]:
+                      - /url: /clinic-admin/clinics
+                      - generic [ref=e250]: 🏥
+                      - generic [ref=e251]: Clinics
+                    - link "📊 Analytics" [ref=e252] [cursor=pointer]:
+                      - /url: /platform-admin/users
+                      - generic [ref=e253]: 📊
+                      - generic [ref=e254]: Analytics
+                    - link "⚙️ System Config" [ref=e255] [cursor=pointer]:
+                      - /url: /settings
+                      - generic [ref=e256]: ⚙️
+                      - generic [ref=e257]: System Config
+                    - link "📢 Content Moderation" [ref=e258] [cursor=pointer]:
+                      - /url: /platform-admin/users
+                      - generic [ref=e259]: 📢
+                      - generic [ref=e260]: Content Moderation
+                    - link "🔒 Security" [ref=e261] [cursor=pointer]:
+                      - /url: /platform-admin/audit
+                      - generic [ref=e262]: 🔒
+                      - generic [ref=e263]: Security
+                    - link "💾 Backups" [ref=e264] [cursor=pointer]:
+                      - /url: /platform-admin/audit
+                      - generic [ref=e265]: 💾
+                      - generic [ref=e266]: Backups
+                - generic [ref=e267]:
+                  - generic [ref=e268]:
+                    - heading "Recent Platform Activity" [level=2] [ref=e269]
+                    - link "View all" [ref=e270] [cursor=pointer]:
+                      - /url: /platform-admin/audit
+                  - generic [ref=e271]:
+                    - generic [ref=e272]:
+                      - generic [ref=e274]: 👤
+                      - generic [ref=e275]:
+                        - paragraph [ref=e276]: "New user registered: Michael Brown"
+                        - paragraph [ref=e277]: 2 minutes ago
+                    - generic [ref=e278]:
+                      - generic [ref=e280]: 🏥
+                      - generic [ref=e281]:
+                        - paragraph [ref=e282]: "Clinic added: PediAi Downtown"
+                        - paragraph [ref=e283]: 1 hour ago
+                    - generic [ref=e284]:
+                      - generic [ref=e286]: ⚠️
+                      - generic [ref=e287]:
+                        - paragraph [ref=e288]: "User suspended: David Wilson"
+                        - paragraph [ref=e289]: 3 hours ago
+                    - generic [ref=e290]:
+                      - generic [ref=e292]: 🔐
+                      - generic [ref=e293]:
+                        - paragraph [ref=e294]: "Admin login: Platform Admin"
+                        - paragraph [ref=e295]: 5 hours ago
+                    - generic [ref=e296]:
+                      - generic [ref=e298]: 📊
+                      - generic [ref=e299]:
+                        - paragraph [ref=e300]: Monthly report generated
+                        - paragraph [ref=e301]: 1 day ago
+              - generic [ref=e302]:
+                - generic [ref=e303]:
+                  - generic [ref=e304]:
+                    - heading "Alerts" [level=2] [ref=e305]
+                    - generic [ref=e306]: "3"
+                  - generic [ref=e307]:
+                    - generic [ref=e309]:
+                      - generic [ref=e310]: ⚠️
+                      - generic [ref=e311]:
+                        - paragraph [ref=e312]: Storage Warning
+                        - paragraph [ref=e313]: Storage usage at 75%. Consider expanding capacity.
+                        - paragraph [ref=e314]: 11h ago
+                    - generic [ref=e316]:
+                      - generic [ref=e317]: ℹ️
+                      - generic [ref=e318]:
+                        - paragraph [ref=e319]: New Clinic Registration
+                        - paragraph [ref=e320]: PediAi Downtown submitted registration for review.
+                        - paragraph [ref=e321]: 1d ago
+                    - generic [ref=e323]:
+                      - generic [ref=e324]: ❌
+                      - generic [ref=e325]:
+                        - paragraph [ref=e326]: API Rate Limit
+                        - paragraph [ref=e327]: API rate limit reached for /api/vaccinations endpoint.
+                        - paragraph [ref=e328]: 2d ago
+                - generic [ref=e329]:
+                  - heading "System Health" [level=2] [ref=e330]
+                  - generic [ref=e331]:
+                    - generic [ref=e333]:
+                      - generic [ref=e334]: Server Status
+                      - generic [ref=e335]: Healthy
+                    - generic [ref=e339]:
+                      - generic [ref=e340]: Database
+                      - generic [ref=e341]: Healthy
+                    - generic [ref=e345]:
+                      - generic [ref=e346]: Storage
+                      - generic [ref=e347]: 75% Used
+                    - generic [ref=e351]:
+                      - generic [ref=e352]: API Response
+                      - generic [ref=e353]: 45ms avg

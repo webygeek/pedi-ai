@@ -1,0 +1,172 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e3]:
+      - generic [ref=e4]:
+        - link "Pedi·Ai" [ref=e6] [cursor=pointer]:
+          - /url: /dashboard
+          - generic [ref=e7]: Pedi·Ai
+        - generic [ref=e9]:
+          - button "Parent" [ref=e10] [cursor=pointer]
+          - button "Clinician" [ref=e11] [cursor=pointer]
+        - generic [ref=e12]:
+          - generic [ref=e13]:
+            - img [ref=e15]
+            - generic [ref=e19]:
+              - paragraph [ref=e20]: Aarav Sharma
+              - paragraph [ref=e21]: 2 years 4 months
+          - generic [ref=e22]:
+            - generic [ref=e23]: Weight
+            - generic [ref=e24]: 12.5 kg
+        - navigation [ref=e25]:
+          - generic [ref=e26]:
+            - heading "Main" [level=3] [ref=e27]
+            - list [ref=e28]:
+              - listitem [ref=e29]:
+                - link "Dashboard" [ref=e30] [cursor=pointer]:
+                  - /url: /dashboard
+                  - img [ref=e32]
+                  - generic [ref=e34]: Dashboard
+              - listitem [ref=e35]:
+                - link "Symptom Check" [ref=e36] [cursor=pointer]:
+                  - /url: /symptom-check
+                  - img [ref=e38]
+                  - generic [ref=e40]: Symptom Check
+              - listitem [ref=e41]:
+                - link "Growth Charts" [ref=e42] [cursor=pointer]:
+                  - /url: /growth-charts
+                  - img [ref=e44]
+                  - generic [ref=e46]: Growth Charts
+              - listitem [ref=e47]:
+                - link "Dosage Calculator" [ref=e48] [cursor=pointer]:
+                  - /url: /dosage-calculator
+                  - img [ref=e50]
+                  - generic [ref=e52]: Dosage Calculator
+              - listitem [ref=e53]:
+                - link "Emergency Guide" [ref=e54] [cursor=pointer]:
+                  - /url: /emergency
+                  - img [ref=e56]
+                  - generic [ref=e58]: Emergency Guide
+          - generic [ref=e59]:
+            - heading "Child Health" [level=3] [ref=e60]
+            - list [ref=e61]:
+              - listitem [ref=e62]:
+                - link "Milestones" [ref=e63] [cursor=pointer]:
+                  - /url: /milestones
+                  - img [ref=e65]
+                  - generic [ref=e67]: Milestones
+              - listitem [ref=e68]:
+                - link "Vaccinations" [ref=e69] [cursor=pointer]:
+                  - /url: /vaccinations
+                  - img [ref=e71]
+                  - generic [ref=e73]: Vaccinations
+              - listitem [ref=e74]:
+                - link "Medical History" [ref=e75] [cursor=pointer]:
+                  - /url: /medical-history
+                  - img [ref=e77]
+                  - generic [ref=e79]: Medical History
+              - listitem [ref=e80]:
+                - link "Medicine Cabinet" [ref=e81] [cursor=pointer]:
+                  - /url: /medicine-cabinet
+                  - img [ref=e83]
+                  - generic [ref=e85]: Medicine Cabinet
+          - generic [ref=e86]:
+            - heading "Account" [level=3] [ref=e87]
+            - list [ref=e88]:
+              - listitem [ref=e89]:
+                - link "AI Consultant" [ref=e90] [cursor=pointer]:
+                  - /url: /consultant
+                  - img [ref=e92]
+                  - generic [ref=e95]: AI Consultant
+              - listitem [ref=e96]:
+                - link "Add Child" [ref=e97] [cursor=pointer]:
+                  - /url: /add-child
+                  - img [ref=e99]
+                  - generic [ref=e101]: Add Child
+        - generic [ref=e103]:
+          - img [ref=e105]
+          - generic [ref=e107]:
+            - paragraph [ref=e108]: 7 Day Streak
+            - paragraph [ref=e109]: Keep tracking daily!
+        - link "Emergency Guide" [ref=e111] [cursor=pointer]:
+          - /url: /emergency
+          - img [ref=e112]
+          - text: Emergency Guide
+    - generic [ref=e114]:
+      - banner [ref=e115]:
+        - generic [ref=e116]:
+          - paragraph [ref=e118]: Monday, 8 June 2026
+          - generic [ref=e120]:
+            - generic:
+              - img
+            - textbox "Search symptoms, meds..." [ref=e121]
+          - generic [ref=e122]:
+            - img [ref=e123]
+            - generic [ref=e125]: IAP Clinically Reviewed
+          - button [ref=e126] [cursor=pointer]:
+            - img [ref=e127]
+      - main [ref=e130]:
+        - generic [ref=e132]:
+          - generic [ref=e133]:
+            - generic [ref=e134]:
+              - generic [ref=e135]:
+                - img [ref=e137]
+                - generic [ref=e139]:
+                  - heading "AI Symptom Triage" [level=1] [ref=e140]
+                  - paragraph [ref=e141]: Med-PaLM powered assessment for your child
+              - generic [ref=e142]:
+                - generic [ref=e143]:
+                  - img [ref=e144]
+                  - generic [ref=e146]: 0:00
+                - button "Save for later" [ref=e147] [cursor=pointer]:
+                  - img [ref=e148]
+                  - text: Save for later
+            - generic [ref=e151]:
+              - generic [ref=e152]:
+                - generic [ref=e153]: "1"
+                - generic [ref=e154]: Body Area
+              - generic [ref=e156]:
+                - generic [ref=e157]: "2"
+                - generic [ref=e158]: Symptoms
+              - generic [ref=e160]:
+                - generic [ref=e161]: "3"
+                - generic [ref=e162]: Questions
+              - generic [ref=e164]:
+                - generic [ref=e165]: "4"
+                - generic [ref=e166]: Results
+          - generic [ref=e168]:
+            - generic [ref=e169]:
+              - img [ref=e171]
+              - heading "Where does it hurt?" [level=2] [ref=e173]
+              - paragraph [ref=e174]: Select the body area where your child is experiencing symptoms
+            - generic [ref=e175]:
+              - button "🧠 Head & Face Head, Eyes, Ears, Nose, Mouth" [ref=e176] [cursor=pointer]:
+                - generic [ref=e177]: 🧠
+                - generic [ref=e178]: Head & Face
+                - generic [ref=e179]: Head, Eyes, Ears, Nose, Mouth
+              - button "🫁 Chest & Breathing Chest, Lungs, Heart" [ref=e180] [cursor=pointer]:
+                - generic [ref=e181]: 🫁
+                - generic [ref=e182]: Chest & Breathing
+                - generic [ref=e183]: Chest, Lungs, Heart
+              - button "🤢 Stomach & Digestion Stomach, Intestines, Liver" [ref=e184] [cursor=pointer]:
+                - generic [ref=e185]: 🤢
+                - generic [ref=e186]: Stomach & Digestion
+                - generic [ref=e187]: Stomach, Intestines, Liver
+              - button "🩹 Skin & Rashes Skin, Rash, Bumps" [ref=e188] [cursor=pointer]:
+                - generic [ref=e189]: 🩹
+                - generic [ref=e190]: Skin & Rashes
+                - generic [ref=e191]: Skin, Rash, Bumps
+              - button "🦴 Arms & Legs Arms, Legs, Joints, Muscles" [ref=e192] [cursor=pointer]:
+                - generic [ref=e193]: 🦴
+                - generic [ref=e194]: Arms & Legs
+                - generic [ref=e195]: Arms, Legs, Joints, Muscles
+              - button "🌡️ General / Whole Body Fever, Fatigue, All Over" [ref=e196] [cursor=pointer]:
+                - generic [ref=e197]: 🌡️
+                - generic [ref=e198]: General / Whole Body
+                - generic [ref=e199]: Fever, Fatigue, All Over
+            - button "Continue" [disabled] [ref=e201]:
+              - text: Continue
+              - img [ref=e202]
+          - generic [ref=e204]:
+            - img [ref=e206]
+            - generic [ref=e208]: Powered by AAP (American Academy of Pediatrics) Guidelines
+  - alert [ref=e209]

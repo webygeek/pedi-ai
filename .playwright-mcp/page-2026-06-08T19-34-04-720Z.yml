@@ -1,0 +1,305 @@
+- generic [active] [ref=e1]:
+  - alert [ref=e238]
+  - generic [ref=e239]:
+    - complementary [ref=e240]:
+      - generic [ref=e241]:
+        - generic [ref=e242]:
+          - link "Pedi·Ai" [ref=e243] [cursor=pointer]:
+            - /url: /dashboard
+            - generic [ref=e244]: Pedi·Ai
+          - text: parent
+        - generic [ref=e245]:
+          - generic [ref=e246]:
+            - generic [ref=e247]: 👧
+            - generic [ref=e248]:
+              - paragraph [ref=e249]: Emma
+              - paragraph [ref=e250]: 1 year
+          - generic [ref=e251]:
+            - generic [ref=e252]:
+              - paragraph [ref=e253]: Weight
+              - paragraph [ref=e254]: 7.2 kg
+            - generic [ref=e255]:
+              - paragraph [ref=e256]: Height
+              - paragraph [ref=e257]: 68 cm
+          - generic [ref=e259]: Reflux
+        - generic [ref=e260]:
+          - paragraph [ref=e261]: "Other children:"
+          - generic [ref=e263]:
+            - generic [ref=e264]: 👦
+            - generic [ref=e265]: Oliver
+        - navigation [ref=e266]:
+          - generic [ref=e267]:
+            - heading "Main" [level=3] [ref=e268]
+            - list [ref=e269]:
+              - listitem [ref=e270]:
+                - link "Dashboard" [ref=e271] [cursor=pointer]:
+                  - /url: /dashboard
+                  - img [ref=e273]
+                  - generic [ref=e275]: Dashboard
+              - listitem [ref=e276]:
+                - link "Symptom Check" [ref=e277] [cursor=pointer]:
+                  - /url: /symptom-check
+                  - img [ref=e279]
+                  - generic [ref=e281]: Symptom Check
+              - listitem [ref=e282]:
+                - link "Growth Charts" [ref=e283] [cursor=pointer]:
+                  - /url: /growth-charts
+                  - img [ref=e285]
+                  - generic [ref=e287]: Growth Charts
+              - listitem [ref=e288]:
+                - link "Dosage Calculator" [ref=e289] [cursor=pointer]:
+                  - /url: /dosage-calculator
+                  - img [ref=e291]
+                  - generic [ref=e293]: Dosage Calculator
+              - listitem [ref=e294]:
+                - link "Emergency Guide" [ref=e295] [cursor=pointer]:
+                  - /url: /emergency
+                  - img [ref=e297]
+                  - generic [ref=e299]: Emergency Guide
+          - generic [ref=e300]:
+            - heading "Child Health" [level=3] [ref=e301]
+            - list [ref=e302]:
+              - listitem [ref=e303]:
+                - link "Milestones" [ref=e304] [cursor=pointer]:
+                  - /url: /milestones
+                  - img [ref=e306]
+                  - generic [ref=e308]: Milestones
+              - listitem [ref=e309]:
+                - link "Vaccinations" [ref=e310] [cursor=pointer]:
+                  - /url: /vaccinations
+                  - img [ref=e312]
+                  - generic [ref=e314]: Vaccinations
+              - listitem [ref=e315]:
+                - link "Medical History" [ref=e316] [cursor=pointer]:
+                  - /url: /medical-history
+                  - img [ref=e318]
+                  - generic [ref=e320]: Medical History
+              - listitem [ref=e321]:
+                - link "Medicine Cabinet" [ref=e322] [cursor=pointer]:
+                  - /url: /medicine-cabinet
+                  - img [ref=e324]
+                  - generic [ref=e326]: Medicine Cabinet
+          - generic [ref=e327]:
+            - heading "Family & Support" [level=3] [ref=e328]
+            - list [ref=e329]:
+              - listitem [ref=e330]:
+                - link "Caregiver Access" [ref=e331] [cursor=pointer]:
+                  - /url: /caregiver
+                  - img [ref=e333]
+                  - generic [ref=e335]: Caregiver Access
+              - listitem [ref=e336]:
+                - link "AI Consultant" [ref=e337] [cursor=pointer]:
+                  - /url: /ai-consultant
+                  - img [ref=e339]
+                  - generic [ref=e342]: AI Consultant
+              - listitem [ref=e343]:
+                - link "Add Child" [ref=e344] [cursor=pointer]:
+                  - /url: /add-child
+                  - img [ref=e346]
+                  - generic [ref=e348]: Add Child
+          - generic [ref=e349]:
+            - heading "Scheduling" [level=3] [ref=e350]
+            - list [ref=e351]:
+              - listitem [ref=e352]:
+                - link "Appointments" [ref=e353] [cursor=pointer]:
+                  - /url: /appointments
+                  - img [ref=e355]
+                  - generic [ref=e357]: Appointments
+              - listitem [ref=e358]:
+                - link "Reports" [ref=e359] [cursor=pointer]:
+                  - /url: /reports
+                  - img [ref=e361]
+                  - generic [ref=e363]: Reports
+              - listitem [ref=e364]:
+                - link "Notifications" [ref=e365] [cursor=pointer]:
+                  - /url: /notifications
+                  - img [ref=e367]
+                  - generic [ref=e369]: Notifications
+        - generic [ref=e371]:
+          - img [ref=e373]
+          - generic [ref=e375]:
+            - paragraph [ref=e376]: 7 Day Streak
+            - paragraph [ref=e377]: Keep tracking daily!
+        - link "Emergency Guide" [ref=e379] [cursor=pointer]:
+          - /url: /emergency
+          - img [ref=e380]
+          - text: Emergency Guide
+    - generic [ref=e382]:
+      - banner [ref=e383]:
+        - generic [ref=e384]:
+          - paragraph [ref=e386]: Tuesday, 9 June 2026
+          - generic [ref=e388]:
+            - generic:
+              - img
+            - textbox "Search symptoms, meds..." [ref=e389]
+          - generic [ref=e390]:
+            - img [ref=e391]
+            - generic [ref=e393]: IAP Reviewed
+          - link [ref=e394] [cursor=pointer]:
+            - /url: /notifications
+            - img [ref=e395]
+          - button "👧 Sarah Mitchell Emma, 11mo" [ref=e399] [cursor=pointer]:
+            - generic [ref=e401]: 👧
+            - generic [ref=e402]:
+              - paragraph [ref=e403]: Sarah Mitchell
+              - paragraph [ref=e404]: Emma, 11mo
+            - img [ref=e405]
+      - main [ref=e407]:
+        - generic [ref=e409]:
+          - generic [ref=e411]:
+            - generic [ref=e412]: 👧
+            - generic [ref=e413]:
+              - heading "Good morning, Sarah!" [level=1] [ref=e414]
+              - paragraph [ref=e415]: Here's Emma's health summary for today.
+          - generic [ref=e416]:
+            - generic [ref=e418]:
+              - generic [ref=e419]:
+                - paragraph [ref=e420]: Weight
+                - paragraph [ref=e421]: 7.2 kg
+              - generic [ref=e422]:
+                - img [ref=e423]
+                - text: +0.4 kg
+            - generic [ref=e426]:
+              - generic [ref=e427]:
+                - paragraph [ref=e428]: Height
+                - paragraph [ref=e429]: 68 cm
+              - generic [ref=e430]:
+                - img [ref=e431]
+                - text: +2.0 cm
+            - generic [ref=e435]:
+              - paragraph [ref=e436]: Age
+              - paragraph [ref=e437]: 1 year
+            - generic [ref=e438]:
+              - generic [ref=e440]:
+                - paragraph [ref=e441]: Alerts
+                - paragraph [ref=e442]: "3"
+              - generic [ref=e445]: Action needed
+          - generic [ref=e446]:
+            - generic [ref=e448]:
+              - generic [ref=e449]:
+                - generic [ref=e450]:
+                  - img [ref=e452]
+                  - heading "Recent Health Log" [level=2] [ref=e454]
+                - link "View all" [ref=e455] [cursor=pointer]:
+                  - /url: /medical-history
+                  - text: View all
+                  - img [ref=e456]
+              - generic [ref=e458]:
+                - generic [ref=e459]:
+                  - img [ref=e461]
+                  - generic [ref=e463]:
+                    - generic [ref=e464]:
+                      - paragraph [ref=e465]: Low-grade fever
+                      - generic [ref=e466]: resolved
+                    - paragraph [ref=e467]: "Temperature: 100.2°F, Duration: 1 day"
+                    - paragraph [ref=e468]: Jun 5, 09:30 AM
+                - generic [ref=e469]:
+                  - img [ref=e471]
+                  - generic [ref=e474]:
+                    - generic [ref=e475]:
+                      - paragraph [ref=e476]: Acetaminophen given
+                      - generic [ref=e477]: resolved
+                    - paragraph [ref=e478]: 2.5ml for fever
+                    - paragraph [ref=e479]: Jun 5, 09:35 AM
+                - generic [ref=e480]:
+                  - img [ref=e482]
+                  - generic [ref=e484]:
+                    - generic [ref=e485]:
+                      - paragraph [ref=e486]: Wellness check
+                      - generic [ref=e487]: normal
+                    - paragraph [ref=e488]: Normal appetite, good sleep patterns, meeting milestones
+                    - paragraph [ref=e489]: Jun 1
+                - generic [ref=e490]:
+                  - img [ref=e492]
+                  - generic [ref=e494]:
+                    - generic [ref=e495]:
+                      - paragraph [ref=e496]: Congestion
+                      - generic [ref=e497]: resolved
+                    - paragraph [ref=e498]: Mild nasal congestion, no fever
+                    - paragraph [ref=e499]: May 28, 08:00 AM
+                - generic [ref=e500]:
+                  - img [ref=e502]
+                  - generic [ref=e504]:
+                    - generic [ref=e505]:
+                      - paragraph [ref=e506]: Pediatric checkup
+                      - generic [ref=e507]: normal
+                    - paragraph [ref=e508]: 6-month checkup. Growth on track. Vaccines administered.
+                    - paragraph [ref=e509]: Dec 15
+            - generic [ref=e511]:
+              - generic [ref=e512]:
+                - generic [ref=e513]:
+                  - img [ref=e515]
+                  - heading "Milestones Due" [level=2] [ref=e517]
+                - link "View all" [ref=e518] [cursor=pointer]:
+                  - /url: /milestones
+                  - text: View all
+                  - img [ref=e519]
+              - generic [ref=e521]:
+                - generic [ref=e525]:
+                  - paragraph [ref=e526]: Rolls over both ways
+                  - paragraph [ref=e527]: motor · Due Oct 15
+                - generic [ref=e531]:
+                  - paragraph [ref=e532]: Sits without support
+                  - paragraph [ref=e533]: motor · Due Jan 15
+                - generic [ref=e537]:
+                  - paragraph [ref=e538]: Babbles with consonants
+                  - paragraph [ref=e539]: language · Due Jan 15
+          - generic [ref=e541]:
+            - generic [ref=e542]:
+              - generic [ref=e543]:
+                - img [ref=e545]
+                - heading "Growth Progress" [level=2] [ref=e548]
+              - link "View details" [ref=e549] [cursor=pointer]:
+                - /url: /growth-charts
+                - text: View details
+                - img [ref=e550]
+            - generic [ref=e552]:
+              - generic [ref=e553]:
+                - generic [ref=e556]: 54cm
+                - generic [ref=e557]: Jul
+              - generic [ref=e558]:
+                - generic [ref=e561]: 58cm
+                - generic [ref=e562]: Aug
+              - generic [ref=e563]:
+                - generic [ref=e566]: 61cm
+                - generic [ref=e567]: Sep
+              - generic [ref=e568]:
+                - generic [ref=e571]: 64cm
+                - generic [ref=e572]: Oct
+              - generic [ref=e573]:
+                - generic [ref=e576]: 66cm
+                - generic [ref=e577]: Nov
+              - generic [ref=e578]:
+                - generic [ref=e581]: 68cm
+                - generic [ref=e582]: Jan
+            - generic [ref=e583]:
+              - generic [ref=e586]: Latest
+              - generic [ref=e589]: Previous
+          - generic [ref=e590]:
+            - heading "Quick Actions" [level=2] [ref=e591]
+            - generic [ref=e592]:
+              - link "Symptom Check AI-powered triage" [ref=e593] [cursor=pointer]:
+                - /url: /symptom-check
+                - img [ref=e595]
+                - heading "Symptom Check" [level=3] [ref=e598]
+                - paragraph [ref=e599]: AI-powered triage
+              - link "Growth Charts Track progress" [ref=e600] [cursor=pointer]:
+                - /url: /growth-charts
+                - img [ref=e602]
+                - heading "Growth Charts" [level=3] [ref=e605]
+                - paragraph [ref=e606]: Track progress
+              - link "Vaccinations Track immunizations" [ref=e607] [cursor=pointer]:
+                - /url: /vaccinations
+                - img [ref=e609]
+                - heading "Vaccinations" [level=3] [ref=e612]
+                - paragraph [ref=e613]: Track immunizations
+              - link "AI Consultant 24/7 support" [ref=e614] [cursor=pointer]:
+                - /url: /consultant
+                - img [ref=e616]
+                - heading "AI Consultant" [level=3] [ref=e619]
+                - paragraph [ref=e620]: 24/7 support
+          - generic [ref=e622]:
+            - img [ref=e624]
+            - generic [ref=e626]:
+              - strong [ref=e627]: IAP Clinically Reviewed
+              - text: · WHO Growth Standards

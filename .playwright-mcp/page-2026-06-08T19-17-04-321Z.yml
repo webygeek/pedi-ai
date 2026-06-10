@@ -1,0 +1,233 @@
+- generic [active] [ref=e1]:
+  - alert [ref=e120]
+  - generic [ref=e121]:
+    - complementary [ref=e122]:
+      - generic [ref=e123]:
+        - generic [ref=e124]:
+          - link "Pedi·Ai" [ref=e125] [cursor=pointer]:
+            - /url: /clinic-admin
+            - generic [ref=e126]: Pedi·Ai
+          - text: clinic admin
+        - navigation [ref=e127]:
+          - generic [ref=e128]:
+            - heading "Main" [level=3] [ref=e129]
+            - list [ref=e130]:
+              - listitem [ref=e131]:
+                - link "Dashboard" [ref=e132] [cursor=pointer]:
+                  - /url: /clinic-admin
+                  - img [ref=e134]
+                  - generic [ref=e136]: Dashboard
+              - listitem [ref=e137]:
+                - link "Staff" [ref=e138] [cursor=pointer]:
+                  - /url: /clinic-admin/staff
+                  - img [ref=e140]
+                  - generic [ref=e142]: Staff
+              - listitem [ref=e143]:
+                - link "Clinics" [ref=e144] [cursor=pointer]:
+                  - /url: /clinic-admin/clinics
+                  - img [ref=e146]
+                  - generic [ref=e148]: Clinics
+              - listitem [ref=e149]:
+                - link "Reports" [ref=e150] [cursor=pointer]:
+                  - /url: /clinic-admin/reports
+                  - img [ref=e152]
+                  - generic [ref=e154]: Reports
+          - generic [ref=e155]:
+            - heading "Management" [level=3] [ref=e156]
+            - list [ref=e157]:
+              - listitem [ref=e158]:
+                - link "Patients" [ref=e159] [cursor=pointer]:
+                  - /url: /clinic-admin/patients
+                  - img [ref=e161]
+                  - generic [ref=e163]: Patients
+              - listitem [ref=e164]:
+                - link "AI Consultant" [ref=e165] [cursor=pointer]:
+                  - /url: /ai-consultant
+                  - img [ref=e167]
+                  - generic [ref=e170]: AI Consultant
+          - generic [ref=e171]:
+            - heading "Settings" [level=3] [ref=e172]
+            - list [ref=e173]:
+              - listitem [ref=e174]:
+                - link "Notifications" [ref=e175] [cursor=pointer]:
+                  - /url: /notifications
+                  - img [ref=e177]
+                  - generic [ref=e179]: Notifications
+              - listitem [ref=e180]:
+                - link "Emergency Guide" [ref=e181] [cursor=pointer]:
+                  - /url: /emergency
+                  - img [ref=e183]
+                  - generic [ref=e185]: Emergency Guide
+        - link "Emergency Guide" [ref=e187] [cursor=pointer]:
+          - /url: /emergency
+          - img [ref=e188]
+          - text: Emergency Guide
+    - generic [ref=e190]:
+      - banner [ref=e191]:
+        - generic [ref=e192]:
+          - paragraph [ref=e194]: Tuesday, 9 June 2026
+          - generic [ref=e196]:
+            - generic:
+              - img
+            - textbox "Search symptoms, meds..." [ref=e197]
+          - generic [ref=e198]:
+            - img [ref=e199]
+            - generic [ref=e201]: IAP Reviewed
+          - link [ref=e202] [cursor=pointer]:
+            - /url: /notifications
+            - img [ref=e203]
+          - button "👧 Dr. Robert Kim Mia, 55mo" [ref=e207] [cursor=pointer]:
+            - generic [ref=e209]: 👧
+            - generic [ref=e210]:
+              - paragraph [ref=e211]: Dr. Robert Kim
+              - paragraph [ref=e212]: Mia, 55mo
+            - img [ref=e213]
+      - main [ref=e215]:
+        - generic [ref=e217]:
+          - generic [ref=e220]:
+            - generic [ref=e221]:
+              - heading "Welcome, Dr. Robert Kim" [level=1] [ref=e222]
+              - paragraph [ref=e223]: Clinic Administrator Dashboard
+            - generic [ref=e224]:
+              - generic [ref=e225]: Clinic Admin
+              - generic [ref=e227]: 🏥
+          - main [ref=e228]:
+            - generic [ref=e230]:
+              - generic [ref=e231]: "Active Clinic:"
+              - generic [ref=e233]:
+                - combobox [ref=e234]:
+                  - option "PediAi Main Clinic" [selected]
+                  - option "PediAi Downtown"
+                  - option "PediAi South Bay"
+                - generic:
+                  - img
+              - generic [ref=e235]: 123 Healthcare Ave, San Francisco, CA
+            - generic [ref=e236]:
+              - generic [ref=e237]:
+                - generic [ref=e239]: 👥
+                - paragraph [ref=e240]: 1,250
+                - paragraph [ref=e241]: Total Patients
+              - generic [ref=e242]:
+                - generic [ref=e244]: 👨‍⚕️
+                - paragraph [ref=e245]: "28"
+                - paragraph [ref=e246]: Staff Count
+              - generic [ref=e247]:
+                - generic [ref=e249]: 📅
+                - paragraph [ref=e250]: "24"
+                - paragraph [ref=e251]: Appointments Today
+              - generic [ref=e252]:
+                - generic [ref=e254]: 💰
+                - paragraph [ref=e255]: $45.0k
+                - paragraph [ref=e256]: Revenue This Month
+            - generic [ref=e257]:
+              - generic [ref=e258]:
+                - generic [ref=e259]:
+                  - heading "Quick Actions" [level=2] [ref=e260]
+                  - generic [ref=e261]:
+                    - link "👨‍⚕️ Add Staff" [ref=e262] [cursor=pointer]:
+                      - /url: /clinic-admin/staff
+                      - generic [ref=e263]: 👨‍⚕️
+                      - generic [ref=e264]: Add Staff
+                    - link "📊 View Reports" [ref=e265] [cursor=pointer]:
+                      - /url: /clinic-admin/reports
+                      - generic [ref=e266]: 📊
+                      - generic [ref=e267]: View Reports
+                    - link "🏥 Manage Clinics" [ref=e268] [cursor=pointer]:
+                      - /url: /clinic-admin/clinics
+                      - generic [ref=e269]: 🏥
+                      - generic [ref=e270]: Manage Clinics
+                    - link "📅 Schedule" [ref=e271] [cursor=pointer]:
+                      - /url: /doctor/appointments
+                      - generic [ref=e272]: 📅
+                      - generic [ref=e273]: Schedule
+                    - link "👥 Patients" [ref=e274] [cursor=pointer]:
+                      - /url: /doctor/patients
+                      - generic [ref=e275]: 👥
+                      - generic [ref=e276]: Patients
+                    - link "⚙️ Settings" [ref=e277] [cursor=pointer]:
+                      - /url: /settings
+                      - generic [ref=e278]: ⚙️
+                      - generic [ref=e279]: Settings
+                - generic [ref=e280]:
+                  - generic [ref=e281]:
+                    - heading "Recent Activity" [level=2] [ref=e282]
+                    - link "View all" [ref=e283] [cursor=pointer]:
+                      - /url: /clinic-admin/reports
+                  - generic [ref=e284]:
+                    - generic [ref=e285]:
+                      - generic [ref=e287]: 👶
+                      - generic [ref=e288]:
+                        - paragraph [ref=e289]: "New patient registered: Emma Thompson"
+                        - generic [ref=e290]:
+                          - generic [ref=e291]: System
+                          - generic [ref=e292]: 9h ago
+                    - generic [ref=e293]:
+                      - generic [ref=e295]: 📅
+                      - generic [ref=e296]:
+                        - paragraph [ref=e297]: Appointment booked for June 15th
+                        - generic [ref=e298]:
+                          - generic [ref=e299]: Parent
+                          - generic [ref=e300]: 9h ago
+                    - generic [ref=e301]:
+                      - generic [ref=e303]: 👨‍⚕️
+                      - generic [ref=e304]:
+                        - paragraph [ref=e305]: Dr. Sharma updated profile
+                        - generic [ref=e306]:
+                          - generic [ref=e307]: Dr. Sharma
+                          - generic [ref=e308]: 11h ago
+                    - generic [ref=e309]:
+                      - generic [ref=e311]: 💉
+                      - generic [ref=e312]:
+                        - paragraph [ref=e313]: 15 vaccinations administered today
+                        - generic [ref=e314]:
+                          - generic [ref=e315]: Nurses
+                          - generic [ref=e316]: 1d ago
+                    - generic [ref=e317]:
+                      - generic [ref=e319]: 📊
+                      - generic [ref=e320]:
+                        - paragraph [ref=e321]: Monthly report generated
+                        - generic [ref=e322]:
+                          - generic [ref=e323]: System
+                          - generic [ref=e324]: 1d ago
+                    - generic [ref=e325]:
+                      - generic [ref=e327]: 👶
+                      - generic [ref=e328]:
+                        - paragraph [ref=e329]: "New patient registered: Lucas Martinez"
+                        - generic [ref=e330]:
+                          - generic [ref=e331]: System
+                          - generic [ref=e332]: 2d ago
+              - generic [ref=e333]:
+                - generic [ref=e334]:
+                  - heading "Clinic Info" [level=2] [ref=e335]
+                  - generic [ref=e336]:
+                    - generic [ref=e337]:
+                      - generic [ref=e339]: 🏥
+                      - generic [ref=e340]:
+                        - paragraph [ref=e341]: PediAi Main Clinic
+                        - paragraph [ref=e342]: pediatric
+                    - generic [ref=e343]:
+                      - paragraph [ref=e344]: Address
+                      - paragraph [ref=e345]: 123 Healthcare Ave
+                      - paragraph [ref=e346]: San Francisco, CA
+                    - generic [ref=e347]:
+                      - generic [ref=e348]:
+                        - paragraph [ref=e349]: "1250"
+                        - paragraph [ref=e350]: Patients
+                      - generic [ref=e351]:
+                        - paragraph [ref=e352]: "28"
+                        - paragraph [ref=e353]: Staff
+                - generic [ref=e354]:
+                  - heading "Quick Links" [level=2] [ref=e355]
+                  - generic [ref=e356]:
+                    - link "👨‍⚕️ Staff Management" [ref=e357] [cursor=pointer]:
+                      - /url: /clinic-admin/staff
+                      - generic [ref=e358]: 👨‍⚕️
+                      - generic [ref=e359]: Staff Management
+                    - link "📊 Reports & Analytics" [ref=e360] [cursor=pointer]:
+                      - /url: /clinic-admin/reports
+                      - generic [ref=e361]: 📊
+                      - generic [ref=e362]: Reports & Analytics
+                    - link "🏢 All Clinics" [ref=e363] [cursor=pointer]:
+                      - /url: /clinic-admin/clinics
+                      - generic [ref=e364]: 🏢
+                      - generic [ref=e365]: All Clinics

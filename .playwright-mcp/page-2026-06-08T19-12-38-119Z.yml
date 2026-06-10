@@ -1,0 +1,147 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e5]:
+          - link "Pedi·Ai" [ref=e6] [cursor=pointer]:
+            - /url: /dashboard
+            - generic [ref=e7]: Pedi·Ai
+          - text: parent
+        - generic [ref=e8]:
+          - generic [ref=e9]:
+            - generic [ref=e10]: 👧
+            - generic [ref=e11]:
+              - paragraph [ref=e12]: Emma
+              - paragraph [ref=e13]: 1 year
+          - generic [ref=e14]:
+            - generic [ref=e15]:
+              - paragraph [ref=e16]: Weight
+              - paragraph [ref=e17]: 7.2 kg
+            - generic [ref=e18]:
+              - paragraph [ref=e19]: Height
+              - paragraph [ref=e20]: 68 cm
+          - generic [ref=e22]: Reflux
+        - generic [ref=e23]:
+          - paragraph [ref=e24]: "Other children:"
+          - generic [ref=e26]:
+            - generic [ref=e27]: 👦
+            - generic [ref=e28]: Oliver
+        - navigation [ref=e29]:
+          - generic [ref=e30]:
+            - heading "Main" [level=3] [ref=e31]
+            - list [ref=e32]:
+              - listitem [ref=e33]:
+                - link "Dashboard" [ref=e34] [cursor=pointer]:
+                  - /url: /dashboard
+                  - img [ref=e36]
+                  - generic [ref=e38]: Dashboard
+              - listitem [ref=e39]:
+                - link "Symptom Check" [ref=e40] [cursor=pointer]:
+                  - /url: /symptom-check
+                  - img [ref=e42]
+                  - generic [ref=e44]: Symptom Check
+              - listitem [ref=e45]:
+                - link "Growth Charts" [ref=e46] [cursor=pointer]:
+                  - /url: /growth-charts
+                  - img [ref=e48]
+                  - generic [ref=e50]: Growth Charts
+              - listitem [ref=e51]:
+                - link "Dosage Calculator" [ref=e52] [cursor=pointer]:
+                  - /url: /dosage-calculator
+                  - img [ref=e54]
+                  - generic [ref=e56]: Dosage Calculator
+              - listitem [ref=e57]:
+                - link "Emergency Guide" [ref=e58] [cursor=pointer]:
+                  - /url: /emergency
+                  - img [ref=e60]
+                  - generic [ref=e62]: Emergency Guide
+          - generic [ref=e63]:
+            - heading "Child Health" [level=3] [ref=e64]
+            - list [ref=e65]:
+              - listitem [ref=e66]:
+                - link "Milestones" [ref=e67] [cursor=pointer]:
+                  - /url: /milestones
+                  - img [ref=e69]
+                  - generic [ref=e71]: Milestones
+              - listitem [ref=e72]:
+                - link "Vaccinations" [ref=e73] [cursor=pointer]:
+                  - /url: /vaccinations
+                  - img [ref=e75]
+                  - generic [ref=e77]: Vaccinations
+              - listitem [ref=e78]:
+                - link "Medical History" [ref=e79] [cursor=pointer]:
+                  - /url: /medical-history
+                  - img [ref=e81]
+                  - generic [ref=e83]: Medical History
+              - listitem [ref=e84]:
+                - link "Medicine Cabinet" [ref=e85] [cursor=pointer]:
+                  - /url: /medicine-cabinet
+                  - img [ref=e87]
+                  - generic [ref=e89]: Medicine Cabinet
+          - generic [ref=e90]:
+            - heading "Family & Support" [level=3] [ref=e91]
+            - list [ref=e92]:
+              - listitem [ref=e93]:
+                - link "Caregiver Access" [ref=e94] [cursor=pointer]:
+                  - /url: /caregiver
+                  - img [ref=e96]
+                  - generic [ref=e98]: Caregiver Access
+              - listitem [ref=e99]:
+                - link "AI Consultant" [ref=e100] [cursor=pointer]:
+                  - /url: /ai-consultant
+                  - img [ref=e102]
+                  - generic [ref=e105]: AI Consultant
+              - listitem [ref=e106]:
+                - link "Add Child" [ref=e107] [cursor=pointer]:
+                  - /url: /add-child
+                  - img [ref=e109]
+                  - generic [ref=e111]: Add Child
+          - generic [ref=e112]:
+            - heading "Scheduling" [level=3] [ref=e113]
+            - list [ref=e114]:
+              - listitem [ref=e115]:
+                - link "Appointments" [ref=e116] [cursor=pointer]:
+                  - /url: /appointments
+                  - img [ref=e118]
+                  - generic [ref=e120]: Appointments
+              - listitem [ref=e121]:
+                - link "Reports" [ref=e122] [cursor=pointer]:
+                  - /url: /reports
+                  - img [ref=e124]
+                  - generic [ref=e126]: Reports
+              - listitem [ref=e127]:
+                - link "Notifications" [ref=e128] [cursor=pointer]:
+                  - /url: /notifications
+                  - img [ref=e130]
+                  - generic [ref=e132]: Notifications
+        - generic [ref=e134]:
+          - img [ref=e136]
+          - generic [ref=e138]:
+            - paragraph [ref=e139]: 7 Day Streak
+            - paragraph [ref=e140]: Keep tracking daily!
+        - link "Emergency Guide" [ref=e142] [cursor=pointer]:
+          - /url: /emergency
+          - img [ref=e143]
+          - text: Emergency Guide
+    - generic [ref=e145]:
+      - banner [ref=e146]:
+        - generic [ref=e147]:
+          - paragraph [ref=e149]: Tuesday, 9 June 2026
+          - generic [ref=e151]:
+            - generic:
+              - img
+            - textbox "Search symptoms, meds..." [ref=e152]
+          - generic [ref=e153]:
+            - img [ref=e154]
+            - generic [ref=e156]: IAP Reviewed
+          - link [ref=e157] [cursor=pointer]:
+            - /url: /notifications
+            - img [ref=e158]
+          - button "👧 Sarah Mitchell Emma, 11mo" [ref=e162] [cursor=pointer]:
+            - generic [ref=e164]: 👧
+            - generic [ref=e165]:
+              - paragraph [ref=e166]: Sarah Mitchell
+              - paragraph [ref=e167]: Emma, 11mo
+            - img [ref=e168]
+      - main [ref=e170]
+  - alert [ref=e175]

@@ -1,0 +1,367 @@
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  .db{font-family:'Inter',sans-serif;background:#e8efee;border-radius:14px;overflow:hidden;border:0.5px solid #b8d0cc;}
+  .db-layout{display:flex;min-height:580px;}
+
+  .sb{width:200px;background:#2c4a45;flex-shrink:0;display:flex;flex-direction:column;}
+  .sb-logo{padding:18px 16px 14px;border-bottom:0.5px solid rgba(255,255,255,0.08);}
+  .sb-logo-name{font-family:'Playfair Display',serif;font-size:19px;color:#fff;font-weight:400;letter-spacing:0.01em;}
+  .sb-logo-tag{font-size:8px;color:rgba(255,255,255,0.38);margin-top:3px;letter-spacing:0.08em;text-transform:uppercase;}
+  .sb-role{margin:12px 12px 0;display:flex;background:rgba(255,255,255,0.08);border-radius:8px;padding:3px;}
+  .sb-role-btn{flex:1;text-align:center;font-size:9px;padding:4px 0;border-radius:6px;color:rgba(255,255,255,0.5);cursor:pointer;font-weight:500;}
+  .sb-role-btn.active{background:rgba(255,255,255,0.15);color:#fff;}
+  .sb-child{margin:10px 12px 6px;background:rgba(120,185,170,0.18);border-radius:10px;padding:8px 10px;display:flex;align-items:center;gap:8px;}
+  .sb-av{width:28px;height:28px;border-radius:50%;background:#c04f7a;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-weight:500;flex-shrink:0;}
+  .sb-cname{font-size:11px;font-weight:500;color:#fff;}
+  .sb-cage{font-size:8px;color:rgba(255,255,255,0.5);}
+  .sb-nav{padding:10px 0;flex:1;}
+  .sb-sec{font-size:8px;color:rgba(255,255,255,0.3);letter-spacing:0.1em;text-transform:uppercase;padding:10px 16px 4px;}
+  .sb-ni{display:flex;align-items:center;gap:9px;padding:8px 16px;font-size:11px;color:rgba(255,255,255,0.5);cursor:pointer;transition:all 0.15s;}
+  .sb-ni:hover{color:rgba(255,255,255,0.8);}
+  .sb-ni.active{background:rgba(120,185,170,0.2);color:#a8d5c8;border-left:2px solid #7bada6;}
+  .sb-ni-icon{width:14px;height:14px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:9px;background:rgba(255,255,255,0.08);flex-shrink:0;}
+  .sb-streak{margin:8px 12px;background:rgba(240,153,123,0.18);border-radius:8px;padding:8px 10px;display:flex;align-items:center;gap:7px;}
+  .sb-streak-flame{font-size:14px;}
+  .sb-streak-text{font-size:9px;color:#f0997b;font-weight:500;}
+  .sb-streak-sub{font-size:8px;color:rgba(240,153,123,0.7);}
+  .sb-emer{margin:0 12px 14px;background:#9e3535;border-radius:8px;padding:8px 10px;text-align:center;font-size:10px;font-weight:500;color:#ffb3b3;}
+
+  .main{flex:1;background:#faf8f5;display:flex;flex-direction:column;overflow:hidden;}
+  .topbar{background:#faf8f5;border-bottom:0.5px solid #dce8e5;padding:10px 22px;display:flex;justify-content:space-between;align-items:center;}
+  .topbar-date{font-size:10px;color:#8aada8;}
+  .topbar-right{display:flex;gap:8px;align-items:center;}
+  .topbar-search{background:#fff;border:0.5px solid #c5d8d4;border-radius:20px;padding:6px 14px;font-size:10px;color:#9abbb7;width:170px;}
+  .topbar-trust{display:flex;align-items:center;gap:5px;background:#e8f0ee;border-radius:20px;padding:4px 10px;}
+  .topbar-trust-dot{width:6px;height:6px;border-radius:50%;background:#7bada6;flex-shrink:0;}
+  .topbar-trust-text{font-size:9px;color:#2c5f58;font-weight:500;}
+  .topbar-notif{width:30px;height:30px;border-radius:50%;background:#f0f4f3;display:flex;align-items:center;justify-content:center;font-size:11px;color:#7bada6;}
+
+  .content{padding:0;flex:1;overflow:hidden;}
+
+  .hero{background:#fff;border-bottom:0.5px solid #dce8e5;padding:16px 22px 14px;display:flex;justify-content:space-between;align-items:flex-start;}
+  .hero-left{}
+  .hero-greeting{font-size:10px;color:#8aada8;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:4px;}
+  .hero-name{font-family:'Playfair Display',serif;font-size:26px;color:#2c4a45;font-weight:400;line-height:1.1;margin-bottom:3px;}
+  .hero-name em{font-style:italic;color:#7bada6;}
+  .hero-sub{font-size:11px;color:#8aada8;line-height:1.5;}
+  .hero-cta{display:flex;flex-direction:column;align-items:flex-end;gap:8px;}
+  .hero-btn{background:#c04f7a;border-radius:999px;padding:9px 18px;font-size:11px;font-weight:500;color:#fff;white-space:nowrap;}
+  .hero-btn-sub{font-size:9px;color:#a8d5c8;text-align:right;}
+
+  .nba{background:#fff7f0;border-bottom:0.5px solid #f0d5c4;padding:10px 22px;display:flex;justify-content:space-between;align-items:center;}
+  .nba-left{display:flex;gap:10px;align-items:center;}
+  .nba-icon{width:30px;height:30px;border-radius:8px;background:#faeeda;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
+  .nba-title{font-size:11px;font-weight:500;color:#2c4a45;}
+  .nba-sub{font-size:9px;color:#b07850;margin-top:1px;}
+  .nba-btn{background:#c04f7a;border-radius:999px;padding:5px 14px;font-size:10px;font-weight:500;color:#fff;white-space:nowrap;}
+
+  .inner{padding:16px 22px;}
+  .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:14px;}
+  .stat{background:#fff;border:0.5px solid #dce8e5;border-radius:10px;padding:11px 12px;position:relative;}
+  .stat-lbl{font-size:8px;color:#8aada8;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:5px;}
+  .stat-val{font-family:'Playfair Display',serif;font-size:22px;color:#2c4a45;font-weight:400;line-height:1;}
+  .stat-unit{font-size:10px;color:#8aada8;font-family:'Inter',sans-serif;}
+  .stat-sub{font-size:8px;color:#8aada8;margin-top:4px;}
+  .stat-badge{display:inline-block;padding:2px 7px;border-radius:999px;font-size:8px;font-weight:500;margin-top:5px;}
+  .stat-highlight{border-color:#c04f7a;background:#fff8fb;}
+  .stat-accent-bar{position:absolute;top:0;left:0;right:0;height:2px;border-radius:10px 10px 0 0;}
+
+  .bottom{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .card{background:#fff;border:0.5px solid #dce8e5;border-radius:10px;padding:13px;}
+  .card-hd{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:11px;}
+  .card-title{font-family:'Playfair Display',serif;font-size:14px;color:#2c4a45;font-weight:400;}
+  .card-link{font-size:9px;color:#7bada6;cursor:pointer;}
+
+  .log-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:0.5px solid #edf2f1;}
+  .log-row:last-child{border-bottom:none;}
+  .log-row.urgent{background:#fff9f0;margin:0 -13px;padding:6px 13px;}
+  .log-icon{width:24px;height:24px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;}
+  .log-name{font-size:10px;color:#2c4a45;font-weight:500;}
+  .log-sub{font-size:8px;color:#8aada8;}
+  .badge{display:inline-block;padding:2px 8px;border-radius:999px;font-size:8px;font-weight:500;}
+  .bg{background:#e8f0ee;color:#2c5f58;}
+  .ba{background:#faeeda;color:#7a4e00;}
+  .br{background:#fde8e8;color:#8c2020;}
+  .bp{background:#fbeaf0;color:#7a1040;}
+
+  .chart-wrap{position:relative;}
+  .chart-band{display:flex;flex-direction:column;gap:0;margin-bottom:4px;}
+  .chart-area{position:relative;height:80px;background:#f6faf9;border-radius:6px;overflow:hidden;margin-bottom:4px;}
+  .chart-band-50{position:absolute;left:0;right:0;top:20%;height:30%;background:#e1f5ee;opacity:0.6;}
+  .chart-bars-inner{position:absolute;bottom:0;left:0;right:0;display:flex;align-items:flex-end;gap:4px;padding:0 6px;}
+  .cbar{flex:1;border-radius:2px 2px 0 0;transition:height 0.8s ease;}
+  .chart-insight{font-size:9px;color:#2c5f58;background:#e8f0ee;border-radius:6px;padding:5px 8px;margin-top:4px;}
+  .chart-lbls{display:flex;gap:4px;padding:0 6px;}
+  .chart-lbl{flex:1;font-size:7px;color:#8aada8;text-align:center;}
+
+  .ms-row{display:flex;align-items:flex-start;gap:9px;padding:6px 0;border-bottom:0.5px solid #edf2f1;}
+  .ms-row:last-child{border-bottom:none;}
+  .ms-check{width:15px;height:15px;border-radius:50%;border:1.5px solid #c5d8d4;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;}
+  .ms-check.done{background:#7bada6;border-color:#7bada6;}
+  .ms-check-tick{font-size:8px;color:#fff;}
+  .ms-name{font-size:10px;color:#2c4a45;font-weight:500;}
+  .ms-sub{font-size:8px;color:#8aada8;}
+  .ms-due{font-size:8px;color:#c04f7a;font-weight:500;}
+
+  .trust-footer{background:#f0f4f3;border-top:0.5px solid #dce8e5;padding:7px 22px;display:flex;align-items:center;gap:16px;}
+  .trust-item{display:flex;align-items:center;gap:5px;}
+  .trust-dot{width:5px;height:5px;border-radius:50%;background:#7bada6;flex-shrink:0;}
+  .trust-text{font-size:9px;color:#5a8a82;}
+
+  .anim-in{animation:fadeUp 0.4s ease both;}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+  .d1{animation-delay:0.05s;} .d2{animation-delay:0.1s;} .d3{animation-delay:0.15s;} .d4{animation-delay:0.2s;}
+  .d5{animation-delay:0.25s;} .d6{animation-delay:0.3s;} .d7{animation-delay:0.35s;}
+</style>
+
+<h2 class="sr-only">Redesigned Pedi-Ai web dashboard with trust signals, hero welcome, annotated growth chart, role switcher, and engagement hooks</h2>
+
+<div class="db">
+  <div class="db-layout">
+
+    <div class="sb">
+      <div class="sb-logo">
+        <div class="sb-logo-name">Pedi·Ai</div>
+        <div class="sb-logo-tag">Pediatric intelligence</div>
+      </div>
+      <div class="sb-role">
+        <div class="sb-role-btn active">Parent</div>
+        <div class="sb-role-btn">Clinician</div>
+      </div>
+      <div class="sb-child">
+        <div class="sb-av">A</div>
+        <div>
+          <div class="sb-cname">Arjun</div>
+          <div class="sb-cage">14 months · 10.2 kg</div>
+        </div>
+      </div>
+      <div class="sb-nav">
+        <div class="sb-sec">Main</div>
+        <div class="sb-ni active"><div class="sb-ni-icon">&#9632;</div>Dashboard</div>
+        <div class="sb-ni"><div class="sb-ni-icon">&#9632;</div>Symptom check</div>
+        <div class="sb-ni"><div class="sb-ni-icon">&#9632;</div>Growth charts</div>
+        <div class="sb-ni"><div class="sb-ni-icon">&#9632;</div>Dosage calculator</div>
+        <div class="sb-sec">Child health</div>
+        <div class="sb-ni"><div class="sb-ni-icon">&#9632;</div>Milestones</div>
+        <div class="sb-ni"><div class="sb-ni-icon">&#9632;</div>Vaccinations</div>
+        <div class="sb-ni"><div class="sb-ni-icon">&#9632;</div>Medical history</div>
+        <div class="sb-ni"><div class="sb-ni-icon">&#9632;</div>Health log</div>
+        <div class="sb-sec">Account</div>
+        <div class="sb-ni"><div class="sb-ni-icon">&#9632;</div>Add another child</div>
+      </div>
+      <div class="sb-streak">
+        <div style="font-size:14px;">&#128293;</div>
+        <div>
+          <div class="sb-streak-text">5-day streak!</div>
+          <div class="sb-streak-sub">Keep logging Arjun's health</div>
+        </div>
+      </div>
+      <div class="sb-emer">Emergency guide</div>
+    </div>
+
+    <div class="main">
+      <div class="topbar">
+        <div class="topbar-date">Thursday, 30 April 2026</div>
+        <div class="topbar-right">
+          <div class="topbar-search">Search symptoms, meds...</div>
+          <div class="topbar-trust">
+            <div class="topbar-trust-dot"></div>
+            <div class="topbar-trust-text">IAP clinically reviewed</div>
+          </div>
+          <div class="topbar-notif">&#9881;</div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="hero anim-in d1">
+          <div class="hero-left">
+            <div class="hero-greeting">Welcome back</div>
+            <div class="hero-name">Priya &amp; <em>Arjun</em></div>
+            <div class="hero-sub">Arjun is 14 months old today. A great age for first steps — keep an eye on motor milestones.</div>
+          </div>
+          <div class="hero-cta">
+            <div class="hero-btn">Check symptoms now</div>
+            <div class="hero-btn-sub">Takes under 60 seconds</div>
+          </div>
+        </div>
+
+        <div class="nba anim-in d2">
+          <div class="nba-left">
+            <div class="nba-icon">&#128203;</div>
+            <div>
+              <div class="nba-title">DTP booster due in 3 weeks</div>
+              <div class="nba-sub">Recommended by IAP · your pediatrician Dr. Meera Sharma is available</div>
+            </div>
+          </div>
+          <div class="nba-btn">Book appointment</div>
+        </div>
+
+        <div class="inner">
+          <div class="stats">
+            <div class="stat anim-in d3">
+              <div class="stat-accent-bar" style="background:#7bada6;"></div>
+              <div class="stat-lbl">Weight</div>
+              <div class="stat-val">10.2<span class="stat-unit"> kg</span></div>
+              <div class="stat-sub">WHO 60th percentile</div>
+              <div class="stat-badge" style="background:#e8f0ee;color:#2c5f58;">On track</div>
+            </div>
+            <div class="stat anim-in d3">
+              <div class="stat-accent-bar" style="background:#7bada6;"></div>
+              <div class="stat-lbl">Height</div>
+              <div class="stat-val">77<span class="stat-unit"> cm</span></div>
+              <div class="stat-sub">WHO 55th percentile</div>
+              <div class="stat-badge" style="background:#e8f0ee;color:#2c5f58;">On track</div>
+            </div>
+            <div class="stat anim-in d4">
+              <div class="stat-accent-bar" style="background:#7bada6;"></div>
+              <div class="stat-lbl">Last assessment</div>
+              <div class="stat-val" style="font-size:14px;margin-top:4px;font-family:'Inter',sans-serif;font-weight:500;">Home care</div>
+              <div class="stat-sub">3 days ago · resolved</div>
+              <div class="stat-badge" style="background:#e8f0ee;color:#2c5f58;">Resolved</div>
+            </div>
+            <div class="stat stat-highlight anim-in d4">
+              <div class="stat-accent-bar" style="background:#c04f7a;"></div>
+              <div class="stat-lbl" style="color:#c04f7a;">Milestones</div>
+              <div class="stat-val" style="color:#c04f7a;">2</div>
+              <div class="stat-sub">due this month</div>
+              <div class="stat-badge" style="background:#fbeaf0;color:#7a1040;">Action needed</div>
+            </div>
+          </div>
+
+          <div class="bottom">
+            <div>
+              <div class="card anim-in d5" style="margin-bottom:12px;">
+                <div class="card-hd">
+                  <div class="card-title">Recent health log</div>
+                  <span class="card-link">View all →</span>
+                </div>
+                <div class="log-row">
+                  <div style="display:flex;gap:8px;align-items:center;">
+                    <div class="log-icon" style="background:#fbeaf0;">&#9651;</div>
+                    <div><div class="log-name">Mild fever</div><div class="log-sub">27 Apr · 38.4°C · resolved</div></div>
+                  </div>
+                  <span class="badge bg">Home care</span>
+                </div>
+                <div class="log-row">
+                  <div style="display:flex;gap:8px;align-items:center;">
+                    <div class="log-icon" style="background:#faece7;">&#9651;</div>
+                    <div><div class="log-name">Runny nose</div><div class="log-sub">20 Apr · 3 days duration</div></div>
+                  </div>
+                  <span class="badge bg">Home care</span>
+                </div>
+                <div class="log-row urgent">
+                  <div style="display:flex;gap:8px;align-items:center;">
+                    <div class="log-icon" style="background:#faeeda;">&#9888;</div>
+                    <div><div class="log-name">Ear pain</div><div class="log-sub">5 Apr · right ear · clinic visit</div></div>
+                  </div>
+                  <span class="badge ba">Urgent care</span>
+                </div>
+              </div>
+
+              <div class="card anim-in d6">
+                <div class="card-hd">
+                  <div class="card-title">Upcoming milestones</div>
+                  <span class="card-link">View all →</span>
+                </div>
+                <div class="ms-row">
+                  <div class="ms-check done"><div class="ms-check-tick">&#10003;</div></div>
+                  <div><div class="ms-name">Waves bye-bye</div><div class="ms-sub">Social · completed</div></div>
+                </div>
+                <div class="ms-row">
+                  <div class="ms-check done"><div class="ms-check-tick">&#10003;</div></div>
+                  <div><div class="ms-name">Says "mama" / "dada"</div><div class="ms-sub">Language · completed</div></div>
+                </div>
+                <div class="ms-row">
+                  <div class="ms-check"></div>
+                  <div style="flex:1;display:flex;justify-content:space-between;align-items:flex-start;">
+                    <div><div class="ms-name">Stands without support</div><div class="ms-sub">Motor development</div></div>
+                    <div class="ms-due">Due 15m</div>
+                  </div>
+                </div>
+                <div class="ms-row">
+                  <div class="ms-check"></div>
+                  <div style="flex:1;display:flex;justify-content:space-between;align-items:flex-start;">
+                    <div><div class="ms-name">Points to objects</div><div class="ms-sub">Cognitive development</div></div>
+                    <div class="ms-due">Due 15m</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="card anim-in d5" style="margin-bottom:12px;">
+                <div class="card-hd">
+                  <div class="card-title">Weight trend</div>
+                  <span class="card-link">Full chart →</span>
+                </div>
+                <div class="chart-area">
+                  <div class="chart-band-50"></div>
+                  <div class="chart-bars-inner" id="chartbars">
+                    <div class="cbar" style="height:35%;background:#c5d8d4;" data-h="35"></div>
+                    <div class="cbar" style="height:48%;background:#c5d8d4;" data-h="48"></div>
+                    <div class="cbar" style="height:57%;background:#c5d8d4;" data-h="57"></div>
+                    <div class="cbar" style="height:69%;background:#c5d8d4;" data-h="69"></div>
+                    <div class="cbar" style="height:81%;background:#c5d8d4;" data-h="81"></div>
+                    <div class="cbar" style="height:96%;background:#7bada6;" data-h="96"></div>
+                  </div>
+                </div>
+                <div class="chart-lbls">
+                  <div class="chart-lbl">Nov</div><div class="chart-lbl">Dec</div><div class="chart-lbl">Jan</div>
+                  <div class="chart-lbl">Feb</div><div class="chart-lbl">Mar</div><div class="chart-lbl">Apr</div>
+                </div>
+                <div class="chart-insight">&#9651; Steady growth — 60th percentile. WHO 50–75th band shown in green.</div>
+              </div>
+
+              <div class="card anim-in d7">
+                <div class="card-hd">
+                  <div class="card-title">Quick actions</div>
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;">
+                  <div style="background:#faf8f5;border:0.5px solid #dce8e5;border-radius:8px;padding:10px;text-align:center;">
+                    <div style="width:26px;height:26px;border-radius:7px;background:#fbeaf0;margin:0 auto 5px;display:flex;align-items:center;justify-content:center;font-size:12px;">&#9651;</div>
+                    <div style="font-size:9px;color:#2c4a45;font-weight:500;">Check symptoms</div>
+                  </div>
+                  <div style="background:#faf8f5;border:0.5px solid #dce8e5;border-radius:8px;padding:10px;text-align:center;">
+                    <div style="width:26px;height:26px;border-radius:7px;background:#faece7;margin:0 auto 5px;display:flex;align-items:center;justify-content:center;font-size:12px;">&#9651;</div>
+                    <div style="font-size:9px;color:#2c4a45;font-weight:500;">Dosage calculator</div>
+                  </div>
+                  <div style="background:#faf8f5;border:0.5px solid #dce8e5;border-radius:8px;padding:10px;text-align:center;">
+                    <div style="width:26px;height:26px;border-radius:7px;background:#edf3fe;margin:0 auto 5px;display:flex;align-items:center;justify-content:center;font-size:12px;">&#9651;</div>
+                    <div style="font-size:9px;color:#2c4a45;font-weight:500;">Vaccination log</div>
+                  </div>
+                  <div style="background:#faf8f5;border:0.5px solid #dce8e5;border-radius:8px;padding:10px;text-align:center;">
+                    <div style="width:26px;height:26px;border-radius:7px;background:#eaf3de;margin:0 auto 5px;display:flex;align-items:center;justify-content:center;font-size:12px;">&#9651;</div>
+                    <div style="font-size:9px;color:#2c4a45;font-weight:500;">Growth charts</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="trust-footer">
+        <div class="trust-item"><div class="trust-dot"></div><div class="trust-text">Clinically reviewed by IAP guidelines</div></div>
+        <div class="trust-item"><div class="trust-dot"></div><div class="trust-text">WHO growth standards</div></div>
+        <div class="trust-item"><div class="trust-dot"></div><div class="trust-text">Not a substitute for professional advice</div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  setTimeout(function(){
+    var bars = document.querySelectorAll('.cbar');
+    bars.forEach(function(b){
+      b.style.height = '4px';
+    });
+    setTimeout(function(){
+      bars.forEach(function(b){
+        b.style.height = b.getAttribute('data-h') + '%';
+      });
+    }, 100);
+  }, 300);
+</script>

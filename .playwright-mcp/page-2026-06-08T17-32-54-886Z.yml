@@ -1,0 +1,98 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e7]:
+      - generic [ref=e8]:
+        - generic [ref=e9]: Pedi·Ai
+        - paragraph [ref=e10]: AI-powered pediatric care for the first 2,000 days of life.
+      - generic [ref=e11]:
+        - generic [ref=e12]:
+          - img [ref=e14]
+          - generic [ref=e16]:
+            - heading "Evidence-Based Guidance" [level=3] [ref=e17]
+            - paragraph [ref=e18]: Powered by AAP and WHO guidelines
+        - generic [ref=e19]:
+          - img [ref=e21]
+          - generic [ref=e23]:
+            - heading "24/7 AI Support" [level=3] [ref=e24]
+            - paragraph [ref=e25]: Expert answers whenever you need them
+        - generic [ref=e26]:
+          - img [ref=e28]
+          - generic [ref=e30]:
+            - heading "Track Growth & Milestones" [level=3] [ref=e31]
+            - paragraph [ref=e32]: Monitor your child's development
+      - generic [ref=e33]:
+        - generic [ref=e34]: HIPAA Compliant
+        - generic [ref=e35]: IAP Reviewed
+        - generic [ref=e36]: WHO Standards
+    - generic [ref=e38]:
+      - generic [ref=e39]:
+        - generic [ref=e40]:
+          - heading "Welcome Back" [level=1] [ref=e41]
+          - paragraph [ref=e42]: Sign in to continue to your dashboard
+        - generic [ref=e43]:
+          - generic [ref=e44]:
+            - generic [ref=e45]: Email Address
+            - textbox "Email Address" [ref=e46]:
+              - /placeholder: you@example.com
+              - text: anxious@demo.com
+          - generic [ref=e47]:
+            - generic [ref=e48]: Password
+            - generic [ref=e49]:
+              - textbox "Password" [ref=e50]:
+                - /placeholder: Enter your password
+                - text: demo123
+              - button [ref=e51] [cursor=pointer]:
+                - img [ref=e52]
+          - generic [ref=e55]:
+            - generic [ref=e56] [cursor=pointer]:
+              - checkbox "Remember me" [ref=e57]
+              - generic [ref=e58]: Remember me
+            - link "Forgot password?" [ref=e59] [cursor=pointer]:
+              - /url: "#"
+          - button "Sign In" [ref=e60] [cursor=pointer]
+        - generic [ref=e61]:
+          - paragraph [ref=e62]:
+            - generic [ref=e63]: Demo Accounts — Click to auto-fill
+          - generic [ref=e65]:
+            - 'button "😰 anxious@demo.com High-Anxiety Parent (2 children: infant + toddler)" [active] [ref=e66] [cursor=pointer]':
+              - generic [ref=e67]: 😰
+              - generic [ref=e68]:
+                - paragraph [ref=e69]: anxious@demo.com
+                - paragraph [ref=e70]: "High-Anxiety Parent (2 children: infant + toddler)"
+              - img [ref=e71]
+            - button "👩‍⚕️ dr.chen@demo.com Pediatrician/Clinician (child with asthma)" [ref=e73] [cursor=pointer]:
+              - generic [ref=e74]: 👩‍⚕️
+              - generic [ref=e75]:
+                - paragraph [ref=e76]: dr.chen@demo.com
+                - paragraph [ref=e77]: Pediatrician/Clinician (child with asthma)
+              - img [ref=e78]
+            - button "👨 james@demo.com First-Time Parent (newborn)" [ref=e80] [cursor=pointer]:
+              - generic [ref=e81]: 👨
+              - generic [ref=e82]:
+                - paragraph [ref=e83]: james@demo.com
+                - paragraph [ref=e84]: First-Time Parent (newborn)
+              - img [ref=e85]
+            - button "👩 maria@demo.com Parent of Child with ADHD" [ref=e87] [cursor=pointer]:
+              - generic [ref=e88]: 👩
+              - generic [ref=e89]:
+                - paragraph [ref=e90]: maria@demo.com
+                - paragraph [ref=e91]: Parent of Child with ADHD
+              - img [ref=e92]
+            - button "👨‍💼 admin@pediatric-clinic.com Healthcare System Admin (child with eczema)" [ref=e94] [cursor=pointer]:
+              - generic [ref=e95]: 👨‍💼
+              - generic [ref=e96]:
+                - paragraph [ref=e97]: admin@pediatric-clinic.com
+                - paragraph [ref=e98]: Healthcare System Admin (child with eczema)
+              - img [ref=e99]
+        - paragraph [ref=e101]:
+          - text: Don't have an account?
+          - link "Sign up for free" [ref=e102] [cursor=pointer]:
+            - /url: /signup
+      - paragraph [ref=e103]:
+        - text: By signing in, you agree to our
+        - link "Terms of Service" [ref=e104] [cursor=pointer]:
+          - /url: "#"
+        - text: and
+        - link "Privacy Policy" [ref=e105] [cursor=pointer]:
+          - /url: "#"
+  - alert [ref=e106]

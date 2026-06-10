@@ -2,6 +2,8 @@
 
 import { useState, useRef, useEffect, useCallback } from 'react'
 import Link from 'next/link'
+import { useAuth } from '@/app/lib/auth-context'
+import { useGrowthRecords } from '@/app/lib/api-hooks'
 
 // ============================================================================
 // Types
@@ -11,7 +13,7 @@ interface Child {
   id: string
   name: string
   dateOfBirth: string
-  gender: 'male' | 'female'
+  gender: 'male' | 'female' | 'other' | 'other'
   currentAge: string
 }
 
@@ -143,7 +145,7 @@ function interpolateWHO(value: Record<number, number>, ageMonths: number): numbe
   return value[ages[ages.length - 1]]
 }
 
-function calculatePercentile(value: number, metric: 'weight' | 'height' | 'hc', ageMonths: number, gender: 'male' | 'female'): number {
+function calculatePercentile(value: number, metric: 'weight' | 'height' | 'hc', ageMonths: number, gender: 'male' | 'female' | 'other'): number {
   const whoData = metric === 'weight'
     ? Object.entries(whoWeightBoys).map(([p, data]) => ({ percentile: parseInt(p), value: interpolateWHO(data, ageMonths) }))
     : metric === 'height'
@@ -267,7 +269,7 @@ function GrowthChart({
   measurements: Measurement[]
   metric: 'weight' | 'height' | 'hc'
   timeRange: number
-  gender: 'male' | 'female'
+  gender: 'male' | 'female' | 'other' | 'other'
 }) {
   const svgRef = useRef<SVGSVGElement>(null)
   const [hoveredPoint, setHoveredPoint] = useState<{ x: number; y: number; data: Measurement } | null>(null)
@@ -576,20 +578,10 @@ function PercentileCard({
 }: {
   metric: 'weight' | 'height' | 'hc'
   measurements: Measurement[]
-  gender: 'male' | 'female'
+  gender: 'male' | 'female' | 'other'
 }) {
   const getMetricValue = (m: Measurement) =>
     metric === 'weight' ? m.weight : metric === 'height' ? m.height : m.headCircumference
-
-  const current = measurements[measurements.length - 1]
-  const previous = measurements[measurements.length - 2]
-
-  if (!current) return null
-
-  const currentPercentile = calculatePercentile(getMetricValue(current), metric, current.ageInMonths, gender)
-  const previousPercentile = previous ? calculatePercentile(getMetricValue(previous), metric, previous.ageInMonths, gender) : currentPercentile
-
-  const trend = getTrend(currentPercentile, previousPercentile)
 
   const metricLabels = {
     weight: 'Weight',
@@ -614,6 +606,33 @@ function PercentileCard({
       </svg>
     ),
   }
+
+  if (measurements.length === 0) {
+    return (
+      <div className="bg-white rounded-2xl p-6 shadow-sm border border-mist/50">
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 rounded-xl bg-mist flex items-center justify-center text-sage">
+              {metricIcons[metric]}
+            </div>
+            <div>
+              <p className="text-sm text-forest/60">{metricLabels[metric]}</p>
+              <p className="text-xs text-forest/40">No data available</p>
+            </div>
+          </div>
+        </div>
+        <p className="text-sm text-forest/60 text-center py-4">Add measurements to see percentile data</p>
+      </div>
+    )
+  }
+
+  const current = measurements[measurements.length - 1]
+  const previous = measurements[measurements.length - 2]
+
+  const currentPercentile = calculatePercentile(getMetricValue(current), metric, current.ageInMonths, gender)
+  const previousPercentile = previous ? calculatePercentile(getMetricValue(previous), metric, previous.ageInMonths, gender) : currentPercentile
+
+  const trend = getTrend(currentPercentile, previousPercentile)
 
   const getTrendIcon = () => {
     if (trend === 'up') {
@@ -708,10 +727,31 @@ function PercentileCard({
 function InsightsCard({
   measurements,
   gender,
+  childName = 'your child',
 }: {
   measurements: Measurement[]
-  gender: 'male' | 'female'
+  gender: 'male' | 'female' | 'other'
+  childName?: string
 }) {
+  if (measurements.length === 0) {
+    return (
+      <div className="bg-white rounded-2xl p-6 shadow-sm border border-mist/50">
+        <div className="flex items-center gap-3 mb-5">
+          <div className="w-10 h-10 rounded-xl bg-sage/20 flex items-center justify-center text-sage">
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+            </svg>
+          </div>
+          <div>
+            <h3 className="font-display text-lg text-forest">Growth Insights</h3>
+            <p className="text-sm text-forest/60">No data to analyze yet</p>
+          </div>
+        </div>
+        <p className="text-sm text-forest/60 text-center py-4">Add measurements to see growth insights</p>
+      </div>
+    )
+  }
+
   const weightP = calculatePercentile(measurements[measurements.length - 1].weight, 'weight', measurements[measurements.length - 1].ageInMonths, gender)
   const heightP = calculatePercentile(measurements[measurements.length - 1].height, 'height', measurements[measurements.length - 1].ageInMonths, gender)
 
@@ -730,7 +770,7 @@ function InsightsCard({
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
         </svg>
       ),
-      text: `Arjun's weight has been ${weightTrend === 'up' ? 'tracking upward' : weightTrend === 'down' ? 'tracking slightly lower' : 'stable'} along the ${weightP}th percentile.`,
+      text: `${childName}'s weight has been ${weightTrend === 'up' ? 'tracking upward' : weightTrend === 'down' ? 'tracking slightly lower' : 'stable'} along the ${weightP}th percentile.`,
       color: 'sage',
     },
     {
@@ -794,7 +834,7 @@ function InsightsCard({
             <div>
               <p className="text-sm font-medium text-forest">Normal Growth Pattern</p>
               <p className="text-xs text-forest/70 mt-1">
-                Arjun's growth is tracking consistently within the normal range for his age. Keep up the great care!
+                {childName}'s growth is tracking consistently within the normal range for their age. Keep up the great care!
               </p>
             </div>
           </div>
@@ -998,19 +1038,71 @@ function AddMeasurementModal({
 // ============================================================================
 
 export default function GrowthChartsPage() {
-  const [selectedChild, setSelectedChild] = useState<Child>(sampleChildren[0])
-  const [measurements, setMeasurements] = useState<Measurement[]>(sampleMeasurements['1'])
+  const { session, getActiveChild } = useAuth()
+  const activeChild = getActiveChild()
+  const { records: growthRecords, addRecord } = useGrowthRecords(activeChild?.id || '')
+
+  // Calculate age in months helper - defined first
+  const calculateAgeInMonths = (dob: string): string => {
+    const birth = new Date(dob)
+    const now = new Date()
+    const months = (now.getFullYear() - birth.getFullYear()) * 12 + (now.getMonth() - birth.getMonth())
+    if (months < 1) return 'Newborn'
+    if (months < 12) return `${months} month${months > 1 ? 's' : ''}`
+    const years = Math.floor(months / 12)
+    const remainingMonths = months % 12
+    if (remainingMonths === 0) return `${years} year${years > 1 ? 's' : ''}`
+    return `${years}y ${remainingMonths}m`
+  }
+
+  // Convert demo data to sample children from session
+  const children: Child[] = session?.children.map(c => ({
+    id: c.id,
+    name: c.name,
+    dateOfBirth: c.dateOfBirth,
+    gender: c.gender,
+    currentAge: calculateAgeInMonths(c.dateOfBirth),
+  })) || []
+
+  const [selectedChild, setSelectedChild] = useState<Child | null>(children[0] || null)
   const [selectedMetric, setSelectedMetric] = useState<'weight' | 'height' | 'hc'>('weight')
   const [timeRange, setTimeRange] = useState<number>(12)
   const [isAddModalOpen, setIsAddModalOpen] = useState(false)
 
+  // Update selected child when active child changes
+  useEffect(() => {
+    if (activeChild) {
+      const childData = children.find(c => c.id === activeChild.id)
+      if (childData) {
+        setSelectedChild(childData)
+      }
+    }
+  }, [activeChild, children])
+
+  // Convert growth records to measurements format
+  const measurements: Measurement[] = growthRecords.map(record => {
+    const birthDate = selectedChild ? new Date(selectedChild.dateOfBirth) : new Date()
+    const measurementDate = new Date(record.date)
+    const ageInMonths = Math.floor(
+      (measurementDate.getTime() - birthDate.getTime()) / (1000 * 60 * 60 * 24 * 30.44)
+    )
+    return {
+      date: record.date,
+      ageInMonths: Math.max(0, ageInMonths),
+      weight: record.weight,
+      height: record.height,
+      headCircumference: record.headCircumference || 0,
+    }
+  })
+
   const handleChildSelect = (child: Child) => {
     setSelectedChild(child)
-    setMeasurements(sampleMeasurements[child.id] || [])
   }
 
-  const handleAddMeasurement = (measurement: Omit<Measurement, 'date' | 'ageInMonths'> & { date: string }) => {
-    const birthDate = new Date(selectedChild.dateOfBirth)
+  const handleAddMeasurement = async (measurement: Omit<Measurement, 'date' | 'ageInMonths'> & { date: string }) => {
+    if (!activeChild) return
+
+    const birthDate = new Date(activeChild.dateOfBirth)
     const measurementDate = new Date(measurement.date)
     const ageInMonths = Math.floor(
       (measurementDate.getTime() - birthDate.getTime()) / (1000 * 60 * 60 * 24 * 30.44)
@@ -1018,10 +1110,16 @@ export default function GrowthChartsPage() {
 
     const newMeasurement: Measurement = {
       ...measurement,
-      ageInMonths,
+      ageInMonths: Math.max(0, ageInMonths),
     }
 
-    setMeasurements((prev) => [...prev, newMeasurement].sort((a, b) => a.ageInMonths - b.ageInMonths))
+    // Add via API hook
+    await addRecord({
+      date: measurement.date,
+      weight: measurement.weight,
+      height: measurement.height,
+      headCircumference: measurement.headCircumference || undefined,
+    })
   }
 
   const metricOptions: { value: 'weight' | 'height' | 'hc'; label: string }[] = [
@@ -1064,11 +1162,13 @@ export default function GrowthChartsPage() {
             </div>
           </div>
 
-          <ChildSelector
-            children={sampleChildren}
-            selectedChild={selectedChild}
-            onSelect={handleChildSelect}
-          />
+          {children.length > 0 && selectedChild && (
+            <ChildSelector
+              children={children}
+              selectedChild={selectedChild}
+              onSelect={handleChildSelect}
+            />
+          )}
         </div>
       </div>
 
@@ -1139,7 +1239,7 @@ export default function GrowthChartsPage() {
           measurements={measurements}
           metric={selectedMetric}
           timeRange={timeRange}
-          gender={selectedChild.gender}
+          gender={selectedChild?.gender || 'male'}
         />
       </div>
 
@@ -1148,22 +1248,26 @@ export default function GrowthChartsPage() {
         <PercentileCard
           metric="weight"
           measurements={measurements}
-          gender={selectedChild.gender}
+          gender={selectedChild?.gender || 'male'}
         />
         <PercentileCard
           metric="height"
           measurements={measurements}
-          gender={selectedChild.gender}
+          gender={selectedChild?.gender || 'male'}
         />
         <PercentileCard
           metric="hc"
           measurements={measurements}
-          gender={selectedChild.gender}
+          gender={selectedChild?.gender || 'male'}
         />
       </div>
 
       {/* Insights */}
-      <InsightsCard measurements={measurements} gender={selectedChild.gender} />
+      <InsightsCard
+        measurements={measurements}
+        gender={selectedChild?.gender || 'male'}
+        childName={selectedChild?.name || 'Your child'}
+      />
 
       {/* Add Measurement Modal */}
       <AddMeasurementModal

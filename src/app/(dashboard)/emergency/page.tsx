@@ -399,7 +399,7 @@ export default function EmergencyPage() {
                         {step.text}
                       </p>
                       {step.isCritical && (
-                        <span className="inline-block mt-1 px-2 py-0.5 bg-red-50 text-red-600 text-xs font-semibold rounded">
+                        <span className="inline-block mt-1 px-2 py-0.5 bg-danger-bg text-danger text-xs font-semibold rounded">
                           Critical
                         </span>
                       )}
@@ -485,11 +485,11 @@ export default function EmergencyPage() {
 
             {/* Do Not */}
             {currentInstruction.doNot.length > 0 && (
-              <div className="card p-5 border-l-4 border-l-red-400 bg-red-50/50">
-                <h4 className="text-sm font-semibold text-red-700 mb-2">Do NOT</h4>
+              <div className="card p-5 border-l-4 border-l-danger/40 bg-danger-bg/50">
+                <h4 className="text-sm font-semibold text-danger mb-2">Do NOT</h4>
                 <ul className="space-y-1">
                   {currentInstruction.doNot.map((item, i) => (
-                    <li key={i} className="text-sm text-red-700">{item}</li>
+                    <li key={i} className="text-sm text-danger">{item}</li>
                   ))}
                 </ul>
               </div>
@@ -501,7 +501,7 @@ export default function EmergencyPage() {
         <div className="sticky bottom-24 lg:bottom-8 pt-4">
           <a
             href="tel:108"
-            className="flex items-center justify-center gap-3 w-full py-4 bg-red-600 text-white rounded-xl font-semibold text-lg hover:bg-red-700 transition-colors shadow-lg"
+            className="flex items-center justify-center gap-3 w-full py-4 bg-danger text-white rounded-xl font-semibold text-lg hover:bg-danger/90 transition-colors shadow-lg"
           >
             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -534,7 +534,7 @@ export default function EmergencyPage() {
       {/* Emergency Call - Always Visible */}
       <a
         href="tel:108"
-        className="flex items-center justify-center gap-3 w-full py-4 bg-red-600 text-white rounded-xl font-semibold text-lg hover:bg-red-700 transition-colors shadow-lg"
+        className="flex items-center justify-center gap-3 w-full py-4 bg-danger text-white rounded-xl font-semibold text-lg hover:bg-danger/90 transition-colors shadow-lg"
       >
         <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -563,10 +563,10 @@ export default function EmergencyPage() {
       <div className="card p-5">
         <h3 className="font-semibold text-forest mb-4">Emergency Contacts</h3>
         <div className="space-y-3">
-          <a href="tel:108" className="flex items-center justify-between p-3 bg-red-50 rounded-xl hover:bg-red-100 transition-colors">
+          <a href="tel:108" className="flex items-center justify-between p-3 bg-danger-bg rounded-xl hover:bg-danger-bg/70 transition-colors">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center">
-                <svg className="w-5 h-5 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <div className="w-10 h-10 rounded-full bg-danger-bg flex items-center justify-center">
+                <svg className="w-5 h-5 text-danger" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
               </div>

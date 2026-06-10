@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { Button } from './Button'
 
 const navLinks = [
@@ -12,6 +13,7 @@ const navLinks = [
 ]
 
 export function Navigation() {
+  const router = useRouter()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
@@ -53,7 +55,7 @@ export function Navigation() {
 
             {/* Desktop CTA */}
             <div className="hidden md:flex items-center gap-3">
-              <Button variant="ghost" size="sm">Sign In</Button>
+              <Button variant="ghost" size="sm" onClick={() => router.push('/login')}>Sign In</Button>
               <Link href="#get-started">
                 <Button variant="primary" size="sm">Get Started Free</Button>
               </Link>
@@ -91,7 +93,7 @@ export function Navigation() {
             </Link>
           ))}
           <div className="pt-4 border-t border-forest/10 space-y-3">
-            <Button variant="secondary" className="w-full">Sign In</Button>
+            <Button variant="secondary" className="w-full" onClick={() => router.push('/login')}>Sign In</Button>
             <Link href="#get-started" className="block" onClick={() => setIsMobileMenuOpen(false)}>
               <Button variant="primary" className="w-full">Get Started Free</Button>
             </Link>

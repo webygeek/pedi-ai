@@ -1,9 +1,11 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { Button } from '@/app/components/Button'
 import type { Medicine, MedicineUsage, MedicineFormData, MedicineForm, MedicineStatus } from '@/app/types/medicine'
 import { getMedicineStatus, formatDate, getDaysUntilExpiry } from '@/app/types/medicine'
+import { useAuth } from '@/app/lib/auth-context'
+import { useMedications } from '@/app/lib/api-hooks'
 
 // Sample data for demonstration
 const sampleMedicines: Medicine[] = [
@@ -216,6 +218,11 @@ const FormIcon = ({ form }: { form: MedicineForm }) => {
 }
 
 export default function MedicineCabinetPage() {
+  const { session, getActiveChild } = useAuth()
+  const activeChild = getActiveChild()
+  const { medications: apiMedications } = useMedications()
+
+  // Convert API medications to local format
   const [medicines, setMedicines] = useState<Medicine[]>(sampleMedicines)
   const [isFormOpen, setIsFormOpen] = useState(false)
   const [editingMedicine, setEditingMedicine] = useState<Medicine | null>(null)
@@ -225,6 +232,30 @@ export default function MedicineCabinetPage() {
   const [showHistoryModal, setShowHistoryModal] = useState<string | null>(null)
   const [filterStatus, setFilterStatus] = useState<MedicineStatus | 'all'>('all')
   const [searchQuery, setSearchQuery] = useState('')
+
+  // Sync API medications when available
+  useEffect(() => {
+    if (apiMedications.length > 0) {
+      const convertedMedicines: Medicine[] = apiMedications.map((med, index) => ({
+        id: med.id || `med-${index}`,
+        name: med.name,
+        brand: med.prescribedBy || 'Unknown',
+        form: 'Syrup' as const,
+        strength: med.dosage,
+        quantity: 100,
+        expiryDate: med.endDate || new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+        purchaseDate: med.startDate,
+        notes: med.notes || '',
+        refillThreshold: 20,
+        lastUsed: null,
+        usageHistory: [],
+        restockReminder: false,
+        createdAt: med.startDate,
+        updatedAt: new Date().toISOString(),
+      }))
+      setMedicines(convertedMedicines)
+    }
+  }, [apiMedications])
 
   // Filter and search medicines
   const filteredMedicines = useMemo(() => {
@@ -366,7 +397,7 @@ export default function MedicineCabinetPage() {
       case 'expiring':
         return <span className="badge badge-warning">Expiring Soon</span>
       case 'expired':
-        return <span className="badge bg-red-100 text-red-800">Expired</span>
+        return <span className="badge badge-danger">Expired</span>
     }
   }
 
@@ -379,7 +410,7 @@ export default function MedicineCabinetPage() {
       case 'expiring':
         return 'border-amber-500 bg-amber-50'
       case 'expired':
-        return 'border-red-400 bg-red-50'
+        return 'border-danger/40 bg-danger-bg'
     }
   }
 
@@ -446,15 +477,15 @@ export default function MedicineCabinetPage() {
             </div>
           </div>
         </div>
-        <div className="bg-white rounded-2xl border border-red-200 p-5 shadow-sm">
+        <div className="bg-white rounded-2xl border border-danger/30 p-5 shadow-sm">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center">
-              <svg className="w-5 h-5 text-red-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <div className="w-10 h-10 rounded-xl bg-danger-bg flex items-center justify-center">
+              <svg className="w-5 h-5 text-danger" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
               </svg>
             </div>
             <div>
-              <div className="text-2xl font-semibold text-red-700">{stats.expired}</div>
+              <div className="text-2xl font-semibold text-danger">{stats.expired}</div>
               <div className="text-sm text-forest/60">Expired</div>
             </div>
           </div>
@@ -527,7 +558,7 @@ export default function MedicineCabinetPage() {
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-3">
                       <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
-                        status === 'expired' ? 'bg-red-100 text-red-600' :
+                        status === 'expired' ? 'bg-danger-bg text-danger' :
                         status === 'expiring' ? 'bg-amber-100 text-amber-600' :
                         status === 'low' ? 'bg-amber-100 text-amber-600' :
                         'bg-sage/10 text-sage'
@@ -553,7 +584,7 @@ export default function MedicineCabinetPage() {
                     <div className="bg-cream/50 rounded-xl p-3">
                       <p className="text-xs text-forest/50 mb-1">Expiry</p>
                       <p className={`font-semibold ${
-                        daysUntil <= 0 ? 'text-red-600' :
+                        daysUntil <= 0 ? 'text-danger' :
                         daysUntil <= 30 ? 'text-amber-600' :
                         'text-forest'
                       }`}>
@@ -609,7 +640,7 @@ export default function MedicineCabinetPage() {
                   </button>
                   <button
                     onClick={() => deleteMedicine(medicine.id)}
-                    className="p-2.5 rounded-xl hover:bg-red-50 transition-colors text-forest/60 hover:text-red-600"
+                    className="p-2.5 rounded-xl hover:bg-danger-bg transition-colors text-forest/60 hover:text-danger"
                     title="Delete"
                   >
                     <TrashIcon />

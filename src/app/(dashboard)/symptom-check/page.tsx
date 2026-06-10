@@ -1,6 +1,8 @@
 'use client'
 
 import React, { useState, useEffect, useCallback } from 'react'
+import { useAuth } from '@/app/lib/auth-context'
+import { useSymptomAssessments } from '@/app/lib/api-hooks'
 
 // Types
 type Step = 1 | 2 | 3 | 4
@@ -778,11 +780,11 @@ function Step4Result({
       ),
     },
     emergency: {
-      bgColor: 'bg-red-50/50',
-      borderColor: 'border-red-400',
-      iconBg: 'bg-red-100',
-      iconColor: 'text-red-600',
-      badgeBg: 'bg-red-600',
+      bgColor: 'bg-danger-bg/50',
+      borderColor: 'border-danger/40',
+      iconBg: 'bg-danger-bg',
+      iconColor: 'text-danger',
+      badgeBg: 'bg-danger',
       icon: (
         <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
           <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
@@ -832,8 +834,8 @@ function Step4Result({
 
       {/* Red Flags (for urgent/emergency) */}
       {result.redFlags.length > 0 && (
-        <div className="bg-red-50/50 rounded-2xl border border-red-200 p-5 mb-5">
-          <h3 className="font-display text-lg text-red-700 mb-3 flex items-center gap-2">
+        <div className="bg-danger-bg/50 rounded-2xl border border-danger/30 p-5 mb-5">
+          <h3 className="font-display text-lg text-danger mb-3 flex items-center gap-2">
             <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
             </svg>
@@ -841,8 +843,8 @@ function Step4Result({
           </h3>
           <ul className="space-y-2">
             {result.redFlags.map((flag, i) => (
-              <li key={i} className="flex items-start gap-2 text-red-800">
-                <svg className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <li key={i} className="flex items-start gap-2 text-danger">
+                <svg className="w-5 h-5 text-danger/70 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <circle cx="12" cy="12" r="10" />
                   <line x1="12" y1="8" x2="12" y2="12" />
                   <line x1="12" y1="16" x2="12.01" y2="16" />
@@ -968,12 +970,24 @@ function Step4Result({
 
 // Main Component
 export default function SymptomCheckerPage() {
+  const { session, getActiveChild } = useAuth()
+  const activeChild = getActiveChild()
+  const { assessments: apiAssessments, saveAssessment } = useSymptomAssessments()
+
   const [currentStep, setCurrentStep] = useState<Step>(1)
   const [selectedArea, setSelectedArea] = useState<string | null>(null)
   const [selectedSymptoms, setSelectedSymptoms] = useState<SelectedSymptom[]>([])
   const [answers, setAnswers] = useState<Record<string, string>>({})
   const [result, setResult] = useState<TriageResult | null>(null)
   const [isTimerRunning, setIsTimerRunning] = useState(true)
+  const [pastAssessments, setPastAssessments] = useState<typeof apiAssessments>([])
+
+  // Sync past assessments from API
+  useEffect(() => {
+    if (apiAssessments.length > 0) {
+      setPastAssessments(apiAssessments)
+    }
+  }, [apiAssessments])
 
   // Calculate result based on answers
   const calculateResult = useCallback(() => {

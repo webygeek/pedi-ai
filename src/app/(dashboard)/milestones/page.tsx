@@ -1,6 +1,8 @@
 'use client'
 
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
+import { useAuth } from '@/app/lib/auth-context'
+import { useMilestones } from '@/app/lib/api-hooks'
 
 // ============================================================================
 // TYPES
@@ -164,7 +166,7 @@ const Icons = {
 }
 
 // ============================================================================
-// DEMO DATA - CDC Developmental Milestones (Child: Arjun, 14 months)
+// DEMO DATA - CDC Developmental Milestones (Child: {activeChild?.name || 'Your child'}, 14 months)
 // ============================================================================
 
 const ageGroups = [
@@ -906,8 +908,8 @@ function MilestoneDetailModal({
           {/* Warning signs */}
           <div>
             <h3 className="font-display text-lg font-semibold text-forest mb-2 flex items-center gap-2">
-              <span className="w-8 h-8 rounded-lg bg-red-100 flex items-center justify-center">
-                <Icons.AlertTriangle className="w-4 h-4 text-red-600" />
+              <span className="w-8 h-8 rounded-lg bg-danger-bg flex items-center justify-center">
+                <Icons.AlertTriangle className="w-4 h-4 text-danger" />
               </span>
               Warning Signs to Watch For
             </h3>
@@ -1027,7 +1029,7 @@ function ProgressTimeline({
 }
 
 // AI Insights Component
-function AIInsights({ milestones }: { milestones: Milestone[] }) {
+function AIInsights({ milestones, childName = 'Your child' }: { milestones: Milestone[]; childName?: string }) {
   const achieved = milestones.filter(m => m.status === 'achieved').length
   const inProgress = milestones.filter(m => m.status === 'in_progress').length
   const notYet = milestones.filter(m => m.status === 'not_yet').length
@@ -1084,7 +1086,7 @@ function AIInsights({ milestones }: { milestones: Milestone[] }) {
               Balanced development across domains
             </p>
             <p className="text-xs text-forest/60">
-              Arjun is showing steady growth
+              {childName} is showing steady growth
             </p>
           </div>
         </div>
@@ -1098,12 +1100,45 @@ function AIInsights({ milestones }: { milestones: Milestone[] }) {
 // ============================================================================
 
 export default function MilestonesPage() {
-  // State
+  const { session, getActiveChild } = useAuth()
+  const activeChild = getActiveChild()
+  const { milestones: apiMilestones, markComplete: markMilestoneComplete } = useMilestones()
+
+  // Convert API milestones to local format
   const [milestones, setMilestones] = useState<Milestone[]>(initialMilestones)
   const [selectedAgeGroup, setSelectedAgeGroup] = useState<string>('12-18 months')
   const [selectedDomain, setSelectedDomain] = useState<string | null>(null)
   const [selectedMilestone, setSelectedMilestone] = useState<Milestone | null>(null)
   const [expandedDomains, setExpandedDomains] = useState<string[]>(['gross_motor', 'fine_motor', 'language', 'social'])
+
+  // Sync with API milestones when available
+  useEffect(() => {
+    if (apiMilestones.length > 0) {
+      // Merge API data with initial milestones
+      setMilestones(prev => prev.map(m => {
+        const apiMatch = apiMilestones.find(a => a.title === m.name)
+        if (apiMatch) {
+          return {
+            ...m,
+            status: apiMatch.status === 'completed' ? 'achieved' :
+                    apiMatch.status === 'due' ? 'in_progress' : 'not_yet',
+            dateAchieved: apiMatch.completedDate || undefined,
+          }
+        }
+        return m
+      }))
+    }
+  }, [apiMilestones])
+
+  // Calculate child age to determine which milestones to show
+  const getChildAgeInMonths = () => {
+    if (!activeChild) return 14 // Default to 14 months
+    const birth = new Date(activeChild.dateOfBirth)
+    const now = new Date()
+    return (now.getFullYear() - birth.getFullYear()) * 12 + (now.getMonth() - birth.getMonth())
+  }
+
+  const childAgeMonths = getChildAgeInMonths()
 
   // Derived data
   const domains: DomainStats[] = [
@@ -1215,10 +1250,10 @@ export default function MilestonesPage() {
                 <svg className="w-4 h-4 text-sage" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
                 </svg>
-                <span className="font-medium text-forest text-sm">Arjun</span>
+                <span className="font-medium text-forest text-sm">{activeChild?.name || 'Your child'}</span>
               </div>
               <span className="text-forest/40">|</span>
-              <span className="text-forest/70 text-sm">14 months old</span>
+              <span className="text-forest/70 text-sm">{childAgeMonths} months old</span>
             </div>
           </div>
         </div>
@@ -1264,20 +1299,20 @@ export default function MilestonesPage() {
 
       {/* Early Intervention Alert (if needed) */}
       {delayedMilestones.length > 5 && (
-        <div className="bg-red-50 border border-red-200 rounded-2xl p-4 flex items-center gap-4">
-          <div className="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
-            <Icons.Activity className="w-6 h-6 text-red-600" />
+        <div className="bg-danger-bg border border-danger/30 rounded-2xl p-4 flex items-center gap-4">
+          <div className="w-12 h-12 rounded-full bg-danger-bg flex items-center justify-center flex-shrink-0">
+            <Icons.Activity className="w-6 h-6 text-danger" />
           </div>
           <div className="flex-1">
-            <h3 className="font-semibold text-red-800 mb-1">
+            <h3 className="font-semibold text-danger mb-1">
               Early intervention referral suggested
             </h3>
-            <p className="text-sm text-red-700">
+            <p className="text-sm text-danger">
               A significant number of milestones across multiple domains are delayed.
               Early intervention services can make a meaningful difference when started early.
             </p>
           </div>
-          <button className="px-4 py-2 bg-red-500 text-white rounded-xl font-medium hover:bg-red-600 transition-colors">
+          <button className="px-4 py-2 bg-danger text-white rounded-xl font-medium hover:bg-danger/90 transition-colors">
             Learn More
           </button>
         </div>
@@ -1410,7 +1445,7 @@ export default function MilestonesPage() {
         {/* Sidebar */}
         <div className="space-y-6">
           {/* AI Insights */}
-          <AIInsights milestones={milestones} />
+          <AIInsights milestones={milestones} childName={activeChild?.name || 'Your child'} />
 
           {/* Progress Timeline */}
           <ProgressTimeline milestones={milestones} />

@@ -15,20 +15,89 @@
   --color-forest-dark: #1c3a35;
   --color-sage: #7bada6;
   --color-sage-light: #a8d5c8;
+  --color-sage-dark: #5b8d86;
   --color-coral: #c04f7a;
   --color-coral-light: #d06a91;
+  --color-coral-dark: #a03d64;
   --color-cream: #faf8f5;
   --color-cream-dark: #f0ebe4;
   --color-mist: #e8efee;
 
   /* Colors - Semantic */
   --color-success: #7bada6;
+  --color-success-bg: #e8f0ee;
+  --color-success-text: #2c5f58;
+
   --color-warning: #b07850;
+  --color-warning-bg: #faeeda;
+  --color-warning-text: #7a4e00;
+
   --color-danger: #9e3535;
+  --color-danger-bg: #fde8e8;
+  --color-danger-text: #8c2020;
+
+  --color-info: #edf3fe;
+  --color-info-text: #3b5998;
+
+  --color-action: #fbeaf0;
+  --color-action-text: #7a1040;
+
+  /* Colors - Text */
+  --color-text: #2c4a45;
+  --color-text-muted: #8aada8;
+  --color-text-light: #b8d0cc;
+  --color-text-inverse: #ffffff;
+  --color-text-link: #7bada6;
+
+  /* Colors - Borders */
+  --color-border: #dce8e5;
+  --color-border-light: rgba(255, 255, 255, 0.08);
+  --color-border-focus: #7bada6;
+
+  /* Colors - Sidebar (Dark) */
+  --sidebar-bg: #2c4a45;
+  --sidebar-text: rgba(255, 255, 255, 0.5);
+  --sidebar-text-hover: rgba(255, 255, 255, 0.8);
+  --sidebar-text-active: #ffffff;
+  --sidebar-active-bg: rgba(120, 185, 170, 0.2);
+  --sidebar-active-border: #7bada6;
+  --sidebar-streak-bg: rgba(240, 153, 123, 0.18);
+  --sidebar-streak-text: #f0997b;
+
+  /* Colors - Chart */
+  --chart-bg: #f6faf9;
+  --chart-band: #e1f5ee;
+  --chart-bar-inactive: #c5d8d4;
+  --chart-bar-active: #7bada6;
 
   /* Typography */
   --font-display: 'Playfair Display', Georgia, serif;
   --font-body: 'Inter', -apple-system, sans-serif;
+
+  /* Spacing */
+  --space-0: 0;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.15);
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.2s ease;
+  --transition-slow: 0.3s ease;
 }
 
 @layer base {
@@ -45,17 +114,20 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
     font-weight: 500;
+    color: var(--color-forest);
   }
 }
 
 @layer components {
-  /* Buttons */
+  /* ============================================
+   * Buttons
+   * ============================================ */
   .btn {
     @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-semibold transition-all duration-200;
   }
 
   .btn-primary {
-    @apply bg-coral text-white hover:bg-coral-light hover:-translate-y-0.5 hover:shadow-lg;
+    @apply bg-coral text-white hover:bg-coral-light hover:-translate-y-0.5 hover:shadow-lg shadow-coral/25;
   }
 
   .btn-secondary {
@@ -66,11 +138,21 @@
     @apply bg-transparent text-forest hover:bg-mist;
   }
 
+  .btn-outline {
+    @apply bg-transparent border border-mist text-forest hover:bg-mist/50;
+  }
+
   .btn-lg {
     @apply px-8 py-4 text-base;
   }
 
-  /* Cards */
+  .btn-sm {
+    @apply px-4 py-2 text-xs;
+  }
+
+  /* ============================================
+   * Cards
+   * ============================================ */
   .card {
     @apply bg-white rounded-2xl border border-mist/50 shadow-sm;
   }
@@ -79,7 +161,13 @@
     @apply hover:shadow-md hover:border-sage/30 transition-all duration-300;
   }
 
-  /* Section styles */
+  .card-highlight {
+    @apply border-coral/30 bg-coral/5;
+  }
+
+  /* ============================================
+   * Section styles
+   * ============================================ */
   .section-label {
     @apply inline-block text-xs font-semibold uppercase tracking-widest text-sage mb-4;
   }
@@ -92,26 +180,72 @@
     @apply text-lg text-forest/70 max-w-xl;
   }
 
-  /* Badge */
+  /* ============================================
+   * Badges
+   * ============================================ */
   .badge {
     @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold;
   }
 
   .badge-success {
-    @apply bg-mist text-forest;
+    @apply bg-success-bg text-success;
   }
 
   .badge-warning {
-    @apply bg-amber-100 text-amber-800;
+    @apply bg-warning-bg text-warning;
+  }
+
+  .badge-danger {
+    @apply bg-danger-bg text-danger;
+  }
+
+  .badge-info {
+    @apply bg-info text-forest;
   }
 
   .badge-coral {
     @apply bg-coral/10 text-coral;
   }
 
-  /* Animations */
+  .badge-sage {
+    @apply bg-sage/10 text-sage;
+  }
+
+  /* ============================================
+   * Form Elements
+   * ============================================ */
+  .input {
+    @apply w-full px-4 py-3 rounded-xl border-2 border-mist/50 bg-white text-forest placeholder:text-forest/40 focus:outline-none focus:border-sage focus:ring-2 focus:ring-sage/20 transition-colors;
+  }
+
+  .input-error {
+    @apply border-danger bg-danger-bg/30 focus:border-danger focus:ring-danger/20;
+  }
+
+  .label {
+    @apply block text-sm font-medium text-forest mb-1.5;
+  }
+
+  /* ============================================
+   * Animations
+   * ============================================ */
   .animate-fade-in {
     animation: fadeUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+  }
+
+  .animate-fade-up {
+    animation: fadeUp 0.4s ease both;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .animation-delay-100 { animation-delay: 100ms; }
@@ -132,26 +266,70 @@
     opacity: 1;
     transform: translateY(0);
   }
-}
 
-@layer utilities {
-  /* Text gradient */
+  /* ============================================
+   * Utilities
+   * ============================================ */
   .text-gradient {
     @apply bg-gradient-to-r from-forest to-sage bg-clip-text text-transparent;
   }
 
-  /* Glass effect */
   .glass {
     @apply bg-cream/90 backdrop-blur-xl;
   }
 
-  /* Safe area padding for mobile devices */
   .safe-area-bottom {
     padding-bottom: env(safe-area-inset-bottom, 0);
   }
 
   .safe-area-top {
     padding-top: env(safe-area-inset-top, 0);
+  }
+}
+
+@layer utilities {
+  /* Font display utility */
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  /* Semantic text colors */
+  .text-success {
+    color: var(--color-success);
+  }
+  .text-warning {
+    color: var(--color-warning);
+  }
+  .text-danger {
+    color: var(--color-danger);
+  }
+  .text-info {
+    color: var(--color-info);
+  }
+
+  /* Semantic background colors */
+  .bg-success-bg {
+    background-color: var(--color-success-bg);
+  }
+  .bg-warning-bg {
+    background-color: var(--color-warning-bg);
+  }
+  .bg-danger-bg {
+    background-color: var(--color-danger-bg);
+  }
+
+  /* Text color with opacity */
+  .text-forest-40 {
+    color: rgba(44, 74, 69, 0.4);
+  }
+  .text-forest-50 {
+    color: rgba(44, 74, 69, 0.5);
+  }
+  .text-forest-60 {
+    color: rgba(44, 74, 69, 0.6);
+  }
+  .text-forest-70 {
+    color: rgba(44, 74, 69, 0.7);
   }
 }
 
@@ -171,4 +349,34 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-forest);
+}
+
+/* Screen reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Focus visible */
+:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

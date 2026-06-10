@@ -966,9 +966,9 @@ function DoseDisplay({ result }: { result: DoseResult }) {
       icon: Icons.AlertTriangle,
     },
     danger: {
-      bg: 'bg-red-50',
-      border: 'border-red-400',
-      text: 'text-red-700',
+      bg: 'bg-danger-bg',
+      border: 'border-danger/40',
+      text: 'text-danger',
       icon: Icons.AlertTriangle,
     },
   }
@@ -1119,7 +1119,7 @@ function SafetyWarning({
           key={index}
           className={`flex items-start gap-3 p-4 rounded-xl border ${
             warning.type === 'danger'
-              ? 'bg-red-50 border-red-200'
+              ? 'bg-danger-bg border-danger/30'
               : warning.type === 'caution'
               ? 'bg-amber-50 border-amber-200'
               : 'bg-blue-50 border-blue-200'
@@ -1128,7 +1128,7 @@ function SafetyWarning({
           <div
             className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
               warning.type === 'danger'
-                ? 'bg-red-100 text-red-600'
+                ? 'bg-danger-bg text-danger'
                 : warning.type === 'caution'
                 ? 'bg-amber-100 text-amber-600'
                 : 'bg-blue-100 text-blue-600'
@@ -1143,7 +1143,7 @@ function SafetyWarning({
           <p
             className={`text-sm ${
               warning.type === 'danger'
-                ? 'text-red-800 font-medium'
+                ? 'text-danger font-medium'
                 : warning.type === 'caution'
                 ? 'text-amber-800'
                 : 'text-blue-800'

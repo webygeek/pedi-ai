@@ -1,0 +1,263 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - navigation [ref=e3]:
+      - generic [ref=e5]:
+        - link "Pedi·Ai" [ref=e6] [cursor=pointer]:
+          - /url: /
+        - generic [ref=e7]:
+          - link "Features" [ref=e8] [cursor=pointer]:
+            - /url: "#features"
+          - link "How It Works" [ref=e9] [cursor=pointer]:
+            - /url: "#how-it-works"
+          - link "Reviews" [ref=e10] [cursor=pointer]:
+            - /url: "#testimonials"
+          - link "Pricing" [ref=e11] [cursor=pointer]:
+            - /url: "#pricing"
+        - generic [ref=e12]:
+          - button "Sign In" [ref=e13] [cursor=pointer]
+          - link "Get Started Free" [ref=e14] [cursor=pointer]:
+            - /url: "#get-started"
+            - button "Get Started Free" [ref=e15]
+    - generic [ref=e18]:
+      - generic [ref=e19]:
+        - generic [ref=e20]: IAP Clinically Reviewed
+        - heading "Your AI companion for the first 2,000 days" [level=1] [ref=e22]:
+          - text: Your AI companion for
+          - emphasis [ref=e23]: the first 2,000 days
+        - paragraph [ref=e24]: From midnight fevers to developmental milestones — get instant, evidence-based guidance backed by pediatric experts. Know exactly when to act and when to rest easy.
+        - generic [ref=e25]:
+          - link "Start Free — No Credit Card" [ref=e26] [cursor=pointer]:
+            - /url: "#get-started"
+            - button "Start Free — No Credit Card" [ref=e27]
+          - link "See How It Works" [ref=e28] [cursor=pointer]:
+            - /url: "#how-it-works"
+            - button "See How It Works" [ref=e29]
+        - generic [ref=e30]:
+          - generic [ref=e31]:
+            - img [ref=e32]
+            - text: WHO Growth Standards
+          - generic [ref=e34]:
+            - img [ref=e35]
+            - text: HIPAA Compliant
+          - generic [ref=e37]:
+            - img [ref=e38]
+            - text: 50,000+ Families
+      - generic [ref=e41]:
+        - generic [ref=e43]:
+          - generic [ref=e44]:
+            - heading "Arjun's Dashboard" [level=3] [ref=e45]
+            - paragraph [ref=e46]: 14 months old
+          - generic [ref=e47]:
+            - generic [ref=e48]:
+              - generic [ref=e49]:
+                - generic [ref=e50]: Weight
+                - generic [ref=e51]: On track
+              - generic [ref=e52]:
+                - generic [ref=e53]: "10.2"
+                - generic [ref=e54]: kg
+            - generic [ref=e62]:
+              - generic [ref=e63]:
+                - generic [ref=e64]: Next Milestone
+                - generic [ref=e65]: Due 15m
+              - paragraph [ref=e66]: Stands without support
+        - generic [ref=e67]:
+          - generic [ref=e68]: 🩺
+          - generic [ref=e69]:
+            - paragraph [ref=e70]: Symptom Check
+            - paragraph [ref=e71]: Under 60 seconds
+        - generic [ref=e72]:
+          - generic [ref=e73]: 📊
+          - generic [ref=e74]:
+            - paragraph [ref=e75]: Growth Tracking
+            - paragraph [ref=e76]: WHO percentiles
+    - generic [ref=e78]:
+      - generic [ref=e79]:
+        - generic [ref=e80]: The Challenge
+        - heading "Parenting comes with a thousand questions. Most of them happen at 2 AM." [level=2] [ref=e81]:
+          - text: Parenting comes with a thousand questions.
+          - text: Most of them happen at 2 AM.
+        - paragraph [ref=e82]: You're not alone. Every parent faces these moments — and making the wrong call can be scary, expensive, or worse.
+      - generic [ref=e83]:
+        - generic [ref=e84]:
+          - generic [ref=e85]: 😰
+          - heading "Is this an emergency?" [level=3] [ref=e86]
+          - paragraph [ref=e87]: 40-60% of ER visits are non-emergent. But how do you know when something serious is hiding behind a mild fever?
+          - generic [ref=e88]: 6 in 10 ER visits avoidable
+        - generic [ref=e89]:
+          - generic [ref=e90]: 💊
+          - heading "Is this dose right?" [level=3] [ref=e91]
+          - paragraph [ref=e92]: Weight-based dosing changes constantly. Acetaminophen overdoses send thousands of kids to the ER every year.
+          - generic [ref=e93]: 50,000+ ER visits/year
+        - generic [ref=e94]:
+          - generic [ref=e95]: 🤔
+          - heading "Is my child on track?" [level=3] [ref=e96]
+          - paragraph [ref=e97]: Autism, speech delays, developmental issues — early intervention makes a 3-10x difference. But 15-20% of kids have delays.
+          - generic [ref=e98]: 4-5 year avg. autism diagnosis
+    - generic [ref=e100]:
+      - generic [ref=e101]:
+        - generic [ref=e102]: Your Parenting Toolkit
+        - heading "Everything you need to raise a healthy, thriving child" [level=2] [ref=e103]:
+          - text: Everything you need to raise
+          - text: a healthy, thriving child
+        - paragraph [ref=e104]: AI-powered tools backed by pediatric guidelines. Know when to act, when to wait, and when to celebrate.
+      - generic [ref=e105]:
+        - generic [ref=e106]:
+          - generic [ref=e107]: 🩺
+          - generic [ref=e108]:
+            - heading "AI Symptom Triage" [level=3] [ref=e109]
+            - paragraph [ref=e110]: Describe symptoms naturally. Our AI asks the right follow-up questions, then gives you clear guidance — Home Care, Urgent Care, or Call 911. Under 60 seconds.
+            - generic [ref=e111]: ⭐ Most Popular
+        - generic [ref=e112]:
+          - generic [ref=e113]: 💊
+          - generic [ref=e114]:
+            - heading "Precision Dosage Calculator" [level=3] [ref=e115]
+            - paragraph [ref=e116]: Enter weight once. Get instant, safe dosages for acetaminophen, ibuprofen, and common medications. Zero errors guaranteed.
+            - generic [ref=e117]: Safety First
+        - generic [ref=e118]:
+          - generic [ref=e119]: 📈
+          - generic [ref=e120]:
+            - heading "Growth Tracking" [level=3] [ref=e121]
+            - paragraph [ref=e122]: Plot height, weight, and head circumference on WHO/CDC growth charts. Get alerts for percentile crossings and growth concerns.
+            - generic [ref=e123]: WHO Standards
+        - generic [ref=e124]:
+          - generic [ref=e125]: 🎯
+          - generic [ref=e126]:
+            - heading "Milestone Monitoring" [level=3] [ref=e127]
+            - paragraph [ref=e128]: Track developmental progress across motor, language, social, and cognitive domains. Catch delays early — when intervention matters most.
+            - generic [ref=e129]: CDC Guidelines
+        - generic [ref=e130]:
+          - generic [ref=e131]: 🤖
+          - generic [ref=e132]:
+            - heading "24/7 AI Parenting Consultant" [level=3] [ref=e133]
+            - paragraph [ref=e134]: "Ask anything: sleep regressions, picky eating, tantrums, screen time. Get evidence-based answers instantly, day or night."
+            - generic [ref=e135]: Always Available
+        - generic [ref=e136]:
+          - generic [ref=e137]: 📅
+          - generic [ref=e138]:
+            - heading "Vaccination Tracker" [level=3] [ref=e139]
+            - paragraph [ref=e140]: Never miss a vaccine. Personalized schedules, proactive reminders, and school-ready certificates.
+            - generic [ref=e141]: IAP Recommended
+    - generic [ref=e144]:
+      - generic [ref=e145]:
+        - generic [ref=e146]: 40%
+        - paragraph [ref=e147]: Fewer unnecessary ER visits
+      - generic [ref=e148]:
+        - generic [ref=e149]: 14mo
+        - paragraph [ref=e150]: Earlier autism detection
+      - generic [ref=e151]:
+        - generic [ref=e152]: 85%
+        - paragraph [ref=e153]: Triage accuracy
+      - generic [ref=e154]:
+        - generic [ref=e155]: "0"
+        - paragraph [ref=e156]: Medication errors
+    - generic [ref=e158]:
+      - generic [ref=e159]:
+        - generic [ref=e160]: Parent Stories
+        - heading "Trusted by parents across India" [level=2] [ref=e161]:
+          - text: Trusted by parents
+          - text: across India
+      - generic [ref=e162]:
+        - generic [ref=e163]:
+          - generic [ref=e164]: “
+          - paragraph [ref=e165]: At 3 AM, when my daughter had a 104 fever, I didn't panic. I opened Pedi·Ai, answered a few questions, and within 60 seconds knew exactly what to do. The peace of mind is worth everything.
+          - generic [ref=e166]:
+            - generic [ref=e167]: PS
+            - generic [ref=e168]:
+              - paragraph [ref=e169]: Priya Sharma
+              - paragraph [ref=e170]: Mother of two, Mumbai
+        - generic [ref=e171]:
+          - generic [ref=e172]: “
+          - paragraph [ref=e173]: The dosage calculator alone has saved us multiple times. I used to double-check every dose — now I'm confident in seconds. And the growth charts show us exactly how our son is developing.
+          - generic [ref=e174]:
+            - generic [ref=e175]: RK
+            - generic [ref=e176]:
+              - paragraph [ref=e177]: Rahul Kapoor
+              - paragraph [ref=e178]: Father, Bangalore
+        - generic [ref=e179]:
+          - generic [ref=e180]: “
+          - paragraph [ref=e181]: As a pediatrician, I recommend Pedi·Ai to all my families. It helps parents make better decisions between visits and gives me longitudinal data I never had before.
+          - generic [ref=e182]:
+            - generic [ref=e183]: DM
+            - generic [ref=e184]:
+              - paragraph [ref=e185]: Dr. Meera Iyer
+              - paragraph [ref=e186]: Pediatrician, Chennai
+    - generic [ref=e189]:
+      - heading "Start your free trial today. Your child's health can't wait." [level=2] [ref=e190]:
+        - text: Start your free trial today.
+        - text: Your child's health can't wait.
+      - paragraph [ref=e191]: Join 50,000+ parents who trust Pedi·Ai for instant, evidence-based guidance. No credit card required. Cancel anytime.
+      - generic [ref=e192]:
+        - button "Get Started Free" [ref=e193] [cursor=pointer]
+        - button "Schedule a Demo" [ref=e194] [cursor=pointer]
+      - paragraph [ref=e195]:
+        - img [ref=e196]
+        - text: Your data is encrypted and HIPAA compliant
+    - generic [ref=e199]:
+      - generic [ref=e200]:
+        - generic [ref=e201]:
+          - generic [ref=e202]: Pedi·Ai
+          - paragraph [ref=e203]: AI-powered pediatric care for the first 2,000 days. Evidence-based guidance for parents, powered by pediatric experts.
+          - generic [ref=e204]:
+            - link "𝕏" [ref=e205] [cursor=pointer]:
+              - /url: "#"
+            - link "f" [ref=e206] [cursor=pointer]:
+              - /url: "#"
+            - link "📷" [ref=e207] [cursor=pointer]:
+              - /url: "#"
+            - link "in" [ref=e208] [cursor=pointer]:
+              - /url: "#"
+        - generic [ref=e209]:
+          - heading "Product" [level=4] [ref=e210]
+          - list [ref=e211]:
+            - listitem [ref=e212]:
+              - link "Features" [ref=e213] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e214]:
+              - link "Pricing" [ref=e215] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e216]:
+              - link "For Clinicians" [ref=e217] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e218]:
+              - link "For Healthcare Systems" [ref=e219] [cursor=pointer]:
+                - /url: "#"
+        - generic [ref=e220]:
+          - heading "Resources" [level=4] [ref=e221]
+          - list [ref=e222]:
+            - listitem [ref=e223]:
+              - link "Help Center" [ref=e224] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e225]:
+              - link "Blog" [ref=e226] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e227]:
+              - link "Parenting Tips" [ref=e228] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e229]:
+              - link "Growth Charts" [ref=e230] [cursor=pointer]:
+                - /url: "#"
+        - generic [ref=e231]:
+          - heading "Company" [level=4] [ref=e232]
+          - list [ref=e233]:
+            - listitem [ref=e234]:
+              - link "About Us" [ref=e235] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e236]:
+              - link "Careers" [ref=e237] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e238]:
+              - link "Contact" [ref=e239] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e240]:
+              - link "Press Kit" [ref=e241] [cursor=pointer]:
+                - /url: "#"
+      - generic [ref=e242]:
+        - paragraph [ref=e243]: © 2026 Pedi·Ai. All rights reserved.
+        - generic [ref=e244]:
+          - link "Privacy Policy" [ref=e245] [cursor=pointer]:
+            - /url: "#"
+          - link "Terms of Service" [ref=e246] [cursor=pointer]:
+            - /url: "#"
+          - link "Cookie Policy" [ref=e247] [cursor=pointer]:
+            - /url: "#"
+  - alert [ref=e248]
